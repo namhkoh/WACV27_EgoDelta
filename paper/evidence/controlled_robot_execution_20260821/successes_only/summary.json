@@ -1,0 +1,10 @@
+{
+  "row_count": 40,
+  "harvest": 20,
+  "deleaf": 20,
+  "direct": 40,
+  "learned_policy": 0,
+  "controller_classification": "scripted_target_conditioned_direct_execution",
+  "denominator_use": "not_valid",
+  "warning": "Success-only artifact view; rejected, failed, abandoned, and retried attempts are excluded and this file must not be used to compute prospective success rates."
+}

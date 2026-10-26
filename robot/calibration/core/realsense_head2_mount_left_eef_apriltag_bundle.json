@@ -1,0 +1,118 @@
+{
+  "version": "0.1",
+  "method": "fit_head_mount_from_fixed_eef_tag_pose",
+  "source_link": "link_head_2",
+  "realsense_frame": "realsense_color_optical_frame",
+  "samples_json": "C:\\path\\to\\projects\\EgoDelta\\data\\testbed_052126\\left_eef_apriltag_heldout_samples.json",
+  "bundle_calibration_json": "C:\\path\\to\\projects\\EgoDelta\\data\\testbed_052126\\T_robot_from_realsense_left_eef_apriltag_bundle.json",
+  "T_source_link_from_realsense": [
+    [
+      0.20869646488407156,
+      -0.26368392538152724,
+      0.9417624822853587,
+      0.03196878726801893
+    ],
+    [
+      -0.9778058607889497,
+      -0.03806327599274395,
+      0.2060264197317449,
+      0.003139870542493676
+    ],
+    [
+      -0.018479289804329224,
+      -0.9638578601205103,
+      -0.26577535877548586,
+      0.07676518683179726
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "camera_origin_in_source_link_m": [
+    0.03196878726801893,
+    0.003139870542493676,
+    0.07676518683179726
+  ],
+  "n_samples_input": 8,
+  "n_samples_used": 8,
+  "rms_translation_error_m": 0.004530842182819257,
+  "max_translation_error_m": 0.006735360116782337,
+  "rms_rotation_error_rad": 0.017713913144542896,
+  "max_rotation_error_rad": 0.024657918962602453,
+  "residuals": [
+    {
+      "sample_index": 0,
+      "translation_error_m": 0.006268194530997424,
+      "rotation_error_rad": 0.009731461890542813,
+      "tag_reprojection_rms_px": 0.9754644024716188
+    },
+    {
+      "sample_index": 1,
+      "translation_error_m": 0.0032559398903873192,
+      "rotation_error_rad": 0.02411247075218543,
+      "tag_reprojection_rms_px": 1.0507504708184985
+    },
+    {
+      "sample_index": 2,
+      "translation_error_m": 0.003419347485280818,
+      "rotation_error_rad": 0.014974728230675699,
+      "tag_reprojection_rms_px": 0.9742140698451183
+    },
+    {
+      "sample_index": 3,
+      "translation_error_m": 0.0009408223670301406,
+      "rotation_error_rad": 0.0072865229520326655,
+      "tag_reprojection_rms_px": 0.864756055032455
+    },
+    {
+      "sample_index": 4,
+      "translation_error_m": 0.002485515808253902,
+      "rotation_error_rad": 0.008515903325460988,
+      "tag_reprojection_rms_px": 0.8278237833568367
+    },
+    {
+      "sample_index": 5,
+      "translation_error_m": 0.004495805468952611,
+      "rotation_error_rad": 0.024657918962602453,
+      "tag_reprojection_rms_px": 1.102794119182473
+    },
+    {
+      "sample_index": 6,
+      "translation_error_m": 0.006735360116782337,
+      "rotation_error_rad": 0.01906511432091932,
+      "tag_reprojection_rms_px": 0.9376849907521854
+    },
+    {
+      "sample_index": 7,
+      "translation_error_m": 0.0054776477008645465,
+      "rotation_error_rad": 0.022645111866350036,
+      "tag_reprojection_rms_px": 0.7517798182436419
+    }
+  ],
+  "validation_status": {
+    "contact_grade": true,
+    "reason": "held-out moving-head validation passed after fixed-EEF-tag head-mount candidate promotion",
+    "criteria": {
+      "max_rms_translation_error_m": 0.015,
+      "max_max_translation_error_m": 0.025
+    }
+  },
+  "notes": [
+    "This file is a candidate mount. It does not update the active config by itself.",
+    "It assumes the EEF AprilTag board pose relative to the EEF link has not changed."
+  ],
+  "current_mount_json": "C:\\path\\to\\projects\\EgoDelta\\config\\realsense_head2_mount_left_eef_apriltag_bundle.json",
+  "delta_from_current_mount": {
+    "translation_m": [
+      -0.005695768597068794,
+      0.006551644156520868,
+      -0.0019940911730366995
+    ],
+    "translation_norm_m": 0.008907425030355964,
+    "rotation_rad": 0.3149591927473618,
+    "rotation_deg": 18.04583246327124
+  }
+}

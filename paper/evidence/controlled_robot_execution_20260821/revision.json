@@ -1,0 +1,10 @@
+{
+  "generated_at_utc": "2026-08-21T07:54:10.192127+00:00",
+  "branch": "redacted/WACV",
+  "head_commit": "f6ee2437149f891183bafc6e378e62d89fbb93bc",
+  "worktree_clean_before_export": false,
+  "exporter": "C:\\path\\to\\projects\\EgoDelta\\tools\\export_controlled_robot_execution_evidence.py",
+  "observed_ledger_source_commits": [
+    "2c52d10a0efd563a98c1f999d9312cd862db6e84"
+  ]
+}

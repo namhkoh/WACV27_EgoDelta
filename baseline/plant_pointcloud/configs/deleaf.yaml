@@ -1,0 +1,70 @@
+quality:
+  max_inv_dist_std: 0.005
+  max_dist_std: 0.01
+  min_observations: 3
+  max_points: 2000000
+  statistical_outlier:
+    enabled: false
+    nb_neighbors: 20
+    std_ratio: 2.0
+roi:
+  crop_boxes: []
+  exclude_boxes: []
+registration:
+  assume_same_world_frame: true
+  refine_icp: false
+  voxel_size: 0.01
+  icp_max_correspondence_distance: 0.03
+  icp_max_iterations: 80
+  min_icp_fitness: 0.3
+  max_icp_rmse: 0.03
+nn:
+  threshold_m: 0.0214
+  auto_threshold: true
+  auto_threshold_k_mad: 2.82
+  stable_percentile: 99
+m3c2:
+  enabled: true
+  corepoint_stride: 1
+  max_corepoints: 300000
+  cyl_radius: 0.03
+  normal_radii:
+    - 0.02
+    - 0.04
+    - 0.08
+  max_distance: 0.15
+  threshold_m: 0.0288
+  use_lodetection: true
+  min_samples1: 2
+  min_samples2: 1
+scoring:
+  nn_weight: 0.514
+  m3c2_weight: 0.486
+  density_weight: 0.0
+  fusion: weighted_average
+  min_combined_score: 0.487
+density:
+  enabled: false
+  radius_m: 0.04
+  min_pre_neighbors: 3
+  min_drop_fraction: 0.35
+  min_drop_count: 2
+  max_post_neighbors: 2
+  min_expected_post_ratio: 0.25
+  candidate_threshold: 0.25
+dbscan:
+  eps_m: 0.05
+  min_samples: 10
+  min_cluster_points: 30
+  max_cluster_points: 200000
+task_priors:
+  harvest:
+    prefer_compact: true
+    min_diameter_m: 0.02
+    max_diameter_m: 0.15
+  deleaf:
+    prefer_elongated: true
+    min_length_m: 0.025
+    max_targets: 15
+    min_target_score: 0.582
+task: deleaf

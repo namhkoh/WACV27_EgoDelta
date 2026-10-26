@@ -1,0 +1,12 @@
+ultralytics
+projectaria-tools
+numpy
+scipy
+opencv-python
+scikit-learn
+open3d
+tqdm
+matplotlib
+pytest
+pyyaml
+roboflow

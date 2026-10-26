@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sam-aria-change-baseline"
+version = "0.1.0"
+description = "SAM 3 concept masks plus Project Aria MPS geometry baseline."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy",
+  "scipy",
+  "opencv-python",
+  "open3d",
+  "scikit-learn",
+  "tqdm",
+  "pydantic",
+  "projectaria-tools",
+  "matplotlib",
+  "Pillow",
+  "pyyaml",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["sam_aria_change_baseline*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

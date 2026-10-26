@@ -1,0 +1,105 @@
+{
+  "version": "0.2",
+  "dataset": "0d058720",
+  "window_units": "timestamps_us",
+  "generator": "user-verified 6 cut moments + auto-expanded approach/cut/retract (CUT_HALF=0.25s, lookback/ahead=1.5s)",
+  "mps_hand_tracking_csv": "C:/path/to/user/aria/handtrack/mps_0d058720-9302-4563-8764-3a30da628444_vrs/hand_tracking/hand_tracking_results.csv",
+  "slam_trajectory_csv": "C:/path/to/user/aria/handtrack/mps_0d058720-9302-4563-8764-3a30da628444_vrs/slam/closed_loop_trajectory.csv",
+  "alignment": null,
+  "anchor_frame": "pending_alignment",
+  "actions": [
+    {
+      "name": "deleafing_01",
+      "approach": [
+        103522363.168,
+        104772363.168
+      ],
+      "cut": [
+        104772363.168,
+        105272363.168
+      ],
+      "retract": [
+        105272363.168,
+        106522363.168
+      ]
+    },
+    {
+      "name": "deleafing_02",
+      "approach": [
+        111241260.91,
+        112491260.91
+      ],
+      "cut": [
+        112491260.91,
+        112991260.91
+      ],
+      "retract": [
+        112991260.91,
+        114241260.91
+      ]
+    },
+    {
+      "name": "deleafing_03",
+      "approach": [
+        119497125.45,
+        120747125.45
+      ],
+      "cut": [
+        120747125.45,
+        121247125.45
+      ],
+      "retract": [
+        121247125.45,
+        122497125.45
+      ]
+    },
+    {
+      "name": "deleafing_04",
+      "approach": [
+        128424198.49,
+        129674198.49
+      ],
+      "cut": [
+        129674198.49,
+        130174198.49
+      ],
+      "retract": [
+        130174198.49,
+        131424198.49
+      ]
+    },
+    {
+      "name": "deleafing_05",
+      "approach": [
+        141445643.376,
+        142695643.376
+      ],
+      "cut": [
+        142695643.376,
+        143195643.376
+      ],
+      "retract": [
+        143195643.376,
+        144445643.376
+      ]
+    },
+    {
+      "name": "deleafing_06",
+      "approach": [
+        147721442.844,
+        148971442.844
+      ],
+      "cut": [
+        148971442.844,
+        149471442.844
+      ],
+      "retract": [
+        149471442.844,
+        150721442.844
+      ]
+    }
+  ],
+  "notes": [
+    "6 user-confirmed cut moments (ns->us). Windows auto-expanded; adjust CUT_HALF/lookback if needed."
+  ]
+}

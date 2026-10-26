@@ -1,0 +1,61 @@
+{
+  "observed_trial_ledger": {
+    "path": "C:\\path\\to\\projects\\EgoDelta\\paper_deliverables_20260820_robot_trials_final_additional20\\robot_trials\\robot_trial_ledger.csv",
+    "exists": true,
+    "sha256": "8a2b63152d0ed352b7c6dee4026f44167b4d89f5834b3723a1770d59588519ef"
+  },
+  "observed_trial_summary": {
+    "path": "C:\\path\\to\\projects\\EgoDelta\\paper_deliverables_20260820_robot_trials_final_additional20\\robot_trials\\robot_trial_summary.json",
+    "exists": true,
+    "sha256": "47cdb4732bd49d647a5c77e7ce23c7ff5b70ae435c8a66c430d777cf833d0ac8"
+  },
+  "preregistered_trial_ledger": {
+    "path": "C:\\path\\to\\projects\\EgoDelta\\paper_deliverables_20260819_robot_trials\\robot_trials\\robot_trial_ledger.csv",
+    "exists": true,
+    "sha256": "45f8305b3c8f970592d6147ecc79c56b2d01e70664e63f0222c0655fe2c82a56"
+  },
+  "preregistered_trial_summary": {
+    "path": "C:\\path\\to\\projects\\EgoDelta\\paper_deliverables_20260819_robot_trials\\robot_trials\\robot_trial_summary.json",
+    "exists": true,
+    "sha256": "0acad7d0f8080fef77a342ee29c6bbf7e4ca3e076fd7bd8f04d9a148050b32f1"
+  },
+  "prospective_protocol": {
+    "path": "C:\\path\\to\\projects\\EgoDelta\\deliverables_robot_trials_20260819.md",
+    "exists": true,
+    "sha256": "14478b3bd3350bfed8a3f17876bf0c1a4b453a16a8718aaa8a5492c47172ff72"
+  },
+  "latest_deliverables_spec": {
+    "path": "C:\\path\\to\\projects\\EgoDelta\\deliverables_latest.md",
+    "exists": true,
+    "sha256": "92cf7cdb0ae1e3b87e90cd45c9698c83fc4176cf16733c3422b0a6c38e5dc433"
+  },
+  "policy_training_index": {
+    "path": "C:\\path\\to\\projects\\EgoDelta\\robot\\policy\\policy_action_library\\training_index.json",
+    "exists": true,
+    "sha256": "1792c4af46702a9be04f7072222433ba9400cb505ce3a8033c1ce83086edd85f"
+  },
+  "harvest_policy_metadata": {
+    "path": "C:\\path\\to\\projects\\EgoDelta\\robot\\policy\\trained_policies\\harvest_bc_success_trimmed_nojitter10hz_chunk30_seed11_rerun_20260819\\policy_metadata.json",
+    "exists": true,
+    "sha256": "73f9e523d004255af471917f84fc7b9498a9819ba0c030535fa1d724429729fe"
+  },
+  "deleaf_policy_metadata": {
+    "path": "C:\\path\\to\\projects\\EgoDelta\\robot\\policy\\trained_policies\\deleaf_bc_success_only_jitter10hz_chunk50_seed11_rerun_20260819\\policy_metadata.json",
+    "exists": true,
+    "sha256": "cfc38531f382e583bdd2c5956944a5b4b37a63984e1ce93cfb91d8c5a4d5bdd3"
+  },
+  "historical_harvest_rollout_log_dir": {
+    "path": "C:\\path\\to\\projects\\EgoDelta\\robot\\policy\\rollout_logs\\harvest",
+    "exists": true,
+    "sha256": "unavailable"
+  },
+  "historical_deleaf_rollout_log_dir": {
+    "path": "C:\\path\\to\\projects\\EgoDelta\\robot\\policy\\rollout_logs\\deleaf",
+    "exists": true,
+    "sha256": "unavailable"
+  },
+  "historical_rollout_log_caveat": {
+    "status": "not_an_evaluation_ledger",
+    "reason": "These logs mix dry runs, guard failures, commissioning, and multiple model variants; they contain no authoritative physical success labels or evaluation scene IDs."
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "angle_error_deg": {
+    "max": 9.04593238608778,
+    "mean": 3.73553783155998,
+    "median": 3.2050989660558584,
+    "p90": 6.416449590329224,
+    "p95": 6.662487620739794
+  },
+  "arm": "right",
+  "dataset_name": "a270c038",
+  "edge_axis_eef_unit": [
+    -0.002043807556610623,
+    0.049124733063957586,
+    -0.9987905603539045
+  ],
+  "edge_axis_source": "C:\\path\\to\\projects\\EgoDelta\\robot\\kinematics\\runs\\052726\\teleop_tcp_capture\\a270c038_right_knife_edge_line_calib_01.json",
+  "estimated_tool_offset_link_name": "ee_right",
+  "estimated_tool_offset_m": [
+    0.0007339328237625447,
+    -0.0037442536086016442,
+    -0.1565091234744367
+  ],
+  "line_axis_robot_unit": [
+    -0.9461164223269661,
+    -0.31946602484055375,
+    0.0529638969090956
+  ],
+  "line_concentration": 0.9947943193909335,
+  "method": "right_knife_tip_plus_edge_axis_calibration",
+  "tip_residual_rms_m": 0.0032688182766606832,
+  "tip_residual_max_m": null,
+  "tip_sample_count": 10,
+  "notes": [
+    "Tip offset RE-PIVOTED 2026-06-02 (right_knife_tip_repivot_060226) after the knife was re-mounted; the real blade tip is ~8.1cm shorter than the prior 238mm pivot, residual_rms 3.3mm over 10 samples.",
+    "Edge axis is REUSED from the prior edge-along-line teleop calibration. This is valid ONLY if the re-mount changed the blade INSERTION DEPTH (pure translation along the tool axis) and did not ROTATE the knife in its holder. If the cut blade orientation looks off after re-hover, re-run the edge-along-line capture to refit edge_axis_eef_unit.",
+    "The calibrated edge axis is expressed in ee_right/TCP-local coordinates because the tool offset is translation-only."
+  ],
+  "tip_source": "C:\\path\\to\\projects\\EgoDelta\\robot\\calibration\\tooltips\\a270c038_right_knife_tip_repivot_060226.json",
+  "supersedes": "C:\\path\\to\\projects\\EgoDelta\\robot\\calibration\\tooltips\\a270c038_right_knife_tip_edge_deleaf_01.json"
+}

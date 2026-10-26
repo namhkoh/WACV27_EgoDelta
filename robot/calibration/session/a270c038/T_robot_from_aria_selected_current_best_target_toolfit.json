@@ -1,0 +1,438 @@
+{
+  "version": "0.1",
+  "method": "feature_depth_hanger_search_selected",
+  "rank": 10,
+  "frame_idx": 2952,
+  "image_name": "frame_002952.jpg",
+  "T_realsense_from_aria": [
+    [
+      -0.46387018414097353,
+      0.8854883615602851,
+      -0.02710744927692468,
+      0.031828111285510274
+    ],
+    [
+      0.18696384160166424,
+      0.06794133025766265,
+      -0.9800145394719237,
+      -0.12864544832148048
+    ],
+    [
+      -0.8659497526984852,
+      -0.4596676377385089,
+      -0.1970702631482791,
+      0.21070119325182635
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "feature_depth": {
+    "n_feature_matches": 147,
+    "n_3d_correspondences": 112,
+    "n_ransac_inliers": 22,
+    "inlier_fraction": 0.19642857142857142,
+    "inlier_rmse_m": 0.015986180385296908
+  },
+  "score": {
+    "projected_points": 349233,
+    "depth_compared_points": 233074,
+    "depth_median_abs_error_m": 0.04194234045002554,
+    "depth_p75_abs_error_m": 0.3792602990928969,
+    "depth_fraction_lt_3cm": 0.4346945605258416,
+    "depth_fraction_lt_5cm": 0.5291452500064358,
+    "rail_projected_points": 19693,
+    "rail_depth_compared_points": 15147,
+    "rail_depth_median_abs_error_m": 0.02225267798752184,
+    "rail_fraction_lt_3cm": 0.5834818775995246,
+    "rail_fraction_lt_5cm": 0.6833696441539578,
+    "rail_close_coverage_32bins": 0.84375,
+    "hanger_score": 5.002181557465091
+  },
+  "T_robot_from_realsense": [
+    [
+      6.67958753359846e-05,
+      -0.26870276869557796,
+      0.9632231401049509,
+      0.054141811649107946
+    ],
+    [
+      -0.9998172039251423,
+      0.01839837459701468,
+      0.005201783107580284,
+      -0.0036473770397107957
+    ],
+    [
+      -0.01911947367532418,
+      -0.9630474141533836,
+      -0.26865242194862105,
+      1.3016411706173663
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "T_robot_from_aria": [
+    [
+      -0.8843715264666612,
+      -0.4609593820059959,
+      0.0735081717612307,
+      0.2916635907676115
+    ],
+    [
+      0.46272073849035306,
+      -0.8864675790718493,
+      0.008046702768021052,
+      -0.03674051551202308
+    ],
+    [
+      0.061453407928043054,
+      0.0411300303324109,
+      0.9972621517228478,
+      1.3683189143555445
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "estimated_tool_offset_m": [
+    -0.006761635300171225,
+    0.08239701698595205,
+    -0.14865044324838417
+  ],
+  "estimated_tool_offset_link_name": "ee_left",
+  "tool_offset_calibration": {
+    "method": "manual_tool_point_to_apriltag_centers_lstsq",
+    "board_pose_json": "data\\indoor_v1\\testbed_main_board_pose_mechanical_check.json",
+    "source_calibration_json": "data\\indoor_v1\\T_robot_from_realsense_head2_mechanical.json",
+    "arm": "left",
+    "link_name": "ee_left",
+    "labels": [
+      "tag00_center",
+      "tag01_center",
+      "tag02_center",
+      "tag03_center",
+      "tag04_center",
+      "tag05_center"
+    ],
+    "n_captures": 6,
+    "rms_error_m": 0.012448451370073705,
+    "max_error_m": 0.016425855816239756,
+    "captures": [
+      {
+        "label": "tag00_center",
+        "target_robot_m": [
+          0.6241966949420013,
+          0.5230508679028136,
+          1.3012564576147834
+        ],
+        "link_position_robot_m": [
+          0.48437704675414595,
+          0.4040786283650994,
+          1.2997151572484777
+        ],
+        "T_robot_from_link": [
+          [
+            -0.037517891407943024,
+            -0.16396845042006536,
+            -0.9857518729838375,
+            0.48437704675414595
+          ],
+          [
+            -0.0813787753265639,
+            0.9836712836816404,
+            -0.1605250777494349,
+            0.4040786283650994
+          ],
+          [
+            0.9959768585417285,
+            0.0741967177640364,
+            -0.05024882408965908,
+            1.2997151572484777
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "fit_tool_point_robot_m": [
+          0.6176526707106278,
+          0.5095425853950764,
+          1.3065638231511514
+        ],
+        "fit_residual_m": 0.015920618027773635
+      },
+      {
+        "label": "tag01_center",
+        "target_robot_m": [
+          0.6226266851508852,
+          0.4469467079332544,
+          1.3047395459833913
+        ],
+        "link_position_robot_m": [
+          0.48650156165895575,
+          0.33919976325020285,
+          1.3003183215815035
+        ],
+        "T_robot_from_link": [
+          [
+            -0.08359099018666752,
+            -0.15278939295959162,
+            -0.9847171917655604,
+            0.48650156165895575
+          ],
+          [
+            0.013249827983794954,
+            0.9879178892233882,
+            -0.15441077103235035,
+            0.33919976325020285
+          ],
+          [
+            0.9964120575434703,
+            -0.025954682649660332,
+            -0.08055660140884235,
+            1.3003183215815035
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "fit_tool_point_robot_m": [
+          0.6208560302722681,
+          0.4434648894009355,
+          1.3034171327185602
+        ],
+        "fit_residual_m": 0.004123961182427778
+      },
+      {
+        "label": "tag02_center",
+        "target_robot_m": [
+          0.6210566753597688,
+          0.3708425479636951,
+          1.3082226343519991
+        ],
+        "link_position_robot_m": [
+          0.48504040311366714,
+          0.2877851777184854,
+          1.3025133589901199
+        ],
+        "T_robot_from_link": [
+          [
+            -0.05407032662214348,
+            -0.09726578115416655,
+            -0.9937885930093204,
+            0.48504040311366714
+          ],
+          [
+            0.038405058422853106,
+            0.9943055428557839,
+            -0.09940593007362601,
+            0.2877851777184854
+          ],
+          [
+            0.9977983018959856,
+            -0.043541420081746995,
+            -0.05002692745664972,
+            1.3025133589901199
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "fit_tool_point_robot_m": [
+          0.625118711566959,
+          0.38423004299062496,
+          1.2996154525802865
+        ],
+        "fit_residual_m": 0.016425855816239756
+      },
+      {
+        "label": "tag03_center",
+        "target_robot_m": [
+          0.6243591467999134,
+          0.5195637035686318,
+          1.2251364648776562
+        ],
+        "link_position_robot_m": [
+          0.48961152984305456,
+          0.40405561205917523,
+          1.2473371283414085
+        ],
+        "T_robot_from_link": [
+          [
+            0.03691175392822788,
+            -0.1694627223068083,
+            -0.9848451188741851,
+            0.48961152984305456
+          ],
+          [
+            0.04353775800678503,
+            0.9848536674056213,
+            -0.16783240874587002,
+            0.40405561205917523
+          ],
+          [
+            0.99836966402715,
+            -0.036682959886898125,
+            0.043730703221554035,
+            1.2473371283414085
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "fit_tool_point_robot_m": [
+          0.6217963866679577,
+          0.5098585919311619,
+          1.2310633618921591
+        ],
+        "fit_residual_m": 0.011656973861608345
+      },
+      {
+        "label": "tag04_center",
+        "target_robot_m": [
+          0.6227891370087972,
+          0.44345954359907247,
+          1.2286195532462643
+        ],
+        "link_position_robot_m": [
+          0.48894072413243184,
+          0.3469176530484943,
+          1.2430356909916018
+        ],
+        "T_robot_from_link": [
+          [
+            0.02406878558488987,
+            -0.08888191752748391,
+            -0.9957513235226487,
+            0.48894072413243184
+          ],
+          [
+            0.03168155792147434,
+            0.9956073979636698,
+            -0.08810328034573495,
+            0.3469176530484943
+          ],
+          [
+            0.9992081727288551,
+            -0.029426414267600565,
+            0.026778978606636195,
+            1.2430356909916018
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "fit_tool_point_robot_m": [
+          0.6294732505207397,
+          0.44183510526447023,
+          1.2298740539428001
+        ],
+        "fit_residual_m": 0.006992134533964974
+      },
+      {
+        "label": "tag05_center",
+        "target_robot_m": [
+          0.621219127217681,
+          0.36735538362951325,
+          1.2321026416148722
+        ],
+        "link_position_robot_m": [
+          0.4864801928591592,
+          0.28056840615709755,
+          1.2422296876468069
+        ],
+        "T_robot_from_link": [
+          [
+            -0.020131762175035567,
+            -0.12983363329861178,
+            -0.9913313975740952,
+            0.4864801928591592
+          ],
+          [
+            0.1140053376350989,
+            0.9847669556917632,
+            -0.1312890931048123,
+            0.28056840615709755
+          ],
+          [
+            0.9932761424409803,
+            -0.11566015148727143,
+            -0.005023366949220509,
+            1.2422296876468069
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "fit_tool_point_robot_m": [
+          0.6232802640601124,
+          0.38045558510078337,
+          1.2267301908761665
+        ],
+        "fit_residual_m": 0.01430827699658188
+      }
+    ],
+    "notes": [
+      "The estimated_tool_offset_m is expressed in the executing EEF link frame.",
+      "Future plans using this calibration target the physical tool point, not the EEF link origin.",
+      "If RMS is above 0.02 m, recapture with more careful placement or revisit camera extrinsics."
+    ]
+  },
+  "toolfit_source_json": "C:\\path\\to\\projects\\EgoDelta\\data\\testbed_data\\T_robot_from_aria_featuredepth_hanger_trusted_left_toolfit.json",
+  "tool_offset_source_note": "Tool offset metadata copied onto the selected current-view Aria->robot alignment. The transform comes from the automatic RealSense/MPS alignment; the EEF-to-tool offset comes from the supplied arm-specific toolfit file.",
+  "selection_decision": {
+    "source_alignment_json": "C:\\path\\to\\projects\\EgoDelta\\output\\policy_training\\a270c038\\current_realsense_alignment\\feature_depth_search\\rank10_frame_002952\\T_robot_from_aria_featuredepth_hanger.json",
+    "decision_json": "C:\\path\\to\\projects\\EgoDelta\\output\\policy_training\\a270c038\\current_realsense_alignment\\selected_current_alignment_decision_best_target.json",
+    "selected_candidate": {
+      "rank_dir": "C:\\path\\to\\projects\\EgoDelta\\output\\policy_training\\a270c038\\current_realsense_alignment\\feature_depth_search\\rank10_frame_002952",
+      "rank": 10,
+      "frame_idx": 2952,
+      "image_name": "frame_002952.jpg",
+      "alignment_json": "C:\\path\\to\\projects\\EgoDelta\\output\\policy_training\\a270c038\\current_realsense_alignment\\feature_depth_search\\rank10_frame_002952\\T_robot_from_aria_featuredepth_hanger.json",
+      "score_json": "C:\\path\\to\\projects\\EgoDelta\\output\\policy_training\\a270c038\\current_realsense_alignment\\feature_depth_search\\rank10_frame_002952\\score_harvest_tomato_targets.json",
+      "target_index": 0,
+      "requested_target_index": -1,
+      "target_in_image": true,
+      "target_pixel_uv": [
+        599,
+        603
+      ],
+      "target_abs_depth_error_m": 0.005469913238459467,
+      "structure_alignment_score": 4.459667898425501,
+      "feature_depth_inlier_rmse_m": 0.015986180385296908,
+      "feature_depth_ransac_inliers": 22,
+      "hanger_score": 5.002181557465091,
+      "rejected_reasons": [],
+      "selection_score": 4.092918917092917
+    },
+    "accepted_candidate_count": 10,
+    "rejected_candidate_count": 0
+  }
+}

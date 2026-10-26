@@ -1,0 +1,344 @@
+{
+  "chunk_horizon_s": 2.0,
+  "chunk_size": 10,
+  "created_at_utc": "2026-05-28T10:45:02Z",
+  "demos": [
+    {
+      "duration_s": 51.40600000007544,
+      "goal_robot_m": [
+        0.6922509137155831,
+        0.13809554139559127,
+        1.2434943915650607
+      ],
+      "label": "AD1",
+      "primitive": "deleaf",
+      "resampled_sample_count": 259,
+      "trajectory_json": "C:\\path\\to\\projects\\EgoDelta\\robot\\policy\\policy_action_library\\AD1\\success_current\\actions\\AD1_instance_001_step_01_AD1\\trajectory\\a270c038_AD1_instance_001_step_01_AD1_traj.json"
+    },
+    {
+      "duration_s": 55.01599999994505,
+      "goal_robot_m": [
+        0.6642580628795675,
+        -0.24138420870901528,
+        1.2139495048210942
+      ],
+      "label": "BD1",
+      "primitive": "deleaf",
+      "resampled_sample_count": 277,
+      "trajectory_json": "C:\\path\\to\\projects\\EgoDelta\\robot\\policy\\policy_action_library\\BD1\\success_current\\actions\\BD1_instance_005_step_01_BD1\\trajectory\\a270c038_BD1_instance_005_step_01_BD1_traj.json"
+    },
+    {
+      "duration_s": 62.203000000095926,
+      "goal_robot_m": [
+        0.6477499435157786,
+        -0.3020492271492338,
+        1.1647535684252674
+      ],
+      "label": "BD2",
+      "primitive": "deleaf",
+      "resampled_sample_count": 313,
+      "trajectory_json": "C:\\path\\to\\projects\\EgoDelta\\robot\\policy\\policy_action_library\\BD2\\success_current\\actions\\BD2_instance_002_step_01_BD2\\trajectory\\a270c038_BD2_instance_002_step_01_BD2_traj.json"
+    },
+    {
+      "duration_s": 52.20299999997951,
+      "goal_robot_m": [
+        0.6300775740495177,
+        -0.32585992762545196,
+        0.9967063566360703
+      ],
+      "label": "BD3",
+      "primitive": "deleaf",
+      "resampled_sample_count": 263,
+      "trajectory_json": "C:\\path\\to\\projects\\EgoDelta\\robot\\policy\\policy_action_library\\BD3\\success_current\\actions\\BD3_instance_003_step_01_BD3\\trajectory\\a270c038_BD3_instance_003_step_01_BD3_traj.json"
+    },
+    {
+      "duration_s": 53.0,
+      "goal_robot_m": [
+        0.6267035989443196,
+        -0.29541663646457395,
+        0.82886298906407
+      ],
+      "label": "BD4",
+      "primitive": "deleaf",
+      "resampled_sample_count": 266,
+      "trajectory_json": "C:\\path\\to\\projects\\EgoDelta\\robot\\policy\\policy_action_library\\BD4\\success_current\\actions\\BD4_instance_002_step_01_BD4\\trajectory\\a270c038_BD4_instance_002_step_01_BD4_traj.json"
+    }
+  ],
+  "input": {
+    "contract": "3D target point in robot frame plus current arm state, arm velocity, and TCP position.",
+    "feature_count": 23,
+    "feature_names": [
+      "goal_robot_m.x",
+      "goal_robot_m.y",
+      "goal_robot_m.z",
+      "goal_minus_tcp_robot_m.x",
+      "goal_minus_tcp_robot_m.y",
+      "goal_minus_tcp_robot_m.z",
+      "q_arm_rad.0",
+      "q_arm_rad.1",
+      "q_arm_rad.2",
+      "q_arm_rad.3",
+      "q_arm_rad.4",
+      "q_arm_rad.5",
+      "q_arm_rad.6",
+      "dq_arm_rad_s.0",
+      "dq_arm_rad_s.1",
+      "dq_arm_rad_s.2",
+      "dq_arm_rad_s.3",
+      "dq_arm_rad_s.4",
+      "dq_arm_rad_s.5",
+      "dq_arm_rad_s.6",
+      "tcp_position_robot_m.x",
+      "tcp_position_robot_m.y",
+      "tcp_position_robot_m.z"
+    ]
+  },
+  "metrics": {
+    "leave_one_label_out": [
+      {
+        "bc_chunk_rmse_deg": 6.769642046416398,
+        "bc_chunk_rmse_rad": 0.11815254289141294,
+        "bc_first_step_rmse_deg": 0.495958270258038,
+        "bc_first_step_rmse_rad": 0.00865610476849863,
+        "knn_chunk_rmse_deg": 2.8325579638391436,
+        "knn_chunk_rmse_rad": 0.04943746272257953,
+        "knn_first_step_rmse_deg": 0.4139231837065877,
+        "knn_first_step_rmse_rad": 0.007224322406017301,
+        "label": "AD1",
+        "ridge_chunk_rmse_deg": 17.32085764044713,
+        "ridge_chunk_rmse_rad": 0.3023059950950186,
+        "ridge_first_step_rmse_deg": 0.9057201614938925,
+        "ridge_first_step_rmse_rad": 0.015807798919763187,
+        "test_chunks": 249,
+        "train_chunks": 1079
+      },
+      {
+        "bc_chunk_rmse_deg": 3.7501938840264164,
+        "bc_chunk_rmse_rad": 0.06545323086441535,
+        "bc_first_step_rmse_deg": 0.28351765197893675,
+        "bc_first_step_rmse_rad": 0.004948316514555863,
+        "knn_chunk_rmse_deg": 1.934001717374748,
+        "knn_chunk_rmse_rad": 0.033754697707414176,
+        "knn_first_step_rmse_deg": 0.21171978079601053,
+        "knn_first_step_rmse_rad": 0.0036952072664910448,
+        "label": "BD1",
+        "ridge_chunk_rmse_deg": 6.697972041917497,
+        "ridge_chunk_rmse_rad": 0.11690166533798797,
+        "ridge_first_step_rmse_deg": 0.23524672905728433,
+        "ridge_first_step_rmse_rad": 0.004105829976596627,
+        "test_chunks": 267,
+        "train_chunks": 1061
+      },
+      {
+        "bc_chunk_rmse_deg": 2.3859740103395093,
+        "bc_chunk_rmse_rad": 0.04164310234743766,
+        "bc_first_step_rmse_deg": 0.2459759516016513,
+        "bc_first_step_rmse_rad": 0.004293090236175035,
+        "knn_chunk_rmse_deg": 2.257296170494772,
+        "knn_chunk_rmse_rad": 0.03939725036779305,
+        "knn_first_step_rmse_deg": 0.18584730366936789,
+        "knn_first_step_rmse_rad": 0.003243647354984209,
+        "label": "BD2",
+        "ridge_chunk_rmse_deg": 5.028161058051744,
+        "ridge_chunk_rmse_rad": 0.08775796578356466,
+        "ridge_first_step_rmse_deg": 0.21468688064351668,
+        "ridge_first_step_rmse_rad": 0.003746992928065449,
+        "test_chunks": 303,
+        "train_chunks": 1025
+      },
+      {
+        "bc_chunk_rmse_deg": 2.766073759578292,
+        "bc_chunk_rmse_rad": 0.04827709445765923,
+        "bc_first_step_rmse_deg": 0.3171418487515164,
+        "bc_first_step_rmse_rad": 0.005535169456575829,
+        "knn_chunk_rmse_deg": 1.7819325290221326,
+        "knn_chunk_rmse_rad": 0.031100589679825624,
+        "knn_first_step_rmse_deg": 0.3186934262837102,
+        "knn_first_step_rmse_rad": 0.00556224959311258,
+        "label": "BD3",
+        "ridge_chunk_rmse_deg": 2.7805720650305585,
+        "ridge_chunk_rmse_rad": 0.04853013762376113,
+        "ridge_first_step_rmse_deg": 0.2490885121958891,
+        "ridge_first_step_rmse_rad": 0.0043474146667123155,
+        "test_chunks": 253,
+        "train_chunks": 1075
+      },
+      {
+        "bc_chunk_rmse_deg": 3.319308610936433,
+        "bc_chunk_rmse_rad": 0.057932864150640216,
+        "bc_first_step_rmse_deg": 0.4988206309123519,
+        "bc_first_step_rmse_rad": 0.008706062386295947,
+        "knn_chunk_rmse_deg": 2.7904605104177134,
+        "knn_chunk_rmse_rad": 0.04870272355367063,
+        "knn_first_step_rmse_deg": 0.5473613075405794,
+        "knn_first_step_rmse_rad": 0.009553257014604376,
+        "label": "BD4",
+        "ridge_chunk_rmse_deg": 3.8660535681210173,
+        "ridge_chunk_rmse_rad": 0.06747536382218663,
+        "ridge_first_step_rmse_deg": 0.32890237580863607,
+        "ridge_first_step_rmse_rad": 0.005740429375492446,
+        "test_chunks": 256,
+        "train_chunks": 1072
+      }
+    ],
+    "train": {
+      "bc_chunk_rmse_deg": 0.6460702489897096,
+      "bc_chunk_rmse_rad": 0.01127605304405,
+      "bc_first_step_rmse_deg": 0.08621908969993299,
+      "bc_first_step_rmse_rad": 0.0015048069933361603,
+      "knn_chunk_rmse_deg": 0.04195216742834806,
+      "knn_chunk_rmse_rad": 0.0007322034499725959,
+      "knn_first_step_rmse_deg": 9.613971250346445e-05,
+      "knn_first_step_rmse_rad": 1.677954525106215e-06,
+      "ridge_chunk_rmse_deg": 2.151830020512387,
+      "ridge_chunk_rmse_rad": 0.03755651880119827,
+      "ridge_first_step_rmse_deg": 0.20418444796241472,
+      "ridge_first_step_rmse_rad": 0.0035636908983111637
+    }
+  },
+  "output": {
+    "action_count": 70,
+    "action_names": [
+      "delta_q_arm_rad.t+1.0",
+      "delta_q_arm_rad.t+1.1",
+      "delta_q_arm_rad.t+1.2",
+      "delta_q_arm_rad.t+1.3",
+      "delta_q_arm_rad.t+1.4",
+      "delta_q_arm_rad.t+1.5",
+      "delta_q_arm_rad.t+1.6",
+      "delta_q_arm_rad.t+2.0",
+      "delta_q_arm_rad.t+2.1",
+      "delta_q_arm_rad.t+2.2",
+      "delta_q_arm_rad.t+2.3",
+      "delta_q_arm_rad.t+2.4",
+      "delta_q_arm_rad.t+2.5",
+      "delta_q_arm_rad.t+2.6",
+      "delta_q_arm_rad.t+3.0",
+      "delta_q_arm_rad.t+3.1",
+      "delta_q_arm_rad.t+3.2",
+      "delta_q_arm_rad.t+3.3",
+      "delta_q_arm_rad.t+3.4",
+      "delta_q_arm_rad.t+3.5",
+      "delta_q_arm_rad.t+3.6",
+      "delta_q_arm_rad.t+4.0",
+      "delta_q_arm_rad.t+4.1",
+      "delta_q_arm_rad.t+4.2",
+      "delta_q_arm_rad.t+4.3",
+      "delta_q_arm_rad.t+4.4",
+      "delta_q_arm_rad.t+4.5",
+      "delta_q_arm_rad.t+4.6",
+      "delta_q_arm_rad.t+5.0",
+      "delta_q_arm_rad.t+5.1",
+      "delta_q_arm_rad.t+5.2",
+      "delta_q_arm_rad.t+5.3",
+      "delta_q_arm_rad.t+5.4",
+      "delta_q_arm_rad.t+5.5",
+      "delta_q_arm_rad.t+5.6",
+      "delta_q_arm_rad.t+6.0",
+      "delta_q_arm_rad.t+6.1",
+      "delta_q_arm_rad.t+6.2",
+      "delta_q_arm_rad.t+6.3",
+      "delta_q_arm_rad.t+6.4",
+      "delta_q_arm_rad.t+6.5",
+      "delta_q_arm_rad.t+6.6",
+      "delta_q_arm_rad.t+7.0",
+      "delta_q_arm_rad.t+7.1",
+      "delta_q_arm_rad.t+7.2",
+      "delta_q_arm_rad.t+7.3",
+      "delta_q_arm_rad.t+7.4",
+      "delta_q_arm_rad.t+7.5",
+      "delta_q_arm_rad.t+7.6",
+      "delta_q_arm_rad.t+8.0",
+      "delta_q_arm_rad.t+8.1",
+      "delta_q_arm_rad.t+8.2",
+      "delta_q_arm_rad.t+8.3",
+      "delta_q_arm_rad.t+8.4",
+      "delta_q_arm_rad.t+8.5",
+      "delta_q_arm_rad.t+8.6",
+      "delta_q_arm_rad.t+9.0",
+      "delta_q_arm_rad.t+9.1",
+      "delta_q_arm_rad.t+9.2",
+      "delta_q_arm_rad.t+9.3",
+      "delta_q_arm_rad.t+9.4",
+      "delta_q_arm_rad.t+9.5",
+      "delta_q_arm_rad.t+9.6",
+      "delta_q_arm_rad.t+10.0",
+      "delta_q_arm_rad.t+10.1",
+      "delta_q_arm_rad.t+10.2",
+      "delta_q_arm_rad.t+10.3",
+      "delta_q_arm_rad.t+10.4",
+      "delta_q_arm_rad.t+10.5",
+      "delta_q_arm_rad.t+10.6"
+    ],
+    "contract": "Flattened chunk of future arm joint deltas in radians; add each 7-DoF step to current q_arm."
+  },
+  "primitive": "deleaf",
+  "reason": "Primary policy is behavior cloning: a supervised MLP maps state and goal features to future arm joint-delta chunks. KNN and ridge are stored only as diagnostics/fallbacks.",
+  "recommended_runtime_mode": "bc_mlp",
+  "sample_hz": 5.0,
+  "schema": "egodelta_action_chunk_policy_v1",
+  "training": {
+    "arrays": "C:\\path\\to\\projects\\EgoDelta\\robot\\policy\\trained_policies\\deleaf\\policy_arrays.npz",
+    "bc_batch_size": 256,
+    "bc_best_normalized_mse": 0.023217600485769232,
+    "bc_epochs": 1200,
+    "bc_hidden_dims": [
+      128,
+      128
+    ],
+    "bc_learning_rate": 0.001,
+    "bc_loss_history": [
+      {
+        "epoch": 1.0,
+        "normalized_mse": 0.8508339757063011
+      },
+      {
+        "epoch": 120.0,
+        "normalized_mse": 0.07172640495453643
+      },
+      {
+        "epoch": 240.0,
+        "normalized_mse": 0.05634591842661105
+      },
+      {
+        "epoch": 360.0,
+        "normalized_mse": 0.04833193357176732
+      },
+      {
+        "epoch": 480.0,
+        "normalized_mse": 0.04188413416000001
+      },
+      {
+        "epoch": 600.0,
+        "normalized_mse": 0.03782843770433947
+      },
+      {
+        "epoch": 720.0,
+        "normalized_mse": 0.03348771276247924
+      },
+      {
+        "epoch": 840.0,
+        "normalized_mse": 0.031040575313404508
+      },
+      {
+        "epoch": 960.0,
+        "normalized_mse": 0.027253069558052814
+      },
+      {
+        "epoch": 1080.0,
+        "normalized_mse": 0.02550297899061832
+      },
+      {
+        "epoch": 1200.0,
+        "normalized_mse": 0.023217600485769232
+      }
+    ],
+    "bc_seed": 7,
+    "bc_weight_decay": 0.0001,
+    "chunk_count": 1328,
+    "demo_count": 5,
+    "knn_k": 3,
+    "ridge_lambda": 0.01,
+    "source_labels": "C:\\path\\to\\projects\\EgoDelta\\robot\\policy\\trained_policies\\deleaf\\source_labels.json"
+  }
+}

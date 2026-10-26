@@ -1,0 +1,1 @@
+"""Removed-point clustering helpers."""

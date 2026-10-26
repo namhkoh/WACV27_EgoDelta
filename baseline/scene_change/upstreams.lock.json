@@ -1,0 +1,55 @@
+{
+  "3DGS-CD": {
+    "license": "Apache-2.0",
+    "revision": "5ca372651e8426b9652ce757671a914be93590b4",
+    "url": "https://github.com/520xyxyzq/3DGS-CD.git"
+  },
+  "EfficientSAM": {
+    "license": "Apache-2.0",
+    "revision": "c9408a74b1db85e7831977c66e9462c6f4891729",
+    "url": "https://github.com/yformer/EfficientSAM.git"
+  },
+  "GS-DIFF": {
+    "license": "CC-BY-NC-4.0",
+    "revision": "b3e4c596d84ea86f8aad4d115d1a52a41f35561d",
+    "status": "README and LICENSE only; no official implementation as of 2026-08-15",
+    "url": "https://github.com/Chumsy0725/GS-DIFF.git"
+  },
+  "MV3DCD": {
+    "license": "research/evaluation non-commercial (see upstream LICENSE.md)",
+    "revision": "b45606c83ee277207b2f73be8fda366760b12921",
+    "url": "https://github.com/Chumsy0725/MV3DCD.git"
+  },
+  "PGSR": {
+    "license": "research/evaluation non-commercial (see upstream LICENSE.md)",
+    "revision": "de24f1a38b350387e8d8fe381b2cd70c1ae946e7",
+    "status": "official reconstruction backend used by the GS-DIFF paper",
+    "url": "https://github.com/zju3dv/PGSR.git"
+  },
+  "PyTorch3D": {
+    "license": "BSD-3-Clause",
+    "revision": "75ebeeaea0908c5527e7b1e305fbc7681382db47",
+    "url": "https://github.com/facebookresearch/pytorch3d.git"
+  },
+  "gsplat": {
+    "license": "Apache-2.0",
+    "revision": "4d3a3b69db4de0326f983ccf7b7b255271a17b01",
+    "status": "installed from the commit tagged v1.4.0",
+    "url": "https://github.com/nerfstudio-project/gsplat.git"
+  },
+  "Hierarchical-Localization": {
+    "license": "Apache-2.0",
+    "revision": "73a3cb0f59659306eb6c15c7213137b2196c5ceb",
+    "url": "https://github.com/cvg/Hierarchical-Localization.git"
+  },
+  "LightGlue": {
+    "license": "Apache-2.0",
+    "revision": "035612541779b17897aa06d6ff19cb4060111616",
+    "url": "https://github.com/cvg/LightGlue.git"
+  },
+  "tiny-cuda-nn": {
+    "license": "BSD-3-Clause",
+    "revision": "749dd70c5afc5a9dadb85e5652ed65d55e0ba187",
+    "url": "https://github.com/NVlabs/tiny-cuda-nn.git"
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "protocol_expected": {
+    "harvest_direct": 30,
+    "deleaf_direct": 30,
+    "harvest_policy": 30,
+    "deleaf_policy": 30,
+    "total": 120
+  },
+  "preregistered_ledger_rows": 120,
+  "observed_additional20_ledger_rows": 80,
+  "conditions": {
+    "harvest_direct": {
+      "expected_count": 30,
+      "observed_ledger_rows": 20,
+      "completed_artifact_backed_count": 20,
+      "success_counts": {
+        "true": 20
+      },
+      "automatic_gate_rejection_counts": {
+        "false": 20
+      },
+      "operator_pre_execution_rejection_counts": {
+        "false": 20
+      },
+      "operator_or_safety_stop_counts": {
+        "false": 20
+      },
+      "unique_recorded_scene_ids": 20
+    },
+    "harvest_policy": {
+      "expected_count": 30,
+      "observed_ledger_rows": 20,
+      "completed_artifact_backed_count": 0,
+      "success_counts": {},
+      "automatic_gate_rejection_counts": {},
+      "operator_pre_execution_rejection_counts": {},
+      "operator_or_safety_stop_counts": {},
+      "unique_recorded_scene_ids": 0
+    },
+    "deleaf_direct": {
+      "expected_count": 30,
+      "observed_ledger_rows": 20,
+      "completed_artifact_backed_count": 20,
+      "success_counts": {
+        "true": 20
+      },
+      "automatic_gate_rejection_counts": {
+        "false": 20
+      },
+      "operator_pre_execution_rejection_counts": {
+        "false": 20
+      },
+      "operator_or_safety_stop_counts": {
+        "false": 20
+      },
+      "unique_recorded_scene_ids": 20
+    },
+    "deleaf_policy": {
+      "expected_count": 30,
+      "observed_ledger_rows": 20,
+      "completed_artifact_backed_count": 0,
+      "success_counts": {},
+      "automatic_gate_rejection_counts": {},
+      "operator_pre_execution_rejection_counts": {},
+      "operator_or_safety_stop_counts": {},
+      "unique_recorded_scene_ids": 0
+    }
+  },
+  "attempt_directory_audit": {
+    "attempt_count": 69,
+    "included_in_ledger_count": 37,
+    "excluded_attempt_count": 32,
+    "automatic_gate_rejected_count": 18,
+    "note": "The final ledger binds successful retry artifacts to nominal rows. Failed or abandoned attempt directories are not denominator rows, contrary to the frozen prospective amendment's no-replacement rule."
+  },
+  "learned_policy_verification": {
+    "completed_policy_rows": 0,
+    "status": "unsupported",
+    "reason": "The completed rows use run_any_target_harvest.py or run_any_target_deleaf.py. No completed row identifies a learned policy model; policy_dir is not_applicable."
+  },
+  "denominator_reproduces_manuscript_claim": false
+}

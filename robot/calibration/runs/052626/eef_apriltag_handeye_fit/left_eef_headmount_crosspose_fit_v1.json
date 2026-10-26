@@ -1,0 +1,201 @@
+{
+  "method": "fit_source_realsense_and_eef_board_from_eef_apriltag_samples",
+  "input_glob": "C:\\path\\to\\projects\\EgoDelta\\robot\\kinematics\\runs\\052626\\realsense_apriltag_detection\\a270c038_left_eef_headmount_crosspose_*.json",
+  "seed_mount_json": "C:\\path\\to\\projects\\EgoDelta\\robot\\calibration\\core\\realsense_head2_mount_left_eef_apriltag_bundle.json",
+  "board_name_contains": "ids50_53",
+  "ok": true,
+  "message": "`ftol` termination condition is satisfied.",
+  "cost": 0.007617515233577358,
+  "nfev": 21,
+  "T_source_link_from_realsense": [
+    [
+      0.037457813715751215,
+      0.10246985373815931,
+      0.9940306037876881,
+      -0.10259136689482401
+    ],
+    [
+      -0.9695509145969329,
+      -0.23717484313183665,
+      0.060984570094731294,
+      0.01937505308456722
+    ],
+    [
+      0.2420081324994815,
+      -0.9660476297058382,
+      0.09046568931835156,
+      0.13468734462388876
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "T_eef_from_board": [
+    [
+      0.43731746876438504,
+      -0.8977230413987367,
+      0.05335515397141177,
+      0.1661468449915211
+    ],
+    [
+      -0.22887365710465613,
+      -0.05372560065047022,
+      0.9719724321801964,
+      -0.13694628604553946
+    ],
+    [
+      -0.8696955102776208,
+      -0.43727211296462537,
+      -0.22896029923635336,
+      -0.052369934910218595
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "source_from_realsense_translation_m": [
+    -0.10259136689482401,
+    0.01937505308456722,
+    0.13468734462388876
+  ],
+  "eef_from_board_translation_m": [
+    0.1661468449915211,
+    -0.13694628604553946,
+    -0.052369934910218595
+  ],
+  "summary": {
+    "sample_count": 10,
+    "translation_rms_m": 0.07065672521467777,
+    "translation_max_m": 0.13944051583109798,
+    "rotation_rms_rad": 0.4300107054650878,
+    "rotation_max_rad": 1.00815001730149
+  },
+  "samples": [
+    {
+      "path": "C:\\path\\to\\projects\\EgoDelta\\robot\\kinematics\\runs\\052626\\realsense_apriltag_detection\\a270c038_left_eef_headmount_crosspose_01.json",
+      "used_tag_ids": [
+        50,
+        51,
+        52,
+        53
+      ],
+      "reprojection_rms_px": 0.6853143935263648,
+      "translation_error_m": 0.048284394278611024,
+      "rotation_error_rad": 0.22951928205611338
+    },
+    {
+      "path": "C:\\path\\to\\projects\\EgoDelta\\robot\\kinematics\\runs\\052626\\realsense_apriltag_detection\\a270c038_left_eef_headmount_crosspose_02.json",
+      "used_tag_ids": [
+        50,
+        51,
+        52,
+        53
+      ],
+      "reprojection_rms_px": 0.847657064224432,
+      "translation_error_m": 0.0644958031383293,
+      "rotation_error_rad": 0.10753654675373836
+    },
+    {
+      "path": "C:\\path\\to\\projects\\EgoDelta\\robot\\kinematics\\runs\\052626\\realsense_apriltag_detection\\a270c038_left_eef_headmount_crosspose_03.json",
+      "used_tag_ids": [
+        50,
+        51,
+        52,
+        53
+      ],
+      "reprojection_rms_px": 0.8556242913082179,
+      "translation_error_m": 0.03954214350565153,
+      "rotation_error_rad": 0.1758131536009539
+    },
+    {
+      "path": "C:\\path\\to\\projects\\EgoDelta\\robot\\kinematics\\runs\\052626\\realsense_apriltag_detection\\a270c038_left_eef_headmount_crosspose_04.json",
+      "used_tag_ids": [
+        50,
+        51,
+        52,
+        53
+      ],
+      "reprojection_rms_px": 0.893583901765113,
+      "translation_error_m": 0.020732153968064663,
+      "rotation_error_rad": 0.7190363153157132
+    },
+    {
+      "path": "C:\\path\\to\\projects\\EgoDelta\\robot\\kinematics\\runs\\052626\\realsense_apriltag_detection\\a270c038_left_eef_headmount_crosspose_07.json",
+      "used_tag_ids": [
+        50,
+        51,
+        52,
+        53
+      ],
+      "reprojection_rms_px": 0.6936066732953947,
+      "translation_error_m": 0.021901458562734635,
+      "rotation_error_rad": 0.21574773948830178
+    },
+    {
+      "path": "C:\\path\\to\\projects\\EgoDelta\\robot\\kinematics\\runs\\052626\\realsense_apriltag_detection\\a270c038_left_eef_headmount_crosspose_08.json",
+      "used_tag_ids": [
+        50,
+        51,
+        52,
+        53
+      ],
+      "reprojection_rms_px": 0.845691455314977,
+      "translation_error_m": 0.05279858105035154,
+      "rotation_error_rad": 0.18159303890254958
+    },
+    {
+      "path": "C:\\path\\to\\projects\\EgoDelta\\robot\\kinematics\\runs\\052626\\realsense_apriltag_detection\\a270c038_left_eef_headmount_crosspose_09.json",
+      "used_tag_ids": [
+        50,
+        51,
+        52,
+        53
+      ],
+      "reprojection_rms_px": 0.8493703639350122,
+      "translation_error_m": 0.06765760293927423,
+      "rotation_error_rad": 0.2774468616117274
+    },
+    {
+      "path": "C:\\path\\to\\projects\\EgoDelta\\robot\\kinematics\\runs\\052626\\realsense_apriltag_detection\\a270c038_left_eef_headmount_crosspose_11.json",
+      "used_tag_ids": [
+        50,
+        51,
+        52,
+        53
+      ],
+      "reprojection_rms_px": 0.7371033180069572,
+      "translation_error_m": 0.03729653461320421,
+      "rotation_error_rad": 0.13659187911751733
+    },
+    {
+      "path": "C:\\path\\to\\projects\\EgoDelta\\robot\\kinematics\\runs\\052626\\realsense_apriltag_detection\\a270c038_left_eef_headmount_crosspose_12.json",
+      "used_tag_ids": [
+        50,
+        51,
+        52,
+        53
+      ],
+      "reprojection_rms_px": 0.6959274283241772,
+      "translation_error_m": 0.11295852899691282,
+      "rotation_error_rad": 0.21307672792780769
+    },
+    {
+      "path": "C:\\path\\to\\projects\\EgoDelta\\robot\\kinematics\\runs\\052626\\realsense_apriltag_detection\\a270c038_left_eef_headmount_crosspose_14.json",
+      "used_tag_ids": [
+        50,
+        51,
+        52,
+        53
+      ],
+      "reprojection_rms_px": 0.6954183495948516,
+      "translation_error_m": 0.13944051583109798,
+      "rotation_error_rad": 1.00815001730149
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Scratch / one-off live-demo drivers (underscore-prefixed)
+_*.py
+
+# Large, regenerable binary artifacts (kept locally, not in git).
+# The small JSON configs (orient.json, robot_place.json) ARE tracked.
+assets/*.ply
+assets/*.usd
+assets/*.usdz
+assets/*.usdc
+assets/*.usda

@@ -1,0 +1,333 @@
+% robotaction.tex: Robot retargeting sections for EgoDelta (CoRL 2026)
+% Main paper subsection plus appendix detail
+
+%% MAIN PAPER
+
+\subsection{Retargeting 3D Change Targets to Robot Actions}
+\label{subsec:retargeting}
+
+Given an actionable 3D change target $g_{\Delta}$, such as a fruit
+contact region or a stem/leaf cut point, the retargeting module first
+associates it with a metric point $\mathbf{p}_s$ in a calibrated
+sensor frame $s$.  For Aria-only targets, $s=\mathrm{aria}$; for live
+RGB-D execution, $s=\mathrm{rs}$ after EgoDelta instance association
+and RealSense depth lookup.
+
+In this benchmark, harvesting GT marks the tomato apex on the removed
+fruit-and-calyx side of the interface with the retained green truss,
+whereas deleafing GT marks the magnetic target on the retained stem-rod
+side of the petiole interface.
+We therefore represent each attachment by the interface pair
+$(g_{\mathrm{ret}},g_{\mathrm{rem}})$ and let the downstream tool/action
+convention select the mechanically appropriate endpoint.
+
+With $\bar{\mathbf{p}}_s=[\mathbf{p}_s^{\top},1]^{\top}$,
+%
+\begin{equation}
+  \mathbf{p}_{\mathrm{robot}}
+  = \Pi\!\left(
+      \mathbf{T}_{\mathrm{robot}}^{s}\,
+      \bar{\mathbf{p}}_s
+    \right),
+  \label{eq:target_transform}
+\end{equation}
+%
+where $\Pi$ dehomogenizes the transformed point and
+$\mathbf{T}_{\mathrm{robot}}^{\mathrm{aria}} =
+\mathbf{T}_{\mathrm{robot}}^{\mathrm{rs}}
+\mathbf{T}_{\mathrm{rs}}^{\mathrm{aria}}$ when the source frame is
+Aria.
+
+When a live RGB-D view is available, we use the EgoDelta mask for
+instance identity and RealSense depth for metric localization.  This
+keeps the semantic target tied to the egocentric video while
+reducing sensitivity to depth error in the Aria reconstruction.
+
+The robot does not replay the human trajectory.  Instead, the
+robot-frame target instantiates a task primitive
+$\pi(\mathbf{p}_{\mathrm{robot}}, \mathcal{G})$, where
+$\mathcal{G}$ contains the current RealSense point cloud, calibrated
+tool geometry, and Aria MPS hand-motion priors.  MPS provides
+phase-level action structure: approach, contact, and post-contact
+directions.  Fixed task templates provide scalar parameters such as
+standoff, insertion, lift, and return height.
+
+For harvesting, the primitive turns a fruit target into a gripper
+contact frame and target-derived insertion plan.  For deleafing, the
+primitive turns a stem/leaf target into a calibrated knife-edge frame
+and a near-vertical cut plan with point-cloud-scored entry.  Because
+each primitive is instantiated from the current 3D target and local
+geometry, the same action template can be applied zero-shot to new
+targets of the same action class.  A bounded IK solver converts
+candidate end-effector waypoints to arm joint targets under
+joint-limit, self-clearance, point-cloud path-clearance, and
+task-contact gates.
+Appendix~\ref{app:robot_retargeting} gives the full construction.
+
+
+%% APPENDIX
+
+\subsection{Robot Retargeting}
+\label{app:robot_retargeting}
+
+\subsubsection{Target Localization and Task Frames}
+\label{app:task_frame}
+
+The retargeting module consumes a robot-frame target
+$\mathbf{p}_{\mathrm{robot}}$ and an action type.  The target may be
+obtained by projecting an EgoDelta mask into a live RealSense depth
+image or supplied as a metric 3D anchor for hardware validation.
+Both interfaces produce the same
+quantity: a metric 3D anchor in the robot planning frame.
+
+In this benchmark, harvesting GT marks the tomato apex on the removed
+fruit-and-calyx side of the interface with the retained green truss,
+whereas deleafing GT marks the magnetic target on the retained stem-rod
+side of the petiole interface.
+We therefore represent each attachment by the interface pair
+$(g_{\mathrm{ret}},g_{\mathrm{rem}})$ and let the downstream tool/action
+convention select the mechanically appropriate endpoint.
+
+For harvesting, the anchor is expanded into a fruit task frame
+containing:
+%
+\begin{itemize}
+  \item a contact point $\mathbf{p}_c$, the midpoint of the planned jaw
+    contact locations on the fruit surface;
+  \item a fruit center $\mathbf{p}_f$, estimated from the 3D mask
+    volume;
+  \item an orthonormal triad
+    $(\hat{\mathbf{a}},\,\hat{\mathbf{j}},\,\hat{\mathbf{n}})$:
+    approach/backoff axis, jaw axis, and palm normal;
+  \item scalar fruit width $w$ and depth $d$.
+\end{itemize}
+%
+The jaw axis is initialized from mask contact geometry and may be
+refined by the MPS pinch-axis prior when the hand-tracking confidence
+is sufficient.
+
+For deleafing, the anchor is the desired cut point
+$\mathbf{p}_{\mathrm{cut}}$.  The task frame contains an approach direction
+$\hat{\mathbf{a}}$, a cut direction $\hat{\mathbf{s}}$, an entry
+side direction $\hat{\mathbf{c}}$, and the calibrated knife-frame axes.
+The approach and raw cut directions come from MPS phase motion when
+available.  The entry direction is inferred from the local
+RealSense point cloud by moving away from nearby occupied points around
+the cut target.
+
+
+\subsubsection{Harvest Primitive}
+\label{app:harvest_primitive}
+
+For a side grasp on a roughly spherical fruit, the gripper must advance
+past the surface contact point along $-\hat{\mathbf{a}}$ so that the
+jaws reach the widest cross-section.  We define the grasp anchor
+%
+\begin{equation}
+  \mathbf{p}_g
+  = \mathbf{p}_c
+    - \delta_{\mathrm{ins}}\,\hat{\mathbf{a}}
+    + \delta_{\mathrm{palm}}\,\hat{\mathbf{n}},
+  \label{eq:grasp_anchor}
+\end{equation}
+%
+where $\delta_{\mathrm{ins}}$ is the insertion depth and
+$\delta_{\mathrm{palm}}$ is a bounded palm-axis correction.  The
+nominal insertion is $\delta_{\mathrm{ins}}^{*}=d/2$.  The planner
+sweeps insertion factors around this nominal value and records the
+solved contact position, not only the requested target, before
+accepting a grasp.
+
+Harvesting uses the sequence
+\emph{approach} $\rightarrow$ \emph{pre-grasp} $\rightarrow$
+\emph{grasp} $\rightarrow$ \emph{harvest} $\rightarrow$
+\emph{retract} $\rightarrow$ \emph{basket}.  The
+approach-through-grasp sub-sequence is solved first and then frozen;
+post-grasp waypoints cannot change the validated grasp contact.  At
+pre-grasp the gripper opens, at grasp it closes, and at basket it
+releases.  Post-grasp waypoints use the MPS pull direction when
+confident, with a small downward detach component for stem separation.
+
+
+\subsubsection{Deleafing Primitive}
+\label{app:deleaf_primitive}
+
+Deleafing is modeled as a short blade stroke through a 3D cut point.
+The current implementation uses a fixed method configuration rather
+than per-target tuning.  Given a cut point
+$\mathbf{p}_{\mathrm{cut}}$, the planner offsets the calibrated blade
+by a configured target-extension distance along
+$\hat{\mathbf{u}}_{\mathrm{engage}}$, the horizontal target-extension
+direction for the blade.  The cut waypoint then moves an additional
+distance $d_{\mathrm{cut}}$ along the stroke axis.  The stroke
+direction is constrained to lie within $\theta_{\max}$ of vertical:
+if the MPS cut axis already satisfies this bound after being flipped
+toward world down, it is preserved; otherwise, its horizontal
+component sets the clamped tilt direction.  Degenerate horizontal
+motion falls back to world down.  This preserves the human-indicated
+stroke side while enforcing a near-vertical cut that reduces lateral
+wrist sweep near the plant support rods.
+
+The deleafing waypoint sequence is
+%
+\begin{enumerate}
+  \item \emph{Transit lift}: lift near the home side before entering
+    the plant workspace.
+  \item \emph{Entry transit}: approach the local target from a
+    point-cloud-selected side direction.
+  \item \emph{Approach}: align the knife above the cut line.
+  \item \emph{Pre-cut}: stop at a fixed standoff along
+    $-\hat{\mathbf{s}}$.
+  \item \emph{Cut}: move a few millimeters through the target along
+    $\hat{\mathbf{s}}$.
+  \item \emph{Post-cut lift}: lift back along $-\hat{\mathbf{s}}$.
+  \item \emph{Return transit}: move high toward home before the
+    standard home restore.
+\end{enumerate}
+%
+Candidate generation varies the entry-side angle and contact
+advance distance using the current RealSense point cloud.  A candidate
+is accepted only if all requested waypoints solve, interpolated
+self-clearance passes, and local point-cloud clearance passes up to
+the requested execution waypoint.
+
+All deleafing waypoints are recomputed from the current cut point,
+MPS-derived action axes, method-configured tool orientation,
+calibrated knife geometry, and the live RealSense point cloud.  The
+method therefore changes target position and local entry side without
+per-point parameter tuning.
+
+
+\subsubsection{Inverse Kinematics}
+\label{app:ik}
+
+Each waypoint is solved as a bounded nonlinear least-squares problem
+over the active arm joints $\mathbf{q}\in\mathbb{R}^7$.  The base,
+torso, head, and inactive arm remain fixed at the home configuration.
+
+\paragraph{Full-pose objective.}
+For waypoints requiring a full TCP orientation, the residual is
+%
+\begin{equation}
+  \mathbf{r}(\mathbf{q})
+  =
+  \begin{bmatrix}
+    w_p(\mathbf{t}(\mathbf{q})-\mathbf{t}^*) \\
+    w_o\,\mathrm{Log}(\mathbf{R}^{*\top}\mathbf{R}(\mathbf{q})) \\
+    w_h(\mathbf{q}-\mathbf{q}_{\mathrm{home}}) \\
+    w_s(\mathbf{q}-\mathbf{q}_{\mathrm{ref}}) \\
+    w_c\,\mathbf{c}(\mathbf{q})
+  \end{bmatrix},
+  \label{eq:ik_residual}
+\end{equation}
+%
+where $\mathbf{t}$ and $\mathbf{R}$ are the calibrated TCP position
+and rotation, $\mathrm{Log}$ is the $\mathrm{SO}(3)$ logarithm, and
+$\mathbf{c}$ contains one-sided self-clearance penalties for the
+nearest non-adjacent link pairs.  The vector
+$\mathbf{q}_{\mathrm{home}}$ is the stored home posture, while
+$\mathbf{q}_{\mathrm{ref}}$ is the previous waypoint solution.
+
+\paragraph{Task-axis objective.}
+For contacts where one wrist degree of freedom is mechanically
+irrelevant, we replace the orientation residual by axis alignment:
+%
+\begin{equation}
+  \mathbf{r}_{\mathrm{ori}}(\mathbf{q})
+  =
+  \begin{bmatrix}
+    w_1\,\hat{\mathbf{x}}_1^* \times \hat{\mathbf{x}}_1(\mathbf{q}) \\
+    w_2\,\hat{\mathbf{x}}_2^* \times \hat{\mathbf{x}}_2(\mathbf{q})
+  \end{bmatrix}.
+  \label{eq:task_axis_residual}
+\end{equation}
+%
+For harvesting, the axes are the gripper jaw and approach directions.
+For deleafing, they are the calibrated knife edge and backoff
+directions.  The local tool axes may be canonical TCP axes or
+calibrated vectors, which allows the same solver to handle the
+parallel-jaw gripper and the right-arm knife.
+
+\paragraph{Solver and seeding.}
+We minimize $\|\mathbf{r}(\mathbf{q})\|^2$ with the Trust Region
+Reflective algorithm~\cite{branch1999trf} under joint-position bounds.
+Each waypoint is seeded from the previous solved waypoint, which
+encourages continuity while still solving the full IK problem for the
+current target.
+
+\paragraph{Tool calibration.}
+The TCP is
+$\mathbf{T}_{\mathrm{tcp}}=\mathbf{T}_{\mathrm{eef}}(\mathbf{q})
+\mathbf{T}_{\mathrm{eef}}^{\mathrm{tcp}}$.  Harvesting further uses a
+gripper contact-center offset.  Deleafing uses a right-knife pivot
+calibration for the tool tip and an edge-line calibration for the
+knife cutting direction.  Thus the IK target is expressed in the
+physical contact frame of the tool, not merely at the wrist.
+
+
+\subsubsection{Candidate Scoring and Safety Gates}
+\label{app:gates}
+
+For each primitive, the planner generates a finite candidate set and
+evaluates it with the same gates used by the executor:
+%
+\begin{itemize}
+  \item \textbf{IK convergence}: waypoint position error below the
+    task tolerance and orientation or task-axis error below the action
+    tolerance.
+  \item \textbf{Self-clearance}: endpoint and interpolated joint paths
+    must clear non-adjacent robot links by the configured margin.
+  \item \textbf{Point-cloud clearance}: harvest candidates check
+    modeled non-target fruit and gripper volume; deleaf candidates
+    check the TCP path against the live RealSense point cloud near the
+    cut point.
+  \item \textbf{Contact validity}: harvest candidates must satisfy
+    open-gripper alignment and solved insertion depth; deleaf
+    candidates must preserve the fixed cut standoff, target extension,
+    and downward stroke.
+  \item \textbf{Joint continuity}: consecutive waypoint joint changes
+    are bounded to avoid wrap-around solutions.
+\end{itemize}
+%
+Candidates are ranked lexicographically by gate success, point-cloud
+margin, self-clearance margin, and endpoint error.  For deleafing,
+ties are further broken by agreement with the configured target
+extension and smaller contact advance.
+All candidates and gate evaluations are recorded per trial for
+analysis, including selected waypoints, IK errors, clearance reports,
+MPS axes, tool calibration, and the execution decision.
+
+
+\subsubsection{MPS Priors and Task Templates}
+\label{app:hand_prior}
+
+MPS hand tracking is used as an action prior, not as a trajectory to
+replay.  From the egocentric video we extract phase windows and compute
+median hand-motion axes in the robot frame.  Harvesting uses
+approach, jaw/pinch, and pull axes.  Deleafing uses approach, cut, and
+retract axes from the wrist or pinch trajectory.  Each axis carries a
+confidence derived from sample count and motion magnitude; low
+confidence axes fall back to mask geometry, world-down stroke, or
+home-to-target approach directions.
+
+Task templates define target-independent action quantities, including
+standoff, target extension, stroke length, return lift, and
+tool-orientation constraints.  At runtime, the planner instantiates
+the MPS-guided template at the current 3D target and solves a fresh
+waypoint sequence in the robot frame.
+
+
+\subsubsection{Execution and Safety}
+\label{app:execution}
+
+Hardware execution is separated from planning by a hard gate: commands
+are issued only after the selected candidate passes all requested
+waypoint checks and operator confirmation is provided.  Before motion,
+the executor verifies the live robot state against the stored home
+configuration.  Waypoints are sent as time-parameterized joint targets;
+gripper commands are issued only at validated grasp/release waypoints.
+
+In the default deleafing configuration, execution stops at the
+return-transit waypoint.  The robot is then restored with an arm-only
+home command, so the knife does not drag downward through the plant
+while returning from the post-cut state.

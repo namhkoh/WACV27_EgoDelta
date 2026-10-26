@@ -1,0 +1,260 @@
+{
+  "ok": true,
+  "method": "target_depth_first_realSense_aria_alignment_selection",
+  "search_dir": "C:\\path\\to\\projects\\EgoDelta\\output\\policy_training\\a270c038\\current_realsense_alignment\\feature_depth_search",
+  "action_type": "harvest",
+  "target_index": -1,
+  "target_index_note": "target_index < 0 selects the best projected target for each candidate",
+  "score_json_name": "score_harvest_tomato_targets.json",
+  "thresholds": {
+    "max_target_depth_error_m": 0.045,
+    "max_inlier_rmse_m": 0.045,
+    "min_ransac_inliers": 10,
+    "min_hanger_score": 2.0
+  },
+  "selected": {
+    "rank_dir": "C:\\path\\to\\projects\\EgoDelta\\output\\policy_training\\a270c038\\current_realsense_alignment\\feature_depth_search\\rank10_frame_002952",
+    "rank": 10,
+    "frame_idx": 2952,
+    "image_name": "frame_002952.jpg",
+    "alignment_json": "C:\\path\\to\\projects\\EgoDelta\\output\\policy_training\\a270c038\\current_realsense_alignment\\feature_depth_search\\rank10_frame_002952\\T_robot_from_aria_featuredepth_hanger.json",
+    "score_json": "C:\\path\\to\\projects\\EgoDelta\\output\\policy_training\\a270c038\\current_realsense_alignment\\feature_depth_search\\rank10_frame_002952\\score_harvest_tomato_targets.json",
+    "target_index": 0,
+    "requested_target_index": -1,
+    "target_in_image": true,
+    "target_pixel_uv": [
+      599,
+      603
+    ],
+    "target_abs_depth_error_m": 0.005469913238459467,
+    "structure_alignment_score": 4.459667898425501,
+    "feature_depth_inlier_rmse_m": 0.015986180385296908,
+    "feature_depth_ransac_inliers": 22,
+    "hanger_score": 5.002181557465091,
+    "rejected_reasons": [],
+    "selection_score": 4.092918917092917
+  },
+  "accepted_candidates": [
+    {
+      "rank_dir": "C:\\path\\to\\projects\\EgoDelta\\output\\policy_training\\a270c038\\current_realsense_alignment\\feature_depth_search\\rank10_frame_002952",
+      "rank": 10,
+      "frame_idx": 2952,
+      "image_name": "frame_002952.jpg",
+      "alignment_json": "C:\\path\\to\\projects\\EgoDelta\\output\\policy_training\\a270c038\\current_realsense_alignment\\feature_depth_search\\rank10_frame_002952\\T_robot_from_aria_featuredepth_hanger.json",
+      "score_json": "C:\\path\\to\\projects\\EgoDelta\\output\\policy_training\\a270c038\\current_realsense_alignment\\feature_depth_search\\rank10_frame_002952\\score_harvest_tomato_targets.json",
+      "target_index": 0,
+      "requested_target_index": -1,
+      "target_in_image": true,
+      "target_pixel_uv": [
+        599,
+        603
+      ],
+      "target_abs_depth_error_m": 0.005469913238459467,
+      "structure_alignment_score": 4.459667898425501,
+      "feature_depth_inlier_rmse_m": 0.015986180385296908,
+      "feature_depth_ransac_inliers": 22,
+      "hanger_score": 5.002181557465091,
+      "rejected_reasons": [],
+      "selection_score": 4.092918917092917
+    },
+    {
+      "rank_dir": "C:\\path\\to\\projects\\EgoDelta\\output\\policy_training\\a270c038\\current_realsense_alignment\\feature_depth_search\\rank03_frame_002944",
+      "rank": 3,
+      "frame_idx": 2944,
+      "image_name": "frame_002944.jpg",
+      "alignment_json": "C:\\path\\to\\projects\\EgoDelta\\output\\policy_training\\a270c038\\current_realsense_alignment\\feature_depth_search\\rank03_frame_002944\\T_robot_from_aria_featuredepth_hanger.json",
+      "score_json": "C:\\path\\to\\projects\\EgoDelta\\output\\policy_training\\a270c038\\current_realsense_alignment\\feature_depth_search\\rank03_frame_002944\\score_harvest_tomato_targets.json",
+      "target_index": 0,
+      "requested_target_index": -1,
+      "target_in_image": true,
+      "target_pixel_uv": [
+        606,
+        598
+      ],
+      "target_abs_depth_error_m": 0.006010661121304217,
+      "structure_alignment_score": 4.394305655551485,
+      "feature_depth_inlier_rmse_m": 0.013307902898160653,
+      "feature_depth_ransac_inliers": 17,
+      "hanger_score": 5.0204439638951985,
+      "rejected_reasons": [],
+      "selection_score": 4.5751173650464825
+    },
+    {
+      "rank_dir": "C:\\path\\to\\projects\\EgoDelta\\output\\policy_training\\a270c038\\current_realsense_alignment\\feature_depth_search\\rank07_frame_003464",
+      "rank": 7,
+      "frame_idx": 3464,
+      "image_name": "frame_003464.jpg",
+      "alignment_json": "C:\\path\\to\\projects\\EgoDelta\\output\\policy_training\\a270c038\\current_realsense_alignment\\feature_depth_search\\rank07_frame_003464\\T_robot_from_aria_featuredepth_hanger.json",
+      "score_json": "C:\\path\\to\\projects\\EgoDelta\\output\\policy_training\\a270c038\\current_realsense_alignment\\feature_depth_search\\rank07_frame_003464\\score_harvest_tomato_targets.json",
+      "target_index": 0,
+      "requested_target_index": -1,
+      "target_in_image": true,
+      "target_pixel_uv": [
+        606,
+        606
+      ],
+      "target_abs_depth_error_m": 0.007826236279216081,
+      "structure_alignment_score": 4.671922664614034,
+      "feature_depth_inlier_rmse_m": 0.01685488016396801,
+      "feature_depth_ransac_inliers": 63,
+      "hanger_score": 5.00843752561161,
+      "rejected_reasons": [],
+      "selection_score": 6.2699023879129125
+    },
+    {
+      "rank_dir": "C:\\path\\to\\projects\\EgoDelta\\output\\policy_training\\a270c038\\current_realsense_alignment\\feature_depth_search\\rank05_frame_003544",
+      "rank": 5,
+      "frame_idx": 3544,
+      "image_name": "frame_003544.jpg",
+      "alignment_json": "C:\\path\\to\\projects\\EgoDelta\\output\\policy_training\\a270c038\\current_realsense_alignment\\feature_depth_search\\rank05_frame_003544\\T_robot_from_aria_featuredepth_hanger.json",
+      "score_json": "C:\\path\\to\\projects\\EgoDelta\\output\\policy_training\\a270c038\\current_realsense_alignment\\feature_depth_search\\rank05_frame_003544\\score_harvest_tomato_targets.json",
+      "target_index": 0,
+      "requested_target_index": -1,
+      "target_in_image": true,
+      "target_pixel_uv": [
+        613,
+        603
+      ],
+      "target_abs_depth_error_m": 0.00993407468595564,
+      "structure_alignment_score": 2.2177909454287974,
+      "feature_depth_inlier_rmse_m": 0.015543003234952722,
+      "feature_depth_ransac_inliers": 65,
+      "hanger_score": 5.009424338091164,
+      "rejected_reasons": [],
+      "selection_score": 9.202191880935182
+    },
+    {
+      "rank_dir": "C:\\path\\to\\projects\\EgoDelta\\output\\policy_training\\a270c038\\current_realsense_alignment\\feature_depth_search\\rank01_frame_002976",
+      "rank": 1,
+      "frame_idx": 2976,
+      "image_name": "frame_002976.jpg",
+      "alignment_json": "C:\\path\\to\\projects\\EgoDelta\\output\\policy_training\\a270c038\\current_realsense_alignment\\feature_depth_search\\rank01_frame_002976\\T_robot_from_aria_featuredepth_hanger.json",
+      "score_json": "C:\\path\\to\\projects\\EgoDelta\\output\\policy_training\\a270c038\\current_realsense_alignment\\feature_depth_search\\rank01_frame_002976\\score_harvest_tomato_targets.json",
+      "target_index": 0,
+      "requested_target_index": -1,
+      "target_in_image": true,
+      "target_pixel_uv": [
+        610,
+        608
+      ],
+      "target_abs_depth_error_m": 0.011765423475155634,
+      "structure_alignment_score": 4.801849709146286,
+      "feature_depth_inlier_rmse_m": 0.01683254689590362,
+      "feature_depth_ransac_inliers": 16,
+      "hanger_score": 5.054427658676445,
+      "rejected_reasons": [],
+      "selection_score": 10.197436452121662
+    },
+    {
+      "rank_dir": "C:\\path\\to\\projects\\EgoDelta\\output\\policy_training\\a270c038\\current_realsense_alignment\\feature_depth_search\\rank04_frame_002106",
+      "rank": 4,
+      "frame_idx": 2106,
+      "image_name": "frame_002106.jpg",
+      "alignment_json": "C:\\path\\to\\projects\\EgoDelta\\output\\policy_training\\a270c038\\current_realsense_alignment\\feature_depth_search\\rank04_frame_002106\\T_robot_from_aria_featuredepth_hanger.json",
+      "score_json": "C:\\path\\to\\projects\\EgoDelta\\output\\policy_training\\a270c038\\current_realsense_alignment\\feature_depth_search\\rank04_frame_002106\\score_harvest_tomato_targets.json",
+      "target_index": 0,
+      "requested_target_index": -1,
+      "target_in_image": true,
+      "target_pixel_uv": [
+        606,
+        603
+      ],
+      "target_abs_depth_error_m": 0.010989310587636858,
+      "structure_alignment_score": 2.191273194160264,
+      "feature_depth_inlier_rmse_m": 0.018141700193331643,
+      "feature_depth_ransac_inliers": 59,
+      "hanger_score": 5.011008974378833,
+      "rejected_reasons": [],
+      "selection_score": 10.289498571227417
+    },
+    {
+      "rank_dir": "C:\\path\\to\\projects\\EgoDelta\\output\\policy_training\\a270c038\\current_realsense_alignment\\feature_depth_search\\rank08_frame_002244",
+      "rank": 8,
+      "frame_idx": 2244,
+      "image_name": "frame_002244.jpg",
+      "alignment_json": "C:\\path\\to\\projects\\EgoDelta\\output\\policy_training\\a270c038\\current_realsense_alignment\\feature_depth_search\\rank08_frame_002244\\T_robot_from_aria_featuredepth_hanger.json",
+      "score_json": "C:\\path\\to\\projects\\EgoDelta\\output\\policy_training\\a270c038\\current_realsense_alignment\\feature_depth_search\\rank08_frame_002244\\score_harvest_tomato_targets.json",
+      "target_index": 0,
+      "requested_target_index": -1,
+      "target_in_image": true,
+      "target_pixel_uv": [
+        611,
+        611
+      ],
+      "target_abs_depth_error_m": 0.027439568329429287,
+      "structure_alignment_score": 4.090440156699005,
+      "feature_depth_inlier_rmse_m": 0.016013754117095463,
+      "feature_depth_ransac_inliers": 113,
+      "hanger_score": 5.006503483533305,
+      "rejected_reasons": [],
+      "selection_score": 25.990024307521395
+    },
+    {
+      "rank_dir": "C:\\path\\to\\projects\\EgoDelta\\output\\policy_training\\a270c038\\current_realsense_alignment\\feature_depth_search\\rank06_frame_000630",
+      "rank": 6,
+      "frame_idx": 630,
+      "image_name": "frame_000630.jpg",
+      "alignment_json": "C:\\path\\to\\projects\\EgoDelta\\output\\policy_training\\a270c038\\current_realsense_alignment\\feature_depth_search\\rank06_frame_000630\\T_robot_from_aria_featuredepth_hanger.json",
+      "score_json": "C:\\path\\to\\projects\\EgoDelta\\output\\policy_training\\a270c038\\current_realsense_alignment\\feature_depth_search\\rank06_frame_000630\\score_harvest_tomato_targets.json",
+      "target_index": 0,
+      "requested_target_index": -1,
+      "target_in_image": true,
+      "target_pixel_uv": [
+        607,
+        613
+      ],
+      "target_abs_depth_error_m": 0.029854949413959275,
+      "structure_alignment_score": 3.9099441364582375,
+      "feature_depth_inlier_rmse_m": 0.01710342499392242,
+      "feature_depth_ransac_inliers": 77,
+      "hanger_score": 5.00895403123206,
+      "rejected_reasons": [],
+      "selection_score": 28.52929636615027
+    },
+    {
+      "rank_dir": "C:\\path\\to\\projects\\EgoDelta\\output\\policy_training\\a270c038\\current_realsense_alignment\\feature_depth_search\\rank09_frame_002280",
+      "rank": 9,
+      "frame_idx": 2280,
+      "image_name": "frame_002280.jpg",
+      "alignment_json": "C:\\path\\to\\projects\\EgoDelta\\output\\policy_training\\a270c038\\current_realsense_alignment\\feature_depth_search\\rank09_frame_002280\\T_robot_from_aria_featuredepth_hanger.json",
+      "score_json": "C:\\path\\to\\projects\\EgoDelta\\output\\policy_training\\a270c038\\current_realsense_alignment\\feature_depth_search\\rank09_frame_002280\\score_harvest_tomato_targets.json",
+      "target_index": 0,
+      "requested_target_index": -1,
+      "target_in_image": true,
+      "target_pixel_uv": [
+        612,
+        615
+      ],
+      "target_abs_depth_error_m": 0.03045009618591832,
+      "structure_alignment_score": 4.000364462083254,
+      "feature_depth_inlier_rmse_m": 0.01686437459291302,
+      "feature_depth_ransac_inliers": 93,
+      "hanger_score": 5.005503300914243,
+      "rejected_reasons": [],
+      "selection_score": 29.088883620932485
+    },
+    {
+      "rank_dir": "C:\\path\\to\\projects\\EgoDelta\\output\\policy_training\\a270c038\\current_realsense_alignment\\feature_depth_search\\rank02_frame_002936",
+      "rank": 2,
+      "frame_idx": 2936,
+      "image_name": "frame_002936.jpg",
+      "alignment_json": "C:\\path\\to\\projects\\EgoDelta\\output\\policy_training\\a270c038\\current_realsense_alignment\\feature_depth_search\\rank02_frame_002936\\T_robot_from_aria_featuredepth_hanger.json",
+      "score_json": "C:\\path\\to\\projects\\EgoDelta\\output\\policy_training\\a270c038\\current_realsense_alignment\\feature_depth_search\\rank02_frame_002936\\score_harvest_tomato_targets.json",
+      "target_index": 0,
+      "requested_target_index": -1,
+      "target_in_image": true,
+      "target_pixel_uv": [
+        610,
+        616
+      ],
+      "target_abs_depth_error_m": 0.03316876083716824,
+      "structure_alignment_score": 3.9205287397062705,
+      "feature_depth_inlier_rmse_m": 0.020435354362374914,
+      "feature_depth_ransac_inliers": 18,
+      "hanger_score": 5.047282175315659,
+      "rejected_reasons": [],
+      "selection_score": 31.944058613170046
+    }
+  ],
+  "rejected_candidates": []
+}

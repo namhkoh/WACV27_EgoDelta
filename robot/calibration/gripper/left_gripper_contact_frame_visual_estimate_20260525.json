@@ -1,0 +1,55 @@
+{
+  "schema": "rb_y1_gripper_contact_frame_calibration",
+  "version": 1,
+  "arm": "left",
+  "status": "provisional_visual_estimate_height_refined",
+  "frame_convention": {
+    "T_tcp_from_gripper_contact_center": "Transform from gripper contact-center frame to the modeled TCP frame.",
+    "contact_offset_tcp_m": "Translation from modeled TCP origin to gripper contact center, expressed in the modeled TCP frame."
+  },
+  "contact_offset_tcp_m": [
+    0.0,
+    -0.087171,
+    0.048196
+  ],
+  "T_tcp_from_gripper_contact_center": [
+    [
+      1.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0,
+      0.0,
+      -0.087171
+    ],
+    [
+      0.0,
+      0.0,
+      1.0,
+      0.048196
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "estimation": {
+    "method": "single_view_rough_visual_offset_at_tomato0_pregrasp",
+    "rough_observed_extra_backoff_m": 0.048196,
+    "rough_observed_vertical_high_m": 0.064671,
+    "height_refinement_m": 0.0225,
+    "source_target": "a270c038 tomato0 upper/left fruit",
+    "source_plan_artifact": "robot/kinematics/runs/052526/staged_harvest_ik_plan/a270c038_tomato0_directional_gripper_box_prefix_v1.json",
+    "source_capture": "robot/kinematics/runs/052526/live_realsense_capture/a270c038_tomato0_pregrasp_open_gripper_contact_frame_052526.jpg",
+    "notes": [
+      "The arm reached the planned pre_grasp TCP within 0.78 mm before this estimate.",
+      "The estimate is intentionally recorded as provisional because the contact center was partly occluded in the head-mounted RealSense view.",
+      "Use for no-motion IK validation first; do not treat as final hardware calibration without repeated validation."
+    ]
+  }
+}

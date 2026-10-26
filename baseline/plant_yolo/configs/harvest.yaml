@@ -1,0 +1,22 @@
+task_name: harvest
+target_semantic_class: tomato
+segmentation_backend: yolo_tomato
+text_prompts:
+  - tomato fruit
+  - ripe tomato
+negative_prompts: []
+min_2d_confidence: 0.25
+min_mask_area_px: 300
+max_mask_area_px: null
+depth_band_m: 0.10
+lifting_dbscan_eps_m: 0.06
+lifting_dbscan_min_samples: 5
+instance_cluster_eps_m: 0.12
+instance_min_frames: 2
+instance_min_points: 20
+prepost_match_radius_m: 0.12
+point_match_radius_m: 0.04
+min_visible_post_views: 3
+disappeared_score_thres: 0.6
+action_point_type: proxy_cut_point_from_tomato_top_surface
+world_up: [0.0, 0.0, 1.0]

@@ -1,0 +1,19 @@
+{
+  "annotation_unit": "manually verified 2D target point on a front-view image",
+  "is_image_count": false,
+  "is_scene_count": false,
+  "counts": {
+    "harvest": "unavailable",
+    "deleaf": "unavailable",
+    "overall": "unavailable"
+  },
+  "raw_annotation_path_documented_by_code": "\\tmp\\egodelta\\front\\labels.jsonl",
+  "raw_annotation_available_on_this_machine": false,
+  "status": "unavailable",
+  "reason": "The documented labels.jsonl and companion front-view manifests are absent from this machine and no checked-in annotation manifest preserves their row counts.",
+  "source_code": [
+    "C:\\path\\to\\projects\\EgoDelta\\tools\\build_manual_front_yolo_dataset_032.py",
+    "C:\\path\\to\\projects\\EgoDelta\\tools\\evaluate_manual_front_yolo_032.py",
+    "C:\\path\\to\\projects\\EgoDelta\\policy_train.tex"
+  ]
+}

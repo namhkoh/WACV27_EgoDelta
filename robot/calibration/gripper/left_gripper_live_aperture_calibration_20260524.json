@@ -1,0 +1,28 @@
+{
+  "schema": "rb_y1_left_gripper_live_aperture_calibration",
+  "arm": "left",
+  "source": "live_bridge_status_after_full_open_and_saved_home_closed_measurements",
+  "units": {
+    "position": "dynamixel_encoder_position",
+    "aperture": "unknown"
+  },
+  "open_position": 1.784,
+  "open_measurement": {
+    "commanded_position": -8.0,
+    "reached_position": 1.7840192851562502,
+    "current": -0.6725,
+    "interpretation": "physical full-open stop reached under current-limited open command"
+  },
+  "closed_position": 10.945,
+  "closed_measurement": {
+    "saved_home_position": 10.94495064453125,
+    "commanded_grasp_limit": 11.0,
+    "interpretation": "home and grasp closed state"
+  },
+  "usage": {
+    "home_restore": "restore gripper home/closed before a reproducible run",
+    "pre_grasp_open": "command open_position immediately before first pre_grasp phase",
+    "basket_release": "command open_position after basket_drop or final release"
+  },
+  "note": "Teleop phase encoder means are style observations only. Physical gripper commands must use this live aperture calibration."
+}

@@ -1,0 +1,5 @@
+{
+  "estimated_tool_offset_link_name": "ee_right",
+  "estimated_tool_offset_m": [0.0, 0.0, -0.073],
+  "_note": "RIGHT-arm 2-finger gripper jaw-center TCP offset for openpi zero-shot testing (replaces the knife tooltip). Starting ESTIMATE copied from the left jaw-center offset (D:/tmp/egodelta_isaac_left_jaw_center_toolfit.json). VERIFY/measure the actual right-gripper jaw-center z-offset and adjust before relying on grasp precision. Created 2026-06-01."
+}

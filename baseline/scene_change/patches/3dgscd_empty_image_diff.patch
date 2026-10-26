@@ -1,0 +1,25 @@
+diff --git a/nerfstudio/scripts/change_det.py b/nerfstudio/scripts/change_det.py
+--- a/nerfstudio/scripts/change_det.py
++++ b/nerfstudio/scripts/change_det.py
+@@ -164,6 +164,7 @@ class ChangeDet:
+             masks_all.append(mask)
+             if cv2.contourArea(contour) >= threshold * H * W:
+                 masks.append(mask)
+-        masks = torch.stack(masks, dim=0).to(device)
+-        masks_all = torch.stack(masks_all, dim=0).to(device)
++        empty = torch.empty((0, 1, H, W), dtype=torch.float32, device=device)
++        masks = torch.stack(masks, dim=0).to(device) if masks else empty
++        masks_all = torch.stack(masks_all, dim=0).to(device) if masks_all else empty
+         # Uncomment to debug
+diff --git a/nerfstudio/utils/effsam_utils.py b/nerfstudio/utils/effsam_utils.py
+--- a/nerfstudio/utils/effsam_utils.py
++++ b/nerfstudio/utils/effsam_utils.py
+@@ -228,6 +228,8 @@ def effsam_refine_masks(rgb, masks, expand=0.1):
+     """
+     assert rgb.shape[1] == 3
+     assert len(masks.shape) == 4
++    if masks.shape[0] == 0:
++        return masks, []
+     bboxes = []
+     for mask in masks:
+         point_coords = torch.nonzero(mask.squeeze())[:, [1, 0]]

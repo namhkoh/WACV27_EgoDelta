@@ -1,0 +1,25 @@
+name: aria-tomato-change
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - pip
+  - numpy
+  - scipy
+  - pandas
+  - scikit-learn
+  - open3d
+  - laspy
+  - matplotlib
+  - pyarrow
+  - pyyaml
+  - typer
+  - rich
+  - tqdm
+  - pytest
+  - pip:
+      - lazrs
+      - projectaria-tools==2.1.2
+      - py4dgeo==1.1.0
+      - numba

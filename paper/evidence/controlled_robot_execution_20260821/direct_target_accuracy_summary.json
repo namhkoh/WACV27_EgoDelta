@@ -1,0 +1,37 @@
+{
+  "harvest": {
+    "expected_claimed_trial_count": 30,
+    "artifact_backed_trial_count": 20,
+    "evaluated_with_prediction_and_socket_gt": 0,
+    "median_error_cm": "unavailable",
+    "within_3cm_count": "unavailable",
+    "within_3cm_percent": "unavailable",
+    "missing_prediction_count": 30,
+    "missing_socket_gt_count": 30,
+    "manual_target_selection_count": 20
+  },
+  "deleaf": {
+    "expected_claimed_trial_count": 30,
+    "artifact_backed_trial_count": 20,
+    "evaluated_with_prediction_and_socket_gt": 0,
+    "median_error_cm": "unavailable",
+    "within_3cm_count": "unavailable",
+    "within_3cm_percent": "unavailable",
+    "missing_prediction_count": 30,
+    "missing_socket_gt_count": 30,
+    "manual_target_selection_count": 20
+  },
+  "overall": {
+    "expected_claimed_trial_count": 60,
+    "artifact_backed_trial_count": 40,
+    "evaluated_with_prediction_and_socket_gt": 0,
+    "median_error_cm": "unavailable",
+    "within_3cm_count": "unavailable",
+    "within_3cm_percent": "unavailable",
+    "missing_prediction_count": 60,
+    "missing_socket_gt_count": 60,
+    "manual_target_selection_count": 40
+  },
+  "manuscript_fill_status": "unavailable",
+  "reason": "No artifact-backed row contains both a frozen EGODELTA prediction and a physical attachment-socket ground-truth coordinate."
+}

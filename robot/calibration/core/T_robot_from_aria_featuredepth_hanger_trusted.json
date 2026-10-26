@@ -1,0 +1,109 @@
+{
+  "version": "0.1",
+  "method": "feature_depth_hanger_search_selected",
+  "rank": 2,
+  "frame_idx": 780,
+  "image_name": "frame_000780.jpg",
+  "T_realsense_from_aria": [
+    [
+      -0.9963565200443725,
+      0.08224108161329491,
+      -0.02258516017530034,
+      0.26136448633961096
+    ],
+    [
+      0.0218580049037403,
+      -0.00973149695957313,
+      -0.9997137218166785,
+      -0.06920626871171033
+    ],
+    [
+      -0.08243732520343362,
+      -0.9965649514517366,
+      0.007898414480269402,
+      0.10873796186766815
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "feature_depth": {
+    "n_feature_matches": 195,
+    "n_3d_correspondences": 167,
+    "n_ransac_inliers": 92,
+    "inlier_fraction": 0.5508982035928144,
+    "inlier_rmse_m": 0.02631926219758857
+  },
+  "score": {
+    "projected_points": 232186,
+    "depth_compared_points": 131547,
+    "depth_median_abs_error_m": 0.03165892220882549,
+    "depth_p75_abs_error_m": 0.16664560169604337,
+    "depth_fraction_lt_3cm": 0.48816772712414574,
+    "depth_fraction_lt_5cm": 0.5931188092468851,
+    "rail_projected_points": 17147,
+    "rail_depth_compared_points": 10994,
+    "rail_depth_median_abs_error_m": 0.022558809604310115,
+    "rail_fraction_lt_3cm": 0.5639439694378752,
+    "rail_fraction_lt_5cm": 0.6484446061488084,
+    "rail_close_coverage_32bins": 0.84375,
+    "hanger_score": 4.929393223069868
+  },
+  "T_robot_from_realsense": [
+    [
+      -0.0015339798671052689,
+      7.593964296337408e-06,
+      0.9999988234233573,
+      -0.016942832256573278
+    ],
+    [
+      -0.9999988234521915,
+      0.0,
+      -0.0015339798671495,
+      0.04105977697635868
+    ],
+    [
+      -1.1648988342433702e-08,
+      -0.9999999999711658,
+      7.593955361675357e-06,
+      1.2879746181788017
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "T_robot_from_aria": [
+    [
+      -0.08090867137848634,
+      -0.9966900089807761,
+      0.007925458577873634,
+      0.09139354826259381
+    ],
+    [
+      0.996481804980456,
+      -0.08071227428089679,
+      0.022573017593984498,
+      -0.22047120369973852
+    ],
+    [
+      -0.02185861932193229,
+      0.009723928131510795,
+      0.9997137820311539,
+      1.357181709595113
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "selection_note": "Selected as best trusted hanger alignment: raw frame_000803 scored slightly higher but had only 15 RANSAC inliers; frame_000780 has high hanger score with 92 inliers.",
+  "selected_source": "output\\testbed_data\\aria_realsense_alignment_evidence\\rank02_frame_000780\\T_robot_from_aria_featuredepth_hanger.json"
+}

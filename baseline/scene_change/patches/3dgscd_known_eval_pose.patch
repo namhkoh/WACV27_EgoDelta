@@ -1,0 +1,16 @@
+diff --git a/nerfstudio/scripts/change_det.py b/nerfstudio/scripts/change_det.py
+--- a/nerfstudio/scripts/change_det.py
++++ b/nerfstudio/scripts/change_det.py
+@@ -1123,5 +1123,6 @@ class ChangeDet:
+         # Optimize eval camera poses
++        rgbs_eval, eval_fnames, _, _, _, cams_eval = read_transforms(
++            transforms_json, read_images=refine_pose, mode="val"
++        )
+         if refine_pose:
+-            rgbs_eval, eval_fnames, _, _, _, cams_eval = \
+-                read_transforms(transforms_json, mode="val")
+             _, cams_eval = self.refine_obj_pose_change(
+@@ -1136,2 +1137,3 @@ class ChangeDet:
+                 eval_file_ids.append(id_int)
++        cams_eval = cams_eval.to(device)
+ 

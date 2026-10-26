@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "egodelta-scene-change-baselines"
+version = "0.1.0"
+description = "Reproducible 3DGS-CD, GS-DIFF, and MV3DCD adapters for EgoDelta."
+requires-python = ">=3.10"
+dependencies = [
+  "numpy>=1.24",
+  "Pillow>=10",
+  "plyfile>=1.0",
+  "scipy>=1.10",
+  "torch>=2.1",
+]
+
+[project.scripts]
+egoscene = "egoscene.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["egoscene*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

@@ -1,0 +1,36 @@
+{
+  "angle_error_deg": {
+    "max": 9.04593238608778,
+    "mean": 3.73553783155998,
+    "median": 3.2050989660558584,
+    "p90": 6.416449590329224,
+    "p95": 6.662487620739794
+  },
+  "arm": "right",
+  "dataset_name": "a270c038",
+  "edge_axis_eef_unit": [
+    -0.002043807556610623,
+    0.049124733063957586,
+    -0.9987905603539045
+  ],
+  "edge_axis_source": "C:\\path\\to\\projects\\EgoDelta\\robot\\kinematics\\runs\\052726\\teleop_tcp_capture\\a270c038_right_knife_edge_line_calib_01.json",
+  "estimated_tool_offset_link_name": "ee_right",
+  "estimated_tool_offset_m": [
+    -0.008402289882845037,
+    -0.001977945719501828,
+    -0.2378828341747801
+  ],
+  "line_axis_robot_unit": [
+    -0.9461164223269661,
+    -0.31946602484055375,
+    0.0529638969090956
+  ],
+  "line_concentration": 0.9947943193909335,
+  "method": "right_knife_tip_plus_edge_axis_calibration",
+  "notes": [
+    "Tip offset comes from right_knife_tip_pivot_deleaf_01.",
+    "Edge axis was fit from an edge-along-line teleop capture.",
+    "The calibrated edge axis is expressed in ee_right/TCP-local coordinates because the current tool offset is translation-only."
+  ],
+  "tip_source": "C:\\path\\to\\projects\\EgoDelta\\robot\\calibration\\tooltips\\a270c038_right_knife_tip_pivot_deleaf_01.json"
+}

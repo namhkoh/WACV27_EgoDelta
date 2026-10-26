@@ -1,0 +1,10 @@
+{
+  "total_claimed_successes": 60,
+  "harvest_claimed_successes": 30,
+  "deleaf_claimed_successes": 30,
+  "artifact_backed_successes": 40,
+  "operator_confirmation_only_historical_successes": 20,
+  "artifact_backed_learned_policy_successes": 0,
+  "operator_claimed_policy_successes": 60,
+  "paper_use": "Report 30/30 per task only as operator-reported aggregate unless historical artifacts are recovered; do not state that all 60 are artifact-backed learned-policy rollouts."
+}

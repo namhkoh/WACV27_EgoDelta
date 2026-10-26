@@ -1,0 +1,5 @@
+{
+  "estimated_tool_offset_link_name": "ee_left",
+  "estimated_tool_offset_m": [0.0, 0.0, -0.073],
+  "_note": "LEFT-arm 2-finger gripper jaw-center TCP offset for the pi0.5 left-arm rollout (robot/policy/openpi/pi05_rollout.py). The TCP offset is NOT used by the rollout (its self-clearance + joint-limit checks use the full model, not the TCP); the link name just has to match the left arm's ee_left so RBY1Kinematics(arm='left') builds. Offset mirrors the right jaw-center estimate (originally copied from the left). Created 2026-06-15."
+}

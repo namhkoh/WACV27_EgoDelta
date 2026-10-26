@@ -1,0 +1,257 @@
+{
+  "chunk_horizon_s": 2.0,
+  "chunk_size": 10,
+  "created_at_utc": "2026-05-28T10:44:46Z",
+  "demos": [
+    {
+      "duration_s": 89.21899999992456,
+      "goal_robot_m": [
+        0.570017073167158,
+        0.06781825210465521,
+        0.8820459349476185
+      ],
+      "label": "AT1T1",
+      "primitive": "harvest",
+      "resampled_sample_count": 448,
+      "trajectory_json": "C:\\path\\to\\projects\\EgoDelta\\robot\\policy\\policy_action_library\\AT1T1\\success_current\\actions\\AT1T1_instance_001_step_01_AT1T1\\trajectory\\a270c038_AT1T1_instance_001_step_01_AT1T1_traj.json"
+    },
+    {
+      "duration_s": 68.20300000009593,
+      "goal_robot_m": [
+        0.5700368016454437,
+        0.06464617594855805,
+        0.8820552498632294
+      ],
+      "label": "AT1T2",
+      "primitive": "harvest",
+      "resampled_sample_count": 343,
+      "trajectory_json": "C:\\path\\to\\projects\\EgoDelta\\robot\\policy\\policy_action_library\\AT1T2\\success_current\\actions\\AT1T2_instance_001_step_01_AT1T2\\trajectory\\a270c038_AT1T2_instance_001_step_01_AT1T2_traj.json"
+    }
+  ],
+  "input": {
+    "contract": "3D target point in robot frame plus current arm state, arm velocity, and TCP position.",
+    "feature_count": 23,
+    "feature_names": [
+      "goal_robot_m.x",
+      "goal_robot_m.y",
+      "goal_robot_m.z",
+      "goal_minus_tcp_robot_m.x",
+      "goal_minus_tcp_robot_m.y",
+      "goal_minus_tcp_robot_m.z",
+      "q_arm_rad.0",
+      "q_arm_rad.1",
+      "q_arm_rad.2",
+      "q_arm_rad.3",
+      "q_arm_rad.4",
+      "q_arm_rad.5",
+      "q_arm_rad.6",
+      "dq_arm_rad_s.0",
+      "dq_arm_rad_s.1",
+      "dq_arm_rad_s.2",
+      "dq_arm_rad_s.3",
+      "dq_arm_rad_s.4",
+      "dq_arm_rad_s.5",
+      "dq_arm_rad_s.6",
+      "tcp_position_robot_m.x",
+      "tcp_position_robot_m.y",
+      "tcp_position_robot_m.z"
+    ]
+  },
+  "metrics": {
+    "leave_one_label_out": [
+      {
+        "bc_chunk_rmse_deg": 1.268380865770403,
+        "bc_chunk_rmse_rad": 0.022137422276989775,
+        "bc_first_step_rmse_deg": 0.12304877178922555,
+        "bc_first_step_rmse_rad": 0.0021476062082570998,
+        "knn_chunk_rmse_deg": 1.4381215510152243,
+        "knn_chunk_rmse_rad": 0.025099956109103264,
+        "knn_first_step_rmse_deg": 0.1393973641687788,
+        "knn_first_step_rmse_rad": 0.0024329429733467582,
+        "label": "AT1T1",
+        "ridge_chunk_rmse_deg": 5.565176931120989,
+        "ridge_chunk_rmse_rad": 0.09713066090409495,
+        "ridge_first_step_rmse_deg": 0.12392505579403386,
+        "ridge_first_step_rmse_rad": 0.0021629002493235667,
+        "test_chunks": 438,
+        "train_chunks": 333
+      },
+      {
+        "bc_chunk_rmse_deg": 1.0852460247980062,
+        "bc_chunk_rmse_rad": 0.01894111632690524,
+        "bc_first_step_rmse_deg": 0.10582317951622655,
+        "bc_first_step_rmse_rad": 0.0018469629074871735,
+        "knn_chunk_rmse_deg": 0.9954317884932764,
+        "knn_chunk_rmse_rad": 0.017373562188223477,
+        "knn_first_step_rmse_deg": 0.14372208197120045,
+        "knn_first_step_rmse_rad": 0.00250842353821863,
+        "label": "AT1T2",
+        "ridge_chunk_rmse_deg": 2.5743675042139476,
+        "ridge_chunk_rmse_rad": 0.044931189104882384,
+        "ridge_first_step_rmse_deg": 0.08723139030576625,
+        "ridge_first_step_rmse_rad": 0.001522474971927884,
+        "test_chunks": 333,
+        "train_chunks": 438
+      }
+    ],
+    "train": {
+      "bc_chunk_rmse_deg": 0.4183389626159628,
+      "bc_chunk_rmse_rad": 0.007301392287026021,
+      "bc_first_step_rmse_deg": 0.034836720665577345,
+      "bc_first_step_rmse_rad": 0.0006080154762118751,
+      "knn_chunk_rmse_deg": 0.0002535420834417383,
+      "knn_chunk_rmse_rad": 4.42514414842453e-06,
+      "knn_first_step_rmse_deg": 3.7847959735864956e-06,
+      "knn_first_step_rmse_rad": 6.605715125530869e-08,
+      "ridge_chunk_rmse_deg": 0.7204335143816374,
+      "ridge_chunk_rmse_rad": 0.012573936867673493,
+      "ridge_first_step_rmse_deg": 0.04210355654110517,
+      "ridge_first_step_rmse_rad": 0.0007348456884418805
+    }
+  },
+  "output": {
+    "action_count": 70,
+    "action_names": [
+      "delta_q_arm_rad.t+1.0",
+      "delta_q_arm_rad.t+1.1",
+      "delta_q_arm_rad.t+1.2",
+      "delta_q_arm_rad.t+1.3",
+      "delta_q_arm_rad.t+1.4",
+      "delta_q_arm_rad.t+1.5",
+      "delta_q_arm_rad.t+1.6",
+      "delta_q_arm_rad.t+2.0",
+      "delta_q_arm_rad.t+2.1",
+      "delta_q_arm_rad.t+2.2",
+      "delta_q_arm_rad.t+2.3",
+      "delta_q_arm_rad.t+2.4",
+      "delta_q_arm_rad.t+2.5",
+      "delta_q_arm_rad.t+2.6",
+      "delta_q_arm_rad.t+3.0",
+      "delta_q_arm_rad.t+3.1",
+      "delta_q_arm_rad.t+3.2",
+      "delta_q_arm_rad.t+3.3",
+      "delta_q_arm_rad.t+3.4",
+      "delta_q_arm_rad.t+3.5",
+      "delta_q_arm_rad.t+3.6",
+      "delta_q_arm_rad.t+4.0",
+      "delta_q_arm_rad.t+4.1",
+      "delta_q_arm_rad.t+4.2",
+      "delta_q_arm_rad.t+4.3",
+      "delta_q_arm_rad.t+4.4",
+      "delta_q_arm_rad.t+4.5",
+      "delta_q_arm_rad.t+4.6",
+      "delta_q_arm_rad.t+5.0",
+      "delta_q_arm_rad.t+5.1",
+      "delta_q_arm_rad.t+5.2",
+      "delta_q_arm_rad.t+5.3",
+      "delta_q_arm_rad.t+5.4",
+      "delta_q_arm_rad.t+5.5",
+      "delta_q_arm_rad.t+5.6",
+      "delta_q_arm_rad.t+6.0",
+      "delta_q_arm_rad.t+6.1",
+      "delta_q_arm_rad.t+6.2",
+      "delta_q_arm_rad.t+6.3",
+      "delta_q_arm_rad.t+6.4",
+      "delta_q_arm_rad.t+6.5",
+      "delta_q_arm_rad.t+6.6",
+      "delta_q_arm_rad.t+7.0",
+      "delta_q_arm_rad.t+7.1",
+      "delta_q_arm_rad.t+7.2",
+      "delta_q_arm_rad.t+7.3",
+      "delta_q_arm_rad.t+7.4",
+      "delta_q_arm_rad.t+7.5",
+      "delta_q_arm_rad.t+7.6",
+      "delta_q_arm_rad.t+8.0",
+      "delta_q_arm_rad.t+8.1",
+      "delta_q_arm_rad.t+8.2",
+      "delta_q_arm_rad.t+8.3",
+      "delta_q_arm_rad.t+8.4",
+      "delta_q_arm_rad.t+8.5",
+      "delta_q_arm_rad.t+8.6",
+      "delta_q_arm_rad.t+9.0",
+      "delta_q_arm_rad.t+9.1",
+      "delta_q_arm_rad.t+9.2",
+      "delta_q_arm_rad.t+9.3",
+      "delta_q_arm_rad.t+9.4",
+      "delta_q_arm_rad.t+9.5",
+      "delta_q_arm_rad.t+9.6",
+      "delta_q_arm_rad.t+10.0",
+      "delta_q_arm_rad.t+10.1",
+      "delta_q_arm_rad.t+10.2",
+      "delta_q_arm_rad.t+10.3",
+      "delta_q_arm_rad.t+10.4",
+      "delta_q_arm_rad.t+10.5",
+      "delta_q_arm_rad.t+10.6"
+    ],
+    "contract": "Flattened chunk of future arm joint deltas in radians; add each 7-DoF step to current q_arm."
+  },
+  "primitive": "harvest",
+  "reason": "Primary policy is behavior cloning: a supervised MLP maps state and goal features to future arm joint-delta chunks. KNN and ridge are stored only as diagnostics/fallbacks.",
+  "recommended_runtime_mode": "bc_mlp",
+  "sample_hz": 5.0,
+  "schema": "egodelta_action_chunk_policy_v1",
+  "training": {
+    "arrays": "C:\\path\\to\\projects\\EgoDelta\\robot\\policy\\trained_policies\\harvest\\policy_arrays.npz",
+    "bc_batch_size": 256,
+    "bc_best_normalized_mse": 0.017891462276920886,
+    "bc_epochs": 1200,
+    "bc_hidden_dims": [
+      128,
+      128
+    ],
+    "bc_learning_rate": 0.001,
+    "bc_loss_history": [
+      {
+        "epoch": 1.0,
+        "normalized_mse": 0.8484415134926723
+      },
+      {
+        "epoch": 120.0,
+        "normalized_mse": 0.047450674746684546
+      },
+      {
+        "epoch": 240.0,
+        "normalized_mse": 0.037027108195409525
+      },
+      {
+        "epoch": 360.0,
+        "normalized_mse": 0.03068294676717285
+      },
+      {
+        "epoch": 480.0,
+        "normalized_mse": 0.02972864992405149
+      },
+      {
+        "epoch": 600.0,
+        "normalized_mse": 0.024251694350935406
+      },
+      {
+        "epoch": 720.0,
+        "normalized_mse": 0.023326414289330917
+      },
+      {
+        "epoch": 840.0,
+        "normalized_mse": 0.020878015971102396
+      },
+      {
+        "epoch": 960.0,
+        "normalized_mse": 0.021252230050262107
+      },
+      {
+        "epoch": 1080.0,
+        "normalized_mse": 0.01807602428300992
+      },
+      {
+        "epoch": 1200.0,
+        "normalized_mse": 0.017891462276920886
+      }
+    ],
+    "bc_seed": 7,
+    "bc_weight_decay": 0.0001,
+    "chunk_count": 771,
+    "demo_count": 2,
+    "knn_k": 1,
+    "ridge_lambda": 0.01,
+    "source_labels": "C:\\path\\to\\projects\\EgoDelta\\robot\\policy\\trained_policies\\harvest\\source_labels.json"
+  }
+}

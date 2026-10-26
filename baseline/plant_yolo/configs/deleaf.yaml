@@ -1,0 +1,87 @@
+task_name: deleaf
+target_semantic_class: petiole
+segmentation_backend: yoloe_prompt
+text_prompts:
+  - leaf petiole
+  - tomato leaf petiole
+  - petiole
+  - thin leaf stem
+  - petiole connecting leaf to main stem
+negative_prompts:
+  - leaf
+  - leaves
+  - tomato leaf
+  - tomato leaves
+  - green leaf
+  - green tomato leaves
+  - tomato plant leaf
+  - leaf branch
+  - compound leaf branch
+  - pale green tomato leaf branch
+  - light green tomato leaf branch
+  - leaf branch with small leaflets
+  - tomato leaf branch with small leaflets
+  - leaf blade
+  - tomato leaf blade
+  - compound tomato leaf
+  - tomato leaflet
+  - green tomato leaflet
+  - green foliage
+  - background leaves
+  - distant leaves
+  - wall leaves
+  - leaf pattern on wall
+  - background leaf pattern
+  - vines on wall
+  - background vines
+  - tomato fruit
+  - tomato
+  - ripe tomato
+  - red tomato
+  - green tomato
+  - unripe tomato
+  - tomato cluster
+  - fruit cluster
+  - plant stem
+  - tomato stem
+  - main tomato stem
+  - vertical tomato stem
+  - thick tomato stem
+  - background pipe
+  - black pipe
+  - dark pipe
+  - black metal pipe
+  - dark metal pipe
+  - greenhouse pipe
+  - black greenhouse pipe
+  - dark greenhouse pipe
+  - irrigation tube
+  - support pole
+  - black support pole
+  - dark support pole
+  - black support frame
+  - dark support frame
+  - metal frame
+  - greenhouse support frame
+  - tomato support frame
+  - greenhouse string
+  - support string
+  - trellis string
+  - wire
+  - hand
+  - glove
+min_2d_confidence: 0.08
+min_mask_area_px: 300
+max_mask_area_px: 30000
+depth_band_m: 0.04
+lifting_dbscan_eps_m: 0.035
+lifting_dbscan_min_samples: 3
+instance_cluster_eps_m: 0.06
+instance_min_frames: 2
+instance_min_points: 8
+prepost_match_radius_m: 0.07
+point_match_radius_m: 0.025
+min_visible_post_views: 2
+disappeared_score_thres: 0.5
+action_point_type: proxy_cut_point_from_petiole_base
+world_up: [0.0, 0.0, 1.0]

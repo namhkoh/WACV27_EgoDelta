@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EgoMask · EgoDelta annotation</title>
+  <link rel="stylesheet" href="/styles.css?v=7">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">EΔ</span>
+      <div><strong>EgoMask</strong><small>instance-mask correction</small></div>
+    </div>
+    <div class="identity"><span id="annotatorName">Connecting…</span><span id="saveState" class="save-state">—</span></div>
+    <div class="progress-wrap">
+      <div class="progress-label"><span id="progressText">0 / 0 complete</span><span id="flagText">0 flagged</span></div>
+      <div class="progress-track"><div id="progressBar" class="progress-bar"></div></div>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar">
+      <section>
+        <h2>Assignment</h2>
+        <label class="field">Scene / intervention<select id="sceneSelect"></select></label>
+        <div id="sceneStrip" class="scene-strip" aria-label="Images assigned in this scene"></div>
+        <div class="nav-row">
+          <button id="previousButton" title="Previous image (A)">← Previous</button>
+          <button id="nextButton" title="Next image (D)">Next →</button>
+        </div>
+        <button id="nextOpenButton" class="wide secondary">Next unfinished</button>
+        <button id="finalReviewButton" class="wide review-launch" hidden>View all final masks</button>
+      </section>
+
+      <section>
+        <h2>Instance label</h2>
+        <div id="componentList" class="component-list"></div>
+      </section>
+
+      <section>
+        <h2>Editing</h2>
+        <div class="tool-grid">
+          <button class="tool active" data-tool="brush" title="Brush (B)">Brush</button>
+          <button class="tool" data-tool="eraser" title="Eraser (E)">Eraser</button>
+          <button class="tool" data-tool="polygon" title="Polygon (P)">Polygon</button>
+        </div>
+        <label class="field slider-field">Brush size <output id="brushOutput">18 px</output><input id="brushSize" type="range" min="2" max="80" value="18"></label>
+        <div class="nav-row compact">
+          <button id="undoButton" title="Undo (Ctrl/Cmd+Z)">Undo</button>
+          <button id="redoButton" title="Redo (Ctrl/Cmd+Y)">Redo</button>
+        </div>
+        <div class="nav-row compact">
+          <button id="clearComponentButton" title="Clear selected component (Delete)">Clear label</button>
+          <button id="resetComponentButton" title="Reset selected component (R)">Reset label</button>
+        </div>
+        <button id="finishPolygonButton" class="wide secondary" disabled>Close polygon (Enter)</button>
+        <button id="cancelPolygonButton" class="wide ghost" disabled>Cancel polygon (Esc)</button>
+      </section>
+
+      <section>
+        <h2>View</h2>
+        <label class="field slider-field">Overlay <output id="opacityOutput">55%</output><input id="opacity" type="range" min="0" max="100" value="55"></label>
+        <label class="field slider-field">Zoom <output id="zoomOutput">100%</output><input id="zoom" type="range" min="50" max="300" step="10" value="100"></label>
+        <label class="check"><input id="overlayToggle" type="checkbox" checked> Show mask overlay</label>
+        <label class="check"><input id="edgeOnlyToggle" type="checkbox"> Boundary-only overlay (V)</label>
+        <p class="control-hint">Ctrl/Cmd + wheel zooms only the image. A normal wheel scrolls vertically; Shift-drag pans.</p>
+      </section>
+
+      <section id="correctionReferenceSection" class="correction-reference" hidden>
+        <h2>Original 3D GT reference</h2>
+        <canvas id="referencePreviewCanvas" aria-label="Standalone original projected GT mask"></canvas>
+        <label class="check"><input id="referenceToggle" type="checkbox" checked> Show magenta reference outline</label>
+        <p class="control-hint">This is the untouched initial 3D-component projection. It is shown only for comparison and is never saved into your correction.</p>
+      </section>
+
+      <section class="help">
+        <h2>Boundary rule</h2>
+        <p>Keep only pixels belonging to the disappeared plant component in this pre-action image. Remove projection spill, occluded regions, neighboring leaves/fruit, hands, tools, and background.</p>
+        <p><strong>Polygon:</strong> click vertices, then Enter. Right-click or Esc cancels.</p>
+        <p><strong>Fast keys:</strong> 1–8 selects a component, hold X to erase, R resets the selected label, and Space completes.</p>
+      </section>
+    </aside>
+
+    <section class="workspace">
+      <div class="taskbar">
+        <div>
+          <span id="taskPosition" class="eyebrow">Image —</span>
+          <h1 id="taskTitle">Loading annotation…</h1>
+          <p id="taskMeta"></p>
+        </div>
+        <span id="taskStatus" class="status-pill">not started</span>
+      </div>
+
+      <div id="canvasViewport" class="canvas-viewport">
+        <div id="canvasStage" class="canvas-stage">
+          <canvas id="imageCanvas"></canvas>
+          <canvas id="overlayCanvas"></canvas>
+          <canvas id="referenceCanvas"></canvas>
+          <canvas id="guideCanvas" tabindex="0"></canvas>
+          <canvas id="maskCanvas" hidden></canvas>
+        </div>
+      </div>
+
+      <div class="actionbar">
+        <label class="note-field">Optional note<input id="noteInput" maxlength="2000" placeholder="Only note ambiguity or a problem that needs adjudication"></label>
+        <div class="action-buttons">
+          <button id="flagButton" class="warning" title="Flag for review (F)">Flag for review</button>
+          <button id="saveButton" class="secondary">Save draft</button>
+          <button id="completeButton" class="primary" title="Complete and go to next unfinished image (Space)">Complete &amp; next</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section id="finalReviewPanel" class="final-review-panel" hidden aria-label="Final annotation review">
+    <header class="review-header">
+      <div>
+        <span class="eyebrow">Read-only final dataset</span>
+        <h1>All finalized annotations</h1>
+        <p id="reviewDatasetMeta">Loading…</p>
+      </div>
+      <button id="closeFinalReviewButton" class="secondary">Close review</button>
+    </header>
+
+    <div class="review-controls">
+      <label class="field">Scene / intervention<select id="reviewSceneSelect"></select></label>
+      <div class="review-navigation">
+        <button id="reviewPreviousButton">← Previous</button>
+        <span id="reviewPosition">— / 720</span>
+        <button id="reviewNextButton">Next →</button>
+      </div>
+      <label class="field slider-field">Overlay <output id="reviewOpacityOutput">55%</output><input id="reviewOpacity" type="range" min="0" max="100" value="55"></label>
+      <label class="check"><input id="reviewBoundaryToggle" type="checkbox"> Boundary-only overlay</label>
+    </div>
+
+    <div id="reviewSceneStrip" class="scene-strip review-scene-strip" aria-label="Final masks in this scene"></div>
+
+    <div class="review-taskbar">
+      <div>
+        <h2 id="reviewTaskTitle">Loading final annotation…</h2>
+        <p id="reviewTaskMeta"></p>
+      </div>
+      <div class="review-task-actions">
+        <span id="reviewFlagMeta" class="review-flag-meta">Not flagged</span>
+        <button id="reviewFlagButton" class="secondary">Flag for redo (F)</button>
+        <span id="reviewLoadState" class="save-state">Loading…</span>
+      </div>
+    </div>
+
+    <div class="review-comparison">
+      <figure>
+        <figcaption><strong>RGB image</strong><small>Original rectified pre-action frame</small></figcaption>
+        <canvas id="reviewRgbCanvas"></canvas>
+      </figure>
+      <figure>
+        <figcaption><strong>Final mask overlay</strong><small>Final foreground in cyan</small></figcaption>
+        <canvas id="reviewOverlayCanvas"></canvas>
+      </figure>
+      <figure>
+        <figcaption><strong>Standalone final mask</strong><small>White = changed plant foreground</small></figcaption>
+        <canvas id="reviewMaskCanvas"></canvas>
+      </figure>
+    </div>
+  </section>
+
+  <div id="errorPanel" class="error-panel" hidden>
+    <h1>Unable to open EgoMask</h1>
+    <p id="errorMessage"></p>
+    <p>Use the private link assigned to you. If the server was restarted, refresh this page.</p>
+  </div>
+
+  <script src="/app.js?v=8"></script>
+</body>
+</html>

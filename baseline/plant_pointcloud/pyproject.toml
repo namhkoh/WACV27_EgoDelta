@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tomato-cutpoints"
+version = "0.1.0"
+description = "Baseline 3D tomato-scene removal target detection from Project Aria MPS semi-dense point clouds"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy",
+  "scipy",
+  "pandas",
+  "scikit-learn",
+  "open3d",
+  "laspy",
+  "lazrs",
+  "matplotlib",
+  "pyarrow",
+  "pyyaml",
+  "typer",
+  "rich",
+  "tqdm",
+]
+
+[project.optional-dependencies]
+aria = ["projectaria-tools==2.1.2"]
+m3c2 = ["py4dgeo==1.1.0", "numba"]
+dev = ["pytest"]
+
+[project.scripts]
+tomato-cutpoints = "tomato_cutpoints.cli:app"
+
+[tool.setuptools.packages.find]
+include = ["tomato_cutpoints*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

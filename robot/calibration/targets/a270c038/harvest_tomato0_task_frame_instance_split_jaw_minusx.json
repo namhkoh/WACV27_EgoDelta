@@ -1,0 +1,282 @@
+{
+  "version": "0.1",
+  "method": "egodelta_mask_aria_hand_target_conditioned_task_frame",
+  "frame": "robot_base",
+  "selected_target_json": "C:\\path\\to\\projects\\EgoDelta\\output\\policy_training\\a270c038\\robot_plans\\selected_current_realsense_tomato_target.json",
+  "selected_projection_json": "C:\\path\\to\\projects\\EgoDelta\\output\\policy_training\\a270c038\\current_realsense_alignment\\project_tomato0_to_realsense.json",
+  "alignment_json": "C:\\path\\to\\projects\\EgoDelta\\output\\policy_training\\a270c038\\current_realsense_alignment\\T_robot_from_aria_selected_current_best_target_toolfit.json",
+  "mask_npz": "C:\\path\\to\\projects\\EgoDelta\\output\\policy_training\\a270c038\\egodelta_harvest_masks\\a270c038_harvest_fruit_auto_graph_instances\\tomato_fruit_mask.npz",
+  "hand_json": "C:\\path\\to\\projects\\EgoDelta\\data\\policy_training\\a270c038\\hands_first_tomato_harvest_aria.json",
+  "target_index": 0,
+  "target_robot_m": [
+    0.5807359738202994,
+    0.03427645465496623,
+    0.8922295250570689
+  ],
+  "target_aria_m": [
+    -0.2520436752294162,
+    -0.21578643968670136,
+    -0.4529652939489297
+  ],
+  "target_position_semantics": "egodelta_change_mask_seeded_current_view_tomato_center",
+  "egodelta_target_robot_m": [
+    0.6279642364913705,
+    0.046618804832116556,
+    0.8922295250570689
+  ],
+  "egodelta_target_aria_m": [
+    -0.2880999445915222,
+    -0.2484978437423706,
+    -0.4493943154811859
+  ],
+  "fruit_center_robot_m": [
+    0.5983523201769011,
+    0.05567867993250281,
+    0.8828869130426313
+  ],
+  "fruit_center_aria_m": [
+    -0.25990964472293854,
+    -0.24341899156570435,
+    -0.45948687195777893
+  ],
+  "R_robot_from_task": [
+    [
+      -0.998262713495253,
+      -0.058919901944031336,
+      -0.0
+    ],
+    [
+      -0.05891990194403133,
+      0.9982627134952531,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      -1.0
+    ]
+  ],
+  "task_axes_robot": {
+    "plus_x_backoff_axis_robot": [
+      -0.998262713495253,
+      -0.05891990194403133,
+      0.0
+    ],
+    "plus_y_jaw_axis_robot": [
+      -0.058919901944031336,
+      0.9982627134952531,
+      0.0
+    ],
+    "plus_z_palm_axis_robot": [
+      -0.0,
+      0.0,
+      -1.0
+    ],
+    "harvest_pull_axis_robot": [
+      -0.6873941772685165,
+      -0.7195343248721017,
+      -0.09879068978496093
+    ]
+  },
+  "grasp_orientation_quat_wxyz": [
+    0.514519169211418,
+    0.514519169211418,
+    -0.4850464148037713,
+    -0.4850464148037713
+  ],
+  "gripper_jaw_axis_robot": [
+    -0.058919901944031336,
+    0.9982627134952531,
+    0.0
+  ],
+  "gripper_backoff_axis_robot": [
+    -0.998262713495253,
+    -0.05891990194403133,
+    0.0
+  ],
+  "gripper_jaw_axis_local": "minus-x",
+  "gripper_backoff_axis_local": "plus-z",
+  "target_record": {
+    "target_index": 0,
+    "target_position_semantics": "egodelta_change_mask_seeded_current_view_tomato_center",
+    "estimated_grasp_width_m": 0.05711242705295555,
+    "estimated_grasp_depth_m": 0.03639251070093508,
+    "contact_points_robot_m": [
+      [
+        0.5822894185507936,
+        0.007956893678759548,
+        0.8922295250570689
+      ],
+      [
+        0.5789243599490478,
+        0.06497010008294266,
+        0.8922295250570689
+      ]
+    ],
+    "contact_midpoint_robot_m": [
+      0.5807359738202994,
+      0.03427645465496623,
+      0.8922295250570689
+    ],
+    "center_height_correction": {
+      "applied": true,
+      "method": "current_view_lateral_depth_with_egodelta_target_height",
+      "source_grasp_target_robot_m": [
+        0.5807359738202994,
+        0.03427645465496623,
+        0.877008566875537
+      ],
+      "corrected_grasp_target_robot_m": [
+        0.5807359738202994,
+        0.03427645465496623,
+        0.8922295250570689
+      ],
+      "original_height_m": 0.877008566875537,
+      "egodelta_target_height_m": 0.8922295250570689,
+      "egodelta_mask_center_height_m": 0.8828869130426313,
+      "corrected_height_m": 0.8922295250570689,
+      "height_delta_m": 0.015220958181531907,
+      "note": "Current-view red geometry is used to identify the live fruit instance, but the grasp center height comes from the selected EgoDelta 3D target so side contacts lie on the tomato midline."
+    },
+    "gripper_jaw_axis_robot": [
+      -0.058919901944031336,
+      0.9982627134952531,
+      0.0
+    ],
+    "gripper_backoff_axis_robot": [
+      -0.998262713495253,
+      -0.05891990194403133,
+      0.0
+    ],
+    "recommended_pregrasp_aperture_m": 0.08211242705295554,
+    "recommended_close_aperture_m": 0.05086242705295555,
+    "recommended_close_contact_margin_m": 0.00625,
+    "aperture_source": "mask_width_plus_hand_precontact_aperture_margin",
+    "contact_geometry_source": "egodelta_seeded_current_view_red_tomato_points",
+    "current_view_tomato_completion": {
+      "source": "egodelta_mask_seeded_current_view_red_tomato_component",
+      "center_pixel_uv": [
+        614.0,
+        645.0
+      ],
+      "centroid_pixel_uv": [
+        610.6943951306112,
+        649.0641643418717
+      ],
+      "seed_mask_bbox_xyxy": [
+        554,
+        587,
+        655,
+        679
+      ],
+      "search_roi_xyxy": [
+        478,
+        511,
+        731,
+        719
+      ],
+      "red_component_bbox_xyxy": [
+        578,
+        618,
+        653,
+        686
+      ],
+      "merged_red_component_bbox_xyxy": [
+        569,
+        599,
+        703,
+        719
+      ],
+      "split_mode": "hough_circle_selected_by_egodelta_seed",
+      "selected_circle_xy_r_px": [
+        614.0,
+        645.0,
+        46.0
+      ],
+      "red_component_area_px": 3943,
+      "red_component_seed_overlap_px": 3756,
+      "depth_points": 991,
+      "median_depth_m": 0.6220000386238098
+    }
+  },
+  "hand_contact": {
+    "hand": "left",
+    "timestamp_us": 189886841,
+    "pinch_aria_m": [
+      -0.2379010621520109,
+      -0.2832437789436756,
+      -0.4704403331779096
+    ],
+    "pinch_distance_to_target_m": 0.07110473345946877,
+    "pinch_distance_to_mask_surface_m": 0.008168703734362336,
+    "pinch_aperture_m": 0.0997270100073195,
+    "pre_contact_aperture_median_m": 0.10030017533027769,
+    "hand_clearance_margin_m": 0.025,
+    "approach_source": "aria_hand_pre_window_to_target_weak_hand_fallback_robot_front",
+    "jaw_axis_source": "aria_mps_thumb_index_pinch_axis_weak_hand_fallback_robot_front_horizontal",
+    "harvest_axis_source": "aria_hand_post_window_from_target",
+    "frame_mode": "weak_hand_fallback_robot_front_horizontal",
+    "pre_window_samples": 24,
+    "post_window_samples": 12
+  },
+  "quality": {
+    "selected_target_depth_error_m": 0.0040145262757917966,
+    "egodelta_target_to_grasp_target_m": 0.04881436676658918,
+    "center_height_correction": {
+      "applied": true,
+      "method": "current_view_lateral_depth_with_egodelta_target_height",
+      "source_grasp_target_robot_m": [
+        0.5807359738202994,
+        0.03427645465496623,
+        0.877008566875537
+      ],
+      "corrected_grasp_target_robot_m": [
+        0.5807359738202994,
+        0.03427645465496623,
+        0.8922295250570689
+      ],
+      "original_height_m": 0.877008566875537,
+      "egodelta_target_height_m": 0.8922295250570689,
+      "egodelta_mask_center_height_m": 0.8828869130426313,
+      "corrected_height_m": 0.8922295250570689,
+      "height_delta_m": 0.015220958181531907,
+      "note": "Current-view red geometry is used to identify the live fruit instance, but the grasp center height comes from the selected EgoDelta 3D target so side contacts lie on the tomato midline."
+    },
+    "jaw_vertical_abs_dot": 0.0,
+    "jaw_vertical_abs_dot_before_projection": 0.96157415933549,
+    "jaw_backoff_abs_dot": 3.723495907522667e-18,
+    "hand_target_distance_m": 0.07110473345946877,
+    "hand_surface_distance_m": 0.008168703734362336,
+    "strong_hand_target_distance_m": 0.06,
+    "strong_hand_surface_distance_m": 0.03,
+    "hand_frame_weak": true,
+    "hand_frame_mode": "weak_hand_fallback_robot_front_horizontal",
+    "estimated_grasp_width_m": 0.05711242705295555,
+    "estimated_grasp_depth_m": 0.03639251070093508,
+    "recommended_pregrasp_aperture_m": 0.08211242705295554,
+    "recommended_close_aperture_m": 0.05086242705295555,
+    "recommended_close_contact_margin_m": 0.00625,
+    "aperture_source": "mask_width_plus_hand_precontact_aperture_margin",
+    "contact_geometry_source": "egodelta_seeded_current_view_red_tomato_points",
+    "mask_points": 244,
+    "current_view_tomato_completion_ok": true,
+    "current_view_tomato_center_pixel_uv": [
+      614.0,
+      645.0
+    ],
+    "current_view_tomato_seed_overlap_px": 3756,
+    "warnings": [
+      "hand frame was weak for contact-grade retargeting; using robot-front horizontal side-grip frame"
+    ]
+  },
+  "no_replay_contract": {
+    "ok": true,
+    "stored_from_hand_demo": [
+      "pinch/contact axis",
+      "approach/backoff direction",
+      "harvest pull direction hint"
+    ],
+    "recorded_trajectory_samples_used_for_robot_motion": false,
+    "note": "The selected EgoDelta change-mask instance seeds the fruit identity; current-view tomato geometry can complete the visible fruit center and side contacts. The raw EgoDelta point is preserved as the projection/selection anchor; this file does not provide a robot joint trajectory."
+  }
+}

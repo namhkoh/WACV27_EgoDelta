@@ -1,0 +1,88 @@
+{
+  "schema": "egodelta_frozen_robot_pipeline_v1",
+  "created_at_utc": "2026-08-19T12:10:00Z",
+  "name": "tomato0_direct_phased_success_20260819",
+  "status": "operator_confirmed_physical_success",
+  "classification": {
+    "evaluation_type": "direct",
+    "controller_execution_mode": "deterministic_tail_only",
+    "policy_motion_executed": false,
+    "eligible_as_learned_policy_trial": false
+  },
+  "source": {
+    "branch": "redacted/WACV",
+    "controller_commit": "8a649cd",
+    "single_arm_safety_commit": "fbbd97e",
+    "gripper_live_target_commit": "2be86f7"
+  },
+  "target": {
+    "dataset_name": "a270c038",
+    "identity": "tomato0",
+    "source": "realsense-rgb",
+    "pixel_xy": [248, 408],
+    "depth_m": 0.6080000400543213,
+    "point_realsense_m": [-0.1135009194569109, 0.2564665598550768, 0.6080000400543213],
+    "point_robot_m": [0.5708606633100114, 0.11771404707221474, 0.89348110786835],
+    "valid_depth_count": 49,
+    "scene_specific": true,
+    "invalidates_when": [
+      "testbed geometry changes",
+      "tomato position changes",
+      "head or RealSense pose changes"
+    ]
+  },
+  "controller": {
+    "entrypoint": "robot/policy/guarded_bc_rollout.py",
+    "policy_dir": "robot/policy/trained_policies/harvest_bc_eef_trimmed_nojitter10hz_chunk30_seed11",
+    "selected_fixed_tail": "AT1T1",
+    "fixed_tail_start_after": "begin",
+    "waypoints": [
+      "approach",
+      "orient_soft_03",
+      "orient_soft_07",
+      "pre_grasp",
+      "grasp",
+      "harvest",
+      "retract",
+      "basket_place"
+    ],
+    "left_arm_only": true,
+    "grasp_retarget": true,
+    "grasp_extra_insertion_m": 0.02,
+    "grasp_height_offset_m": 0.0,
+    "waypoint_minimum_time_s": 4.0,
+    "velocity_limit_rad_s": 0.15,
+    "acceleration_limit_rad_s2": 0.08
+  },
+  "gripper": {
+    "url": "http://192.0.2.21:8765",
+    "target_source": "live_status",
+    "open_position": -4.50376665625,
+    "close_position": 4.570970527343751,
+    "grasp_contact_position": -2.36999982421875,
+    "schedule": ["pre_grasp_open", "grasp_close", "basket_release_open"]
+  },
+  "result": {
+    "success": true,
+    "operator_confirmation": "it worked",
+    "all_waypoints_finish_code_ok": true,
+    "basket_release_verified": true,
+    "execution_artifact": "paper_deliverables_20260819_robot_trials_additional20/robot_trials/replays/tomato0_phased_rgb248_408_height0_20260819.json",
+    "execution_artifact_sha256": "cf488d0ee734f26720964dc1ccabe39b63bca77a99810519f0619c332ca44bdf"
+  },
+  "capture": {
+    "jpg": "robot/kinematics/runs/081926/live_realsense_capture/a270c038_harvest_bc_target_20260819T120133Z.jpg",
+    "jpg_sha256": "03a996913f589427dab6ff0642986fdfce42a2b05be9e6d14ee6a8776da5013d",
+    "json": "robot/kinematics/runs/081926/live_realsense_capture/a270c038_harvest_bc_target_20260819T120133Z.json",
+    "json_sha256": "c208e5d9b448085ef5bd3e8b58763bbfe13e4ed738e9861cade32d938d8f2cfd",
+    "npz": "robot/kinematics/runs/081926/live_realsense_capture/a270c038_harvest_bc_target_20260819T120133Z.npz",
+    "npz_sha256": "215c8b45b23a42d85034c15bb351b1eda0c2218015fba507cfafcf0a5436f5b2"
+  },
+  "post_run_home": {
+    "restored": true,
+    "home": "robot/utils/homestate.json",
+    "checked_joint_count": 22,
+    "max_abs_delta_deg": 0.08789060671487475,
+    "left_gripper_openness": 0.00047501892206791585
+  }
+}

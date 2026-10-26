@@ -1,0 +1,23 @@
+{
+  "direct_execution_targets_with_socket_gt": "unavailable",
+  "direct_median_target_error_cm": "unavailable",
+  "direct_within_3cm_count": "unavailable",
+  "direct_within_3cm_denominator": "unavailable",
+  "direct_within_3cm_percent": "unavailable",
+  "manual_detector_targets_harvest": "unavailable",
+  "manual_detector_targets_deleaf": "unavailable",
+  "manual_detector_targets_overall": "unavailable",
+  "policy_evaluation_unique_scenes_harvest": "unavailable",
+  "policy_evaluation_unique_scenes_deleaf": "unavailable",
+  "policy_evaluation_unique_scenes_overall": "unavailable",
+  "policy_automatic_plan_rejections": "unavailable",
+  "policy_operator_pre_execution_rejections": "unavailable",
+  "policy_operator_or_safety_stops": "unavailable",
+  "failure_causes": "unresolved",
+  "training_demonstrations_harvest": 2,
+  "training_demonstrations_deleaf": 5,
+  "direct_additional_artifact_backed_successes_harvest": 20,
+  "direct_additional_artifact_backed_successes_deleaf": 20,
+  "learned_policy_completed_rows_harvest": 0,
+  "learned_policy_completed_rows_deleaf": 0
+}

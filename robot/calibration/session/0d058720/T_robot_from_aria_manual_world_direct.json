@@ -1,0 +1,93 @@
+{
+  "version": "0.1",
+  "method": "manual_correspondence_kabsch",
+  "mode": "world_direct",
+  "dataset": "0d058720",
+  "T_robot_from_aria": [
+    [
+      -0.9315724361285519,
+      -0.3622146897220529,
+      0.03119799344623004,
+      0.3333142942575008
+    ],
+    [
+      0.36221586924874266,
+      -0.9320761118664391,
+      -0.005812551274488732,
+      -0.0470064093133144
+    ],
+    [
+      0.031184295885779142,
+      0.005885595764044725,
+      0.999496322880985,
+      1.5820262071663915
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "n_correspondences": 4,
+  "fit_rms_m": 0.005332324789075291,
+  "aria_points_world_m": [
+    [
+      -0.271618,
+      -0.333224,
+      -0.598992
+    ],
+    [
+      -0.258121,
+      -0.355398,
+      -0.170965
+    ],
+    [
+      -0.435645,
+      0.062595,
+      -0.161011
+    ],
+    [
+      -0.385998,
+      0.06782,
+      -0.736907
+    ]
+  ],
+  "robot_points_m": [
+    [
+      0.6851724124408365,
+      0.16984697838955676,
+      0.9668474222257033
+    ],
+    [
+      0.7001571339361146,
+      0.19075039497506294,
+      1.406302047755707
+    ],
+    [
+      0.7090354272976797,
+      -0.26177805682773087,
+      1.4056094026312118
+    ],
+    [
+      0.647958847222194,
+      -0.24635094047368344,
+      0.8368837496304448
+    ]
+  ],
+  "inputs": {
+    "semidense": "C:\\path\\to\\user\\aria\\handtrack\\mps_0d058720-9302-4563-8764-3a30da628444_vrs\\slam\\semidense_points.csv.gz",
+    "realsense_npz": "data\\policy_training\\a270c038\\current_realsense\\realsense_scene_head_current.npz",
+    "realsense_extrinsic": "data\\policy_training\\a270c038\\current_realsense\\T_robot_from_realsense_head2_current.json"
+  },
+  "notes": [
+    "world_direct: T_robot_from_aria maps Aria SLAM world straight to robot; no anchor frame.",
+    "fit_rms_m is the correspondence residual; want < ~0.02 m for a good pick."
+  ],
+  "recovered_perm": [
+    2,
+    0,
+    1,
+    3
+  ]
+}

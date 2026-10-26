@@ -1,0 +1,14 @@
+{
+  "harvest": {
+    "completed_policy_rows": 0,
+    "unique_scene_count": "unavailable",
+    "scene_ids": []
+  },
+  "deleaf": {
+    "completed_policy_rows": 0,
+    "unique_scene_count": "unavailable",
+    "scene_ids": []
+  },
+  "overall_unique_scene_count": "unavailable",
+  "reason": "No completed learned-policy rows exist in the located evaluation ledger."
+}

@@ -1,0 +1,12 @@
+numpy
+scipy
+opencv-python
+open3d
+scikit-learn
+tqdm
+pydantic
+projectaria-tools
+matplotlib
+Pillow
+pyyaml
+

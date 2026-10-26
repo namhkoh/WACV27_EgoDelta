@@ -1,0 +1,81 @@
+quality:
+  max_inv_dist_std: 0.005
+  max_dist_std: 0.03
+  min_observations: 1
+  max_points: 2000000
+  statistical_outlier:
+    enabled: false
+    nb_neighbors: 20
+    std_ratio: 2.0
+roi:
+  crop_boxes: []
+  exclude_boxes: []
+registration:
+  assume_same_world_frame: true
+  refine_icp: false
+  voxel_size: 0.01
+  icp_max_correspondence_distance: 0.03
+  icp_max_iterations: 80
+  min_icp_fitness: 0.3
+  max_icp_rmse: 0.03
+nn:
+  threshold_m: 0.0183
+  auto_threshold: true
+  auto_threshold_k_mad: 3.89
+  stable_percentile: 92
+m3c2:
+  enabled: true
+  corepoint_stride: 1
+  max_corepoints: 300000
+  cyl_radius: 0.02
+  normal_radii:
+    - 0.02
+    - 0.04
+    - 0.08
+  max_distance: 0.15
+  threshold_m: 0.0181
+  use_lodetection: true
+  min_samples1: 3
+  min_samples2: 3
+scoring:
+  nn_weight: 0.458
+  m3c2_weight: 0.542
+  density_weight: 0.0
+  fusion: weighted_average
+  min_combined_score: 0.738
+density:
+  enabled: false
+  radius_m: 0.04
+  min_pre_neighbors: 3
+  min_drop_fraction: 0.35
+  min_drop_count: 2
+  max_post_neighbors: 2
+  min_expected_post_ratio: 0.25
+  candidate_threshold: 0.25
+dbscan:
+  eps_m: 0.04
+  min_samples: 4
+  min_cluster_points: 10
+  max_cluster_points: 200000
+task_priors:
+  harvest:
+    prefer_compact: true
+    min_diameter_m: 0.0253
+    max_diameter_m: 0.2293
+    min_points: 30
+    point_count_weight: 0.393
+    point_count_saturation: 260
+    max_targets: 5
+    min_target_score: 1.442
+    split_merged: true
+    split_trigger_diameter_m: 0.1197
+    split_max_parts: 2
+    split_min_points: 30
+    split_min_center_distance_m: 0.0787
+    split_min_silhouette: 0.276
+    split_max_subcluster_diameter_m: 0.111
+    max_scene_robust_distance: 3.36
+  deleaf:
+    prefer_elongated: true
+    min_length_m: 0.04
+task: harvest

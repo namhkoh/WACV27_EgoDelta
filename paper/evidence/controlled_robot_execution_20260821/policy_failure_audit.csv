@@ -1,0 +1,6 @@
+failure_index,task,trial_id,scene_id,observed_failure,likely_pipeline_stage,source_log,missing_data_reason
+harvest_1,harvest,unavailable,unavailable,unavailable,unresolved,unavailable,"The requested aggregate failure count is stated in the manuscript, but no authoritative 30-trial policy ledger maps this failure to a trial, scene, observation, or log."
+harvest_2,harvest,unavailable,unavailable,unavailable,unresolved,unavailable,"The requested aggregate failure count is stated in the manuscript, but no authoritative 30-trial policy ledger maps this failure to a trial, scene, observation, or log."
+deleaf_1,deleaf,unavailable,unavailable,unavailable,unresolved,unavailable,"The requested aggregate failure count is stated in the manuscript, but no authoritative 30-trial policy ledger maps this failure to a trial, scene, observation, or log."
+deleaf_2,deleaf,unavailable,unavailable,unavailable,unresolved,unavailable,"The requested aggregate failure count is stated in the manuscript, but no authoritative 30-trial policy ledger maps this failure to a trial, scene, observation, or log."
+deleaf_3,deleaf,unavailable,unavailable,unavailable,unresolved,unavailable,"The requested aggregate failure count is stated in the manuscript, but no authoritative 30-trial policy ledger maps this failure to a trial, scene, observation, or log."

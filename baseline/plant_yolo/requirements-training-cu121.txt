@@ -1,0 +1,9 @@
+# Stable PyTorch/TorchVision pair for YOLO training on CUDA 12.1-compatible NVIDIA drivers.
+# The RTX 3090 + NVIDIA 535 driver in this workspace can run CUDA 12.1 wheels.
+--extra-index-url https://download.pytorch.org/whl/cu121
+torch==2.5.1+cu121
+torchvision==0.20.1+cu121
+ultralytics>=8.3.0,<8.5.0
+pyyaml
+roboflow
+
