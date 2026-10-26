@@ -1,0 +1,314 @@
+# Progress
+
+## 2026-05-24
+
+- Captured canonical robot home state in `robot/utils/homestate.json`.
+- Added dry-run gated home restore utility in `robot/utils/restore_home_state.py`.
+- Added kinematics package under `robot/kinematics/`:
+  - `README.md` documents 3D-mask-to-robot-action retargeting, MPS hand-prior use, grasp-angle scoring, and run artifact policy.
+  - `types.py` defines typed IK, task-frame, hand-prior, and robot-state interfaces.
+  - `geometry.py` provides SE(3) checks and body-frame axis-angle orientation residuals.
+  - `rby1_model.py` wraps RB-Y1 SDK FK, calibrated TCP FK, joint limits, and finite-difference TCP Jacobians.
+  - `validation.py` validates TCP state and 6D finite-difference TCP Jacobian stability.
+  - `ik_solver.py` implements bounded least-squares single-waypoint TCP IK.
+  - `clearance.py` wraps RB-Y1 SDK nearest-link clearance queries for IK penalties and validation.
+  - `hand_prior.py` extracts MPS hand-motion priors from phase windows, frame timestamps, hand tracking, SLAM, and anchored Aria-to-robot calibration.
+  - `phase_alignment.py` aligns MPS hand timestamps to video/action frame windows from target-conditioned Aria-frame pinch proximity and writes dataset-prefixed artifacts.
+  - `task_frame.py` loads and validates harvest task-frame JSONs, including task axes, TCP/gripper local-axis consistency, aperture fields, and no-replay contract.
+  - `apps/solve_task_frames.py` runs no-motion single-waypoint IK smoke solves from validated task-frame JSONs, including configurable backoff-offset waypoints, and writes dated artifacts.
+  - `apps/plan_harvest_staged.py` runs no-motion staged harvest candidate IK planning.
+  - `planning/harvest_candidates.py` defines target-agnostic straight, elevated, lateral, combined, orientation-ramp, and TCP-roll harvest waypoint candidates.
+  - `run_outputs.py` standardizes dated solver artifact paths under `robot/kinematics/runs/MMDDYY/task/artifact.json`.
+- Patched kinematics review findings:
+  - IK solver now maps `max_iterations` to SciPy `max_nfev` using active joint count.
+  - Axis-angle conversion handles near-pi rotations without zero-sign ambiguity.
+  - EEF FK queries use explicit link ordering to avoid link-index fragility.
+  - 6D finite-difference TCP Jacobian validation now covers position and orientation residual rows.
+- Added `.gitignore` rule for generated `robot/kinematics/runs/` artifacts.
+- Added a soft self-clearance residual to `robot/kinematics/ik_solver.py` using nearest-link distances from `robot/kinematics/clearance.py`.
+- Added MPS hand-prior extraction in `robot/kinematics/hand_prior.py`; validated `tomato0` and `tomato1` phase windows into robot-frame approach, jaw, and pull axes.
+- Added target-frame adapter/validator in `robot/kinematics/task_frame.py`; validated the `tomato0` and `tomato1` harvest task-frame JSONs.
+- Added no-motion single-waypoint IK smoke solver in `robot/kinematics/apps/solve_task_frames.py`.
+- Ran single-waypoint IK smoke validation:
+  - `tomato0`: grasp pose solved with sub-millimeter pose error, but hard gate failed because minimum clearance was slightly below 3 cm.
+  - `tomato1`: grasp position solved within tolerance, but hard gate failed on orientation error in the default solve.
+- Ran independent 5/10/15 cm straight-backoff IK smoke sweep:
+  - Backoff waypoints reached low pose error, but all failed hard clearance gates due to torso/left-arm nearest-link penetration.
+  - Straight backoff should be treated as one candidate approach, not the default safe approach strategy.
+- Added staged harvest IK planner in `robot/kinematics/apps/plan_harvest_staged.py`:
+  - Chains `approach` with relaxed orientation, then `pre_grasp` and `grasp` with full TCP orientation.
+  - Records endpoint gates and dense joint-interpolation path-clearance gates in dated dataset-prefixed artifacts.
+  - Current `a270c038` diagnostic confirms relaxed approach improves clearance, but 5 cm full-pose pre-grasp still fails clearance and path gates.
+- Added target-agnostic harvest candidate generation in `robot/kinematics/planning/harvest_candidates.py` and reorganized executable IK tools under `robot/kinematics/apps/`.
+- Ran basic staged candidate planning:
+  - `tomato0`: best current candidate is elevated plus lateral pre-grasp, but still fails endpoint/path gates; best path minimum clearance is about 1.3 cm.
+  - `tomato1`: best current candidate is 8 cm elevated pre-grasp, but still fails endpoint/path gates; best path minimum clearance is about 1.8 cm.
+- Added asymmetric offset candidates and TCP roll candidates around the task backoff axis in `robot/kinematics/planning/harvest_candidates.py`:
+  - Asymmetric offset candidates validate approach-only, pre-grasp-only, and shared offset geometry.
+  - TCP roll candidates currently include 0 and 180 degrees to test gripper jaw-line symmetry without changing the approach/backoff direction.
+  - Offline candidate generation validates 40 candidates per target for the current basic set.
+- Updated default staged harvest candidates to include larger positive lateral offsets; the current no-motion default plan now passes `approach -> pre_grasp -> grasp` for both tomato targets.
+- Added optional harvest/retract tail waypoints in `robot/kinematics/planning/harvest_candidates.py`:
+  - Harvest pulls along the task-frame/MPS pull axis.
+  - Retract returns through the solved approach corridor instead of inventing a separate unsafe retract vector.
+  - `tomato1` now has a passing no-motion plan through `approach -> pre_grasp -> grasp -> harvest -> retract` in `a270c038_tomato1_tail_retract_to_approach_v1.json`.
+  - Basket-place remains blocked on an explicit calibrated basket TCP pose.
+- Added dry-run gated executor in `robot/kinematics/apps/execute_harvest_plan.py`; it loads only `hard_gate.ok=true` artifacts and can command arm waypoints plus calibrated left gripper open/close when `--execute` is explicitly passed.
+- Added executor preflight safety checks:
+  - Default waypoint duration is now 10 s for the first live run.
+  - `--execute` validates live torso, arm, and head joints against `robot/utils/homestate.json` before motion.
+  - `--check-home-only` validates the live home gate without commanding motion; current live check passes with max commanded-joint deviation 3.78 deg on `head_0`.
+- Ran the first live robot harvest-arm execution for `tomato1` using `a270c038_tomato1_tail_retract_to_approach_v1.json`:
+  - Executed `approach -> pre_grasp -> grasp -> harvest -> retract` with the left arm and calibrated gripper open/close actions.
+  - Executor preflight home check passed before motion.
+  - Robot body/head/arms were restored to `robot/utils/homestate.json` after the run.
+  - Post-restore home check passed with max commanded-joint deviation 0.97 deg on `head_0`.
+- Root-caused the first live grasp miss to executor gripper command semantics:
+  - `robot/kinematics/apps/execute_harvest_plan.py` now commands the calibrated full-open target `-8.0`, not the measured open-stop encoder value.
+  - Gripper open is now issued after arriving at `pre_grasp`, so the gripper expands near the aligned target instead of during the approach motion.
+  - The executor verifies the left gripper reaches the calibrated open side before grasp/contact motion and records open/close gripper observations in the execution summary.
+- Ran corrected live `tomato1` execution with aligned-open gripper sequencing:
+  - Preflight home check passed with max commanded-joint deviation 0.97 deg on `head_0`.
+  - The left gripper reset to the narrow side before the run, then opened after `pre_grasp` from encoder position 4.7446 to -3.8472.
+  - The gripper closed at `grasp` from -4.5007 to 4.2169, then the robot executed harvest and retract.
+  - Robot body/head/arms were restored to `robot/utils/homestate.json` after the run; post-restore home check passed with max commanded-joint deviation 0.97 deg on `head_0`.
+- Root-caused the corrected live run still not fully covering the tomato sides:
+  - The selected candidate `lateral_plus12cm_both_tcp_roll_180deg` carried a 12 cm jaw-axis offset into `pre_grasp`, so the gripper-open event was laterally displaced from the tomato even though the final grasp TCP target was centered.
+  - `robot/kinematics/apps/plan_harvest_staged.py` now evaluates an open-alignment gate from the task frame: the `pre_grasp` open waypoint must be centered in the target jaw/palm axes within a width-scaled tolerance.
+  - Lateral/elevated offsets remain available for approach routing, but candidates that keep those offsets at `pre_grasp` are rejected before live execution.
+  - No-motion replanning for `a270c038` now selects `elevated_05cm_lateral_plus12cm_approach_only_tcp_roll_180deg` for `tomato1`; the old `lateral_plus12cm_both_tcp_roll_180deg` candidate is rejected with `open_alignment_ok=false`.
+  - The same generalized gate leaves `tomato0` rejected because it still fails clearance/endpoint gates, not because of target-specific filtering.
+- Live-tested the regenerated open-aligned `tomato1` plan:
+  - The sequence executed and returned home, but the gripper was still too short in depth and did not cover the tomato sides.
+  - The failure was root-caused to the final `grasp` TCP stopping at `target_position_robot_m`, which matches the mask/contact target instead of the inserted fruit-center grasp anchor.
+- Added target-derived grasp-depth insertion candidates:
+  - Live validation of the first depth-sweep artifact improved alignment but remained shallow; the selected 9.279 mm insertion was still far below the target's 35.96 mm half-depth estimate.
+  - `robot/kinematics/planning/harvest_candidates.py` now derives nominal insertion from half the estimated grasp depth when available, falling back to the projection from `target_position_robot_m` to `fruit_center_robot_m` along `-backoff_axis`.
+  - The planner sweeps insertion factors around that nominal depth and records insertion diagnostics, grasp anchors, and surface/anchor backoff components in artifacts.
+  - `robot/kinematics/apps/plan_harvest_staged.py` now gates grasp depth and pre-grasp surface clearance in addition to endpoint, path-clearance, joint-delta, and open-alignment gates.
+  - Added `--stop-after` to `robot/kinematics/apps/execute_harvest_plan.py` so the next live validation can stop after the deeper `grasp` waypoint before harvest/retract.
+  - `tomato0` remains rejected by clearance/endpoint gates under the same generalized depth policy.
+- Added a downward detach component for harvest:
+  - `robot/kinematics/planning/harvest_candidates.py` now lowers the TCP during the `harvest` waypoint by configurable `harvest_down_m` before retracting, while preserving the task pull-axis component.
+  - `robot/kinematics/apps/plan_harvest_staged.py` exposes `--harvest-down-m` with a conservative 2.5 cm default.
+  - No-motion `tomato1` replanning passed all gates in `a270c038_tomato1_tomato1_down_detach_v1.json`; executor dry-run selects `approach -> pre_grasp -> grasp -> harvest -> retract`.
+- Added basket-place execution support:
+  - `robot/kinematics/apps/execute_harvest_plan.py` now releases the left gripper at `basket_place` when a validated artifact includes that waypoint.
+  - `robot/kinematics/apps/plan_harvest_staged.py` rejects basket poses unless tail waypoints are enabled, preventing a supplied basket pose from being silently ignored.
+- Added `robot/kinematics/utils/pick_basket_point.py` to pick the fixed basket location from the current Open3D point cloud and print a robot-frame basket argument when calibration metadata is available.
+  - Current selected basket anchor from the session-selected aligned cloud: `--basket-anchor-robot-m -0.155109,0.907240,0.388685`.
+- Generalized basket placement from a direct TCP target to an anchor-derived release pose:
+  - `robot/kinematics/utils/pick_basket_point.py` now prints `--basket-anchor-robot-m` because the clicked point is treated as a basket anchor, not the final TCP release target.
+  - `robot/kinematics/apps/plan_harvest_staged.py` now sweeps release poses above and inward from the anchor and uses a basket-specific relaxed orientation policy for `basket_place`.
+  - `robot/kinematics/planning/harvest_candidates.py` records `basket_release` as a separate waypoint orientation mode so tomato grasp/harvest orientation gates remain unchanged.
+  - No-motion `tomato1` basket replanning passed all hard gates in `a270c038_tomato1_tomato1_basket_anchor_sweep_v3.json`; best release pose is 16 cm above the selected anchor and 20 cm inward toward the robot, with 5.53 cm minimum path clearance.
+  - Executor dry-run on the passing artifact selects `approach -> pre_grasp -> grasp -> harvest -> retract -> basket_place` and will release the gripper at `basket_place`.
+- Added tomato0 full-sequence validation for the same basket anchor workflow:
+  - Increasing the clearance residual to `--clearance-weight 10.0 --clearance-margin-m 0.05` allowed the solver to find a hard-gated tomato0 plan without relaxing endpoint gates.
+  - No-motion `tomato0` basket replanning passed all hard gates in `a270c038_tomato0_tomato0_basket_anchor_sweep_v2.json`; best release pose is 16 cm above the selected anchor and 16 cm inward toward the robot, with 3.83 cm minimum path clearance.
+  - Executor dry-runs pass for both `a270c038_tomato0_tomato0_basket_anchor_sweep_v2.json` and `a270c038_tomato1_tomato1_basket_anchor_sweep_v3.json`.
+  - Fixed the planner path-clearance report schema so skipped failed-IK candidates carry `minimum_clearance_m: null` and can be ranked safely.
+- Root-caused the tomato0 live alignment regression from artifacts and live FK:
+  - Basket placement itself did not alter the tomato0 grasp prefix; `a270c038_tomato0_tomato0_clearance_weight_v1.json` and `a270c038_tomato0_tomato0_basket_anchor_sweep_v2.json` have identical prefix joint targets.
+  - The regression came from selecting a clearance-biased prefix branch with loose gripper-open gates: pre-grasp orientation error worsened to 0.1398 rad while still passing the old 0.15 rad generic orientation gate.
+  - Live TCP FK reached the planned failing red-blob TCP within microns, so the failure was planned contact geometry/branch selection, not robot execution drift.
+  - `robot/kinematics/apps/plan_harvest_staged.py` now freezes the selected grasp prefix before planning harvest/retract/basket tails and uses strict gripper-open gates: 2 mm position error and 0.05 rad orientation error.
+  - `robot/kinematics/planning/harvest_candidates.py` now generates task-frame tail retract candidates (`prefix_approach`, `backoff`, `lift_then_backoff`, `pull_reverse`) without changing the frozen prefix.
+  - `robot/kinematics/planning/harvest_candidates.py` now derives and sweeps pre-grasp backoff from task-frame grasp insertion plus target-surface clearance, with `--pregrasp-backoff-m` acting only as a lower bound.
+  - The same no-motion planner command now passes hard gates for both targets without per-target pre-grasp overrides:
+    - `a270c038_tomato0_frozen_tail_auto_pregrasp_clear25_v1.json`
+    - `a270c038_tomato1_frozen_tail_auto_pregrasp_clear25_v1.json`
+  - Executor dry-runs accept both passing artifacts and select `approach -> pre_grasp -> grasp -> harvest -> retract -> basket_place`.
+- Added non-target fruit obstacle avoidance to `robot/kinematics/apps/plan_harvest_staged.py` and `robot/kinematics/planning/harvest_candidates.py`:
+  - Other task-frame fruit instances are modeled as inflated robot-frame sphere obstacles and checked against endpoint TCPs plus dense joint-interpolated TCP paths.
+  - Scene-derived approach offsets are generated from target-to-obstacle geometry, not target names.
+  - Required-orientation waypoint retries are limited to orientation-only local-minimum failures; position or clearance failures are not retried.
+  - Old staged-plan JSONs were archived under `robot/kinematics/runs/052526/staged_harvest_ik_plan/archive_before_scene_obstacle_clearance_052526/`.
+  - Live testing showed this TCP-only scene obstacle check was insufficient for the open gripper and fixed testbed geometry.
+  - `robot/kinematics/apps/plan_harvest_staged.py` added a phase-aware open-gripper obstacle model at `pre_grasp`/`grasp`, gates grasp palm-axis alignment to the fruit center, disables reverse-pull tails by default, and adds a post-grasp TCP x safety envelope for the fixed testbed.
+  - No-motion replanning with the first spherical gripper envelope correctly rejected both full-tail artifacts instead of producing executor-ready plans:
+    - `a270c038_tomato0_gripper_envelope_palm_tail_guard_v1.json`
+    - `a270c038_tomato1_gripper_envelope_palm_tail_guard_v1.json`
+  - The spherical open-gripper envelope was replaced by a TCP-frame oriented gripper box with local x/y/z half-extents, so jaw width, palm thickness, and backoff depth are checked directionally instead of as a uniform radius.
+  - Prefix-only no-motion replanning now passes all hard gates and executor dry-runs for both current targets:
+    - `a270c038_tomato0_directional_gripper_box_prefix_v1.json`
+    - `a270c038_tomato1_directional_gripper_box_prefix_v1.json`
+  - Full basket-tail replanning with the directional gripper box remains blocked by tail self-clearance/path gates, not by non-target fruit clearance.
+- Added timestamp-based phase alignment in `robot/kinematics/phase_alignment.py`; contact anchors are detected from closest confident pinch-to-`target_aria_m` samples and current artifact names include the dataset prefix such as `a270c038`.
+
+## 2026-05-25
+
+- Investigated the persistent wrong/above-fruit live prefix behavior without adding planner heuristics:
+  - Stored projection overlays confirm `tomato0` maps to the upper/left fruit and `tomato1` maps to the lower fruit; there is no planner-side target-index swap.
+  - The selected Aria/RealSense/robot alignment reports centimeter-scale global depth error (`depth_median_abs_error_m` about 4.2 cm), so millimeter-scale non-target clearance gates are not physically reliable.
+  - Fresh live RealSense probes using `robot/kinematics/utils/capture_live_realsense.py --pixel-x/--pixel-y` measured the upper/left fruit near `[0.5936, 0.0404, 0.8915]` and lower fruit near `[0.6159, -0.0148, 0.8143]` in the current robot-frame calibration.
+  - Added `robot/kinematics/utils/report_live_tcp_pose.py` to print the calibrated live TCP pose and compare it against a selected plan waypoint after controlled stop-at-waypoint tests.
+  - Controlled live tomato0 `stop-after pre_grasp` validation reached the planned TCP within 0.78 mm position error and 0.0145 rad orientation error, then the robot was restored home. This rules out live joint execution drift for the observed high visual alignment at `pre_grasp`.
+- Added provisional left-gripper contact-frame calibration:
+  - With the arm held at tomato0 `pre_grasp`, the left gripper was opened and a live RealSense RGB-D frame was captured for contact-frame inspection.
+  - `robot/calibration/gripper/left_gripper_contact_frame_visual_estimate_20260525.json` records the current rough visual estimate `contact_offset_tcp_m = [0.0, -0.064671, 0.048196]`, meaning mask targets can be treated as desired gripper contact-center targets rather than modeled TCP-origin targets.
+  - `robot/kinematics/apps/plan_harvest_staged.py` now accepts `--contact-frame-json` and rejects mixing it with the raw diagnostic `--contact-offset-tcp-m` override.
+  - Read-only tomato0 replanning through the contact-frame JSON passes all hard gates in `a270c038_tomato0_tomato0_contact_frame_json_smoke_v1.json`; the same both-target run produced a passing tomato0 artifact `a270c038_tomato0_both_targets_contact_frame_json_smoke_v1.json` before timing out during tomato1 planning.
+  - Live tomato0 `stop-after pre_grasp` validation using `a270c038_tomato0_tomato0_contact_frame_json_smoke_v1.json` reached the selected contact-frame pre-grasp TCP within 0.0085 mm and 0.00066 rad, opened the left gripper successfully, and captured `a270c038_tomato0_contact_frame_pregrasp_live_check_v1` RealSense RGB-D artifacts for visual inspection.
+  - Refined the provisional left-gripper contact-frame height by 1.25 cm after visual inspection: `contact_offset_tcp_m = [0.0, -0.077171, 0.048196]`.
+  - Read-only tomato0 replanning with the refined contact frame passed all hard gates in `a270c038_tomato0_tomato0_contact_frame_height_plus125_v1.json`; live `stop-after pre_grasp` reached the selected TCP within 0.032 mm and 0.00056 rad, opened the left gripper successfully, and captured `a270c038_tomato0_contact_frame_height_plus125_pregrasp_live_check_v1` RealSense RGB-D artifacts.
+  - Increased the provisional left-gripper contact-frame height by another 1.0 cm after visual inspection: `contact_offset_tcp_m = [0.0, -0.087171, 0.048196]`.
+  - Live full tomato0 execution using `a270c038_tomato0_tomato0_contact_frame_height_plus225_full_e2e_v1.json` completed through `approach -> pre_grasp -> grasp -> harvest -> retract -> basket_place`, but the grasp was still too shallow to retain the tomato reliably.
+  - Replanned tomato0 with deeper mask-derived grasp insertion factors and `--min-grasp-insertion-fraction 1.0`; `a270c038_tomato0_tomato0_contact_frame_height_plus225_deeper_grasp_v1.json` passed all hard gates with `grasp_insertion_m = 0.018196`.
+  - Live `stop-after grasp` validation for the deeper plan reached the selected grasp TCP within 0.015 mm and 0.00138 rad, closed the left gripper, and captured `a270c038_tomato0_contact_frame_height_plus225_deeper_grasp_live_check_v1` RealSense RGB-D artifacts.
+  - Fixed the grasp-depth candidate generator so requested over-insertion factors are no longer silently clipped to the half-depth nominal. The default cap remains mask half-depth, while `--max-grasp-insertion-factor` allows bounded target-derived over-insertion when validated physically.
+  - Live tomato0 `stop-after grasp` validation using `a270c038_tomato0_tomato0_contact_frame_height_plus225_overinsert_v1.json` succeeded physically. The selected plan used `grasp_insertion_m = 0.027294` (1.5x nominal), reached the planned TCP within 0.023 mm and 0.00172 rad, and the gripper close encoder stopped at `-2.35`, consistent with a real tomato grasp.
+  - Added executor resume support in `robot/kinematics/apps/execute_harvest_plan.py`: `--start-after <waypoint>` validates the live joint state against the named artifact waypoint before continuing with later waypoints.
+  - Live tomato0 continuation using `a270c038_tomato0_tomato0_contact_frame_height_plus225_overinsert_full_e2e_v1.json --start-after grasp` passed the resume check, executed `harvest -> retract -> basket_place`, and released the gripper at the basket.
+  - Tomato1 was not executed under the new policy because no no-motion artifact passed hard gates. The failed artifacts show the blocker is full-pose orientation feasibility at `pre_grasp`/`grasp`, not grasp depth, palm alignment, scene clearance, or joint-delta gates.
+  - Hardened the bounded over-insertion implementation for publishability: the insertion cap now applies even when future task frames lack `estimated_grasp_depth_m`, and artifacts record `max_grasp_insertion_factor` in the grasp-depth policy summary.
+  - Ran a no-motion tomato1 control check with the same target-derived over-insertion policy but zero contact offset. The artifact `a270c038_tomato1_tomato1_zero_contact_offset_overinsert_check_v1.json` passed all hard gates, with `pre_grasp` orientation error 0.00378 rad and `grasp` orientation error 0.01217 rad. This confirms the provisional tomato0-derived contact-frame offset is the causal change that makes tomato1 kinematically infeasible.
+
+## 2026-05-26
+
+- Added `robot/kinematics/utils/realsense_click_move_arm.py` as a calibration-verification utility:
+  - Captures live Intel RealSense RGB-D, supports Open3D point-cloud picking or RGB pixel picking, transforms the selected point through `T_robot_from_realsense`, and solves a conservative left-arm stand-off IK pose toward the clicked robot-frame point.
+  - Motion is dry-run by default and requires `--execute`; execution checks home state, workspace bounds, endpoint self-clearance, dense path self-clearance, joint-delta limits, and IK position tolerance before commanding the left arm.
+  - Dry-run pixel probe `a270c038_dryrun_pixel_probe_330_431_with_path_gates_v1` passed: selected point `[0.6062, -0.0111, 0.8167]` m, capped 12 cm target step, 1.7 um IK position error, 7.94 cm minimum path clearance, and 6.03 deg max joint delta.
+  - Added `contact_pregrasp` target mode: clicked robot-frame points can be treated as desired gripper contact points, with configurable stand-off and optional TCP-frame contact offset from `--contact-offset-tcp-m` or `--contact-frame-json`.
+  - Added `robot/kinematics/utils/pick_realsense_capture_point.py` for `surfel_splatting` Open3D point picking from saved RealSense capture NPZ files; it prints a `--selected-point-robot-m` argument for the robot-side calibration utility.
+  - Dry-run selected-point contact-pregrasp probe `a270c038_contact_pregrasp_selected_point_full_dryrun_v1` passed with zero contact offset: selected point `[0.6060, -0.0110, 0.8170]` m, 8 cm contact-center stand-off, 8.9 um IK position error, 7.91 cm minimum path clearance, and 26.1 deg max joint delta.
+- Added automatic mask-conditioned live-depth target validation:
+  - `robot/kinematics/apps/validate_live_target_identity.py` captures a home-view RealSense RGB-D frame, projects each EgoDelta tomato mask instance into that live image, intersects the projected instance mask with live red/depth evidence, and outputs per-target live robot-frame target points from current RealSense depth.
+  - The validator is not a manual relabeling path: it uses EgoDelta mask instances for target identity and RealSense depth for current localization, rejecting stale/ambiguous matches through overlap, depth, pixel, and 3D residual gates.
+  - Home-view validation `a270c038_home_view_mask_conditioned_v2.json` passed for both current targets even though the live red detector merged the touching tomatoes into one connected component; projected EgoDelta instances split the shared component into separate live-depth targets.
+  - `robot/kinematics/apps/plan_harvest_staged.py` now accepts `--identity-validation-json` and consumes the validator's per-target live-depth `surface_target_robot_m` instead of stale task-frame 3D target coordinates.
+  - A bounded tomato0 planner smoke run confirmed the live-depth target from validation was written into `surface_target_override_robot_m`; that one-candidate smoke artifact was rejected by pre-grasp self-clearance, not by target identity.
+- Added task-axis and teleop-prior grasp planning for reach-limited tomato1:
+  - `robot/kinematics/ik_solver.py` now supports task-axis IK, optimizing TCP position plus gripper jaw/backoff axes instead of over-constraining round-fruit grasps with a full quaternion.
+  - `robot/kinematics/apps/plan_harvest_staged.py` records task-axis solver mode per waypoint and can consume a teleop capture as a final-grasp joint prior through `--grasp-prior-capture-json` and `--grasp-prior-weight`.
+  - `robot/kinematics/utils/capture_teleop_tcp_trajectory.py` captured a stable tomato1 demonstrated grasp prior in `a270c038_tomato1_teleop_better_grasp_urdf_offset_v1.json`.
+  - Live tomato1 `stop-after grasp` succeeded using `a270c038_tomato1_tomato1_task_axis_ik_teleop_prior_overinsert_v1.json`; the selected plan used the URDF jaw-center toolfit, task-axis grasp gate, teleop prior weight `0.2`, and bounded target-derived insertion `44.95 mm`.
+- Hardened staged planning around solved-contact facts:
+  - `robot/kinematics/apps/plan_harvest_staged.py` now computes final grasp quality from the solved contact point, not only the requested target insertion. This rejects shallow grasps that satisfy loose task-axis pose gates but do not physically insert far enough around the tomato.
+  - Added explicit-seed retry handling so a teleop grasp prior cannot block the chained pre-grasp seed from being evaluated when the prior lands in a poor local basin.
+  - Added early candidate termination and top-K prefix expansion for full-tail planning. A narrow tomato1 diagnostic now exits in seconds instead of timing out, while preserving strict hard gates.
+  - Fresh tomato1 diagnostics after tomato0 removal still fail the actual-insertion gate: the best fixed-torso solve reaches about `7.1 mm` actual insertion against a required `27.0 mm`, so it is not safe to execute.
+- Validated the simplified single-target harvest workflow live:
+  - The setup now harvests one tomato at a time, using home-view live target validation before planning rather than solving a multi-fruit sequence against stale scene state.
+  - Tomato1 live identity validation passed in `robot/kinematics/runs/052626/target_identity_validation/a270c038_tomato1_single_target_validation_v1.json`; the live RealSense target was `[0.604762, -0.019210, 0.800209]` m in robot frame.
+  - Prefix-only tomato1 live grasp succeeded with `robot/kinematics/runs/052626/staged_harvest_ik_plan/a270c038_tomato1_tomato1_single_target_reachable_grasp_prefix_v1.json`.
+  - Full-tail tomato1 planning passed hard gates in `robot/kinematics/runs/052626/staged_harvest_ik_plan/a270c038_tomato1_tomato1_single_target_full_tail_from_current_grasp_v1.json`.
+  - Live tomato1 execution from home completed `approach -> pre_grasp -> grasp -> harvest -> retract -> basket_place`; the gripper released at `basket_place`, and the physical harvest was confirmed successful.
+  - Together with the earlier successful tomato0 harvest, this validates the current single-target tomato harvest path end-to-end. The next task milestone is deleafing, reusing the same live target validation and task-axis action-planning discipline.
+
+## 2026-05-27
+
+- Added the first replay-free right-arm deleafing pipeline for the CoRL 2026 submission:
+  - `robot/kinematics/apps/deleaf_click_cut.py` now captures or accepts a RealSense-selected 3D cut point, loads MPS phase guidance, plans fresh right-arm IK waypoints, and writes full candidate/waypoint diagnostics.
+  - `robot/kinematics/configs/deleaf_right_knife_default.json` freezes the current evaluation defaults so live trials use one fixed method configuration instead of per-point tuning.
+  - The default deleafing policy is now `mps_template`: MPS provides the phase/action frame, teleop demonstrations provide scalar template/orientation priors only, and no teleop joint replay is used.
+  - Added calibrated right-knife edge support through the toolfit JSON so IK reasons about the cutting edge frame rather than only the wrist/TCP origin.
+  - Added safe transit and return-transit waypoints so the arm lifts above the tomato workspace before entry and before returning home, reducing stem/leaf drag.
+  - Added RealSense point-cloud candidate selection for entry-side/contact-advance geometry, plus planner logs for selected candidates, point-cloud clearance, target extension, and self-clearance.
+  - Added a downward-constrained MPS stroke policy: the raw MPS cut direction is logged, but the executed cut stroke is clamped near vertical for the physical deleafing action.
+  - Offline dry-runs with the fixed config pass through `return_transit` on the known `deleafing_01` clicked point, with the working `target_extension_m = 0.07` encoded as a method parameter.
+- Current deleafing command shape:
+  - `python robot\kinematics\apps\deleaf_click_cut.py --deleaf-config robot\kinematics\configs\deleaf_right_knife_default.json --action-name deleafing_01 --execute`
+  - After `return_transit`, restore home with `python robot\utils\restore_home_state.py --scope arms --minimum-time 8 --timeout-s 20 --execute`.
+- CoRL framing for deleafing:
+  - The method is a planner, not a replay controller: clicked or future EgoDelta/RealSense cut points instantiate a fixed MPS-guided action template in the current point cloud.
+  - Remaining publishability work is to replace manual clicked cut points with an automatic EgoDelta/RealSense cut-point proposal, add swept blade/wrist/forearm collision checking, and validate one fixed config across many unseen gutter leaves.
+
+## 2026-05-28
+
+- Added the policy-collection package under `robot/policy/`:
+  - `collect_policy_episode.py` is the CLI entry point for dataset initialization, atomic action instances, live replay/recording, and harvest solve registration.
+  - `episode_manager.py` manages symbolic gutter labels, RealSense pre-scene captures, clicked robot-frame goals, action artifacts, execution artifacts, TCP trajectory logging, fixed harvest-plan reuse, and policy-library promotion.
+  - `capture_robot_tcp_trajectory.py` records synchronized robot TCP trajectories during live actions.
+  - `replay_arm_joint_trajectory.py` supports controlled replay of recorded left-arm trajectories when needed.
+  - `organize_policy_library.py` normalizes the curated action library and writes training indexes.
+- Pivoted policy data collection from full episode capture to an atomic action library:
+  - Current confirmed deleaf actions are `AD1`, `BD1`, `BD2`, `BD3`, and `BD4`.
+  - Current confirmed harvest actions are `AT1T1` and `AT1T2`; `AT1T3` has been removed from the active setup.
+  - Each confirmed action is stored under `robot/policy/policy_action_library/<LABEL>/success_current/`.
+- Added robust side-aware deleaf collection support:
+  - The right-arm deleaf wrapper now supports `retract_lift`, safe-entry side axes, side-facing action priors, side-perpendicular orientation, and `--deleaf-contact-advance-mode target` through the policy runner.
+  - BD4 was finalized with target-mode contact advance and `target_extension_m = 0.085`, after confirming that entry-only advance did not move the physical cut target.
+  - Deleaf success artifacts retain the full planner candidate summaries and selected candidate diagnostics; `organize_policy_library.py` now exports them into per-action `candidate_summaries/` folders.
+- Registered current successful harvest solves:
+  - `AT1T1` was re-solved after the tomato moved closer and registered as `robot/policy/harvest_solve_library/AT1T1/a270c038_AT1T1_success_current.json`.
+  - `AT1T2` was solved and registered as `robot/policy/harvest_solve_library/AT1T2/a270c038_AT1T2_success_current.json`.
+  - Both successful harvest actions were replayed through the policy wrapper so the policy action library contains the live clicked goal, selected full-tail plan, execution JSON, and TCP trajectory.
+  - The top five solver-passing harvest alternatives are stored beside each confirmed harvest action under `candidate_solves/`, with `top_solved_candidates.json`.
+- Organized the policy library for training:
+  - `robot/policy/policy_action_library/library_manifest.json` records seven confirmed actions.
+  - `training_index.json`, `episodes_index.jsonl`, `actions_index.jsonl`, `artifact_integrity.json`, and `training_splits.json` now summarize the curated library.
+  - The latest integrity report checks 63 referenced artifacts with `missing_count = 0`.
+- Added the first two-policy action-chunk training baseline:
+  - `robot/policy/train_action_chunk_policy.py` trains separate behavior-cloning policies for deleafing and harvesting from `success_current` only.
+  - `robot/policy/predict_action_chunk_policy.py` emits one BC action chunk from a trained policy artifact.
+  - Inputs are `goal_robot_m`, `goal_robot_m - tcp_position_robot_m`, current `q_arm_rad`, finite-difference `dq_arm_rad_s`, and current TCP position.
+  - Outputs are 10-step chunks of 7-DoF arm joint deltas at 5 Hz, giving a 2 s horizon.
+  - Current artifacts are written to `robot/policy/trained_policies/deleaf/` and `robot/policy/trained_policies/harvest/`.
+  - The primary policy is a supervised MLP BC model (`23 -> 128 -> 128 -> 70`) trained with Adam on normalized action chunks; nearest-neighbor and ridge outputs are retained only as diagnostics/fallbacks.
+  - Deleaf uses 5 demos and 1328 chunks; harvest uses 2 demos and 771 chunks.
+  - BC leave-one-label-out first-step errors are currently about 0.2-0.5 deg for deleafing and about 0.1 deg for harvesting; the policy should be treated as a trajectory proposer with safety gates, not as an unrestricted controller.
+- Retrained the policy artifacts with idle-prefix trimming:
+  - The trajectory logger starts before point selection/planning, so deleaf demonstrations contained 15-27 s of near-home waiting. This made the BC rollout execute tiny near-zero prefixes that looked like no motion.
+  - `robot/policy/train_action_chunk_policy.py` now trims each demonstration by default to 1 s before the first `0.01 rad` displacement from the initial arm state.
+  - The retrained deleaf policy now uses 849 action chunks instead of 1328 idle-dominated chunks; harvest remains effectively unchanged at 760 chunks because its movement starts near the beginning.
+- Added the first guarded receding-horizon BC rollout wrapper:
+  - `robot/policy/guarded_bc_rollout.py` loads a trained BC policy, reads the live arm state, predicts a 10-step action chunk, and computes safety limits from consecutive predicted joint states rather than raw cumulative output rows.
+  - The rollout wrapper now accepts either an explicit `--goal-robot-m` or a live RealSense target selected through `--target-source realsense-open3d` / `--target-source realsense-rgb`, with the selected robot-frame point recorded in the rollout log.
+  - The default execution policy guards and executes only the first three 5 Hz steps, then expects the caller to re-read live state and re-predict; `--guard-horizon-steps 10` is available for stricter full open-loop chunk checks.
+  - `--full-action` now keeps the 3-step receding-horizon prefix and repeats guarded prefixes from the same selected target for a full action budget. Defaults are 30 deleafing prefixes and 60 harvest prefixes, stopping early on guard or command failure while preserving the partial execution log.
+  - Blocking guards cover per-step joint delta, joint limits, TCP workspace, interpolated robot self-clearance, and target-distance progress. The default step cap is `0.02 rad` per 0.2 s step.
+  - The tool is dry-run by default and writes rollout JSON logs under `robot/policy/rollout_logs/<primitive>/`; `--execute` is rejected when FK guards are skipped.
+  - Offline smoke checks passed for the current deleaf and harvest policy artifacts with `--skip-fk-guards`; live no-motion FK/self-clearance checks are the next hardware preflight before any BC motion.
+- Added explicit GCSL-style goal conditioning:
+  - `train_action_chunk_policy.py --gcsl` now trains from the curated GT clicked 3D target (`goal.point_robot_m`) plus current robot state and horizon-to-goal features.
+  - `predict_action_chunk_policy.py` and `guarded_bc_rollout.py` read the trained policy metadata and provide the required horizon features at inference/receding-horizon rollout time.
+  - A CUDA smoke train wrote `D:\tmp\egodelta_gcsl_smoke` with `recommended_runtime_mode = gcsl_mlp`; metadata confirms `gcsl_horizon_s`, `gcsl_horizon_fraction`, and `gcsl_elapsed_fraction` are part of the input.
+- Fixed GCSL full-action rollout timing:
+  - Deleaf demos are about 36 s after idle trimming, matching the 36 s action chunk horizon.
+  - Harvest demos are much longer (`AT1T1` about 88 s, `AT1T2` about 67 s), so starting rollout with a 36 s GCSL horizon made harvest look like a late-stage basket/drop motion.
+  - `guarded_bc_rollout.py` now selects the nearest training demo by GT goal point and uses that demo duration for GCSL horizon features and automatic full-action iteration count.
+  - Default rollout is now faster/smoother: 5-step receding prefixes, `0.10 s` minimum time, no artificial inter-step sleep, and auto-sized full-action budget with a small duration margin.
+- Hardened GCSL goal conditioning after the first harvest rollout failure:
+  - The two harvest goals are only millimeters apart, which made the learned `goal_robot_m.x/z` input std nearly zero. A normal 1 mm RealSense click perturbation was therefore amplified into an out-of-distribution normalized feature.
+  - `train_action_chunk_policy.py` now supports goal jitter augmentation and a minimum normalizer std floor for `goal_robot_m.*` and `goal_minus_tcp_robot_m.*`.
+  - `guarded_bc_rollout.py` now has an opt-in `--snap-goal-to-nearest-demo` mode for fixed tomato replay, so a clicked point within a configured threshold can be replaced by the stored confirmed demo goal before policy inference.
+  - Harvest candidate-solve archives can now be included as opt-in synthetic auxiliary waypoint demonstrations via `--include-harvest-candidate-solves`; these remain separate from visually confirmed hardware successes.
+- Added explicit side-conditioned deleaf policy features:
+  - `train_action_chunk_policy.py --include-deleaf-side-features` appends left-facing/right-facing one-hot values and a facing sign to each deleaf training row.
+  - `predict_action_chunk_policy.py` and `guarded_bc_rollout.py` now accept `--deleaf-label` or `--deleaf-facing` for side-conditioned policies.
+  - A smoke train with `AD1`, `BD1`, `BD2`, `BD3`, and `BD4` confirmed the policy metadata includes `deleaf_left_facing`, `deleaf_right_facing`, and `deleaf_facing_sign`.
+
+## 2026-05-29
+
+- Added the EEF-space (end-effector) action-chunk pipeline (phase B): the learned policy outputs TCP poses and our own IK converts them to joints, instead of a black-box controller.
+  - `robot/policy/train_action_chunk_policy.py` gained `--action-space {joint,eef}`; EEF policies output absolute future TCP poses as `[position, axis-angle (rad)]` in the robot frame.
+  - `robot/kinematics/geometry.py` added `rotation_from_axis_angle` (Rodrigues exp map), the exact inverse of `axis_angle_from_rotation` (round-trip error ~1e-13 deg).
+  - `robot/policy/eef_action_utils.py` decodes an EEF pose chunk to a 7-DoF joint chunk via per-step warm-seeded `robot/kinematics/ik_solver.py:solve_tcp_pose_ik`, with per-step tolerance reporting.
+  - `robot/policy/eval_policy_on_training_data.py` reports EEF position/orientation RMSE (and joint RMSE) on exact training rows.
+  - Trained EEF policies `harvest_bc_eef_trimmed_nojitter10hz_chunk30_seed11` (~1.6 mm / 0.73 deg open-loop) and `deleaf_bc_eef_trimon_jitter10hz_chunk50_seed11` (0.48-0.60 mm / 0.12-0.14 deg across `AD1/BD1/BD2/BD3/BD4`).
+- Hardened the EEF rollout path in `robot/policy/guarded_bc_rollout.py`:
+  - `predict_chunk` returns the IK decode summary and the predicted EEF chunk; a new `eef_ik_guard` halts before motion when any decoded step exceeds `--eef-ik-max-position-error-m` (default 0.03) or IK fails, and the predicted EEF chunk is logged per iteration for layer-by-layer diagnosis.
+  - Confirmed the executor is pure receding horizon (no temporal ensembling) and that `--execute-prefix-mode all_steps --minimum-time-s 0.10` reproduces the 10 Hz demo cadence; `--steps-to-execute` must equal the full chunk to avoid back-loaded-chunk crawl.
+  - `--snap-goal-to-nearest-demo` is now enabled by default for the memorized single-target policies.
+- Diagnosed the harvest grasp failures as execution-side, not the learned model: the overfit eval reproduces training actions to ~0.008 deg first-step, frames/axis-angle/normalization verified consistent, and the live misses came from endpoint over-speed drift, a gripper close threshold that must match the ~7.3 cm jaw/tool offset, and the no-phase policy replaying past grasp into out-of-distribution retract.
+- Added Route A, a phase-aware hybrid that reuses the deterministic staged solve for the contact-critical phases:
+  - `--harvest-policy-handoff-distance-m` stops the learned approach and hands off to the deterministic plan; `--harvest-stop-policy-on-grasp` and `--harvest-fixed-basket-tail-start-after {begin,approach,pre_grasp,...}` let the staged solve own `pre_grasp -> grasp -> harvest -> retract -> basket`, or all six phases (including `approach`) from `begin`.
+  - The fixed tail now performs the full gripper sequence itself (`pre_grasp_open -> grasp_close -> basket_release_open`).
+  - `--harvest-grasp-retarget` shifts the deterministic grasp/pre_grasp/harvest/retract waypoints to the live clicked fruit and re-solves IK; `--harvest-grasp-extra-insertion-m` and `--harvest-grasp-height-offset-m` correct shallow/low grasps. A per-step IK-tolerance fallback prevents commanding unreachable poses.
+- Added SDK-enforced gentle motion: `robot/kinematics/utils/realsense_click_move_arm.py:command_arm` now accepts optional per-joint `velocity_limit_rad_s` / `acceleration_limit_rad_s2` (`set_velocity_limit` / `set_acceleration_limit`), exposed as `--harvest-tail-velocity-limit-rad-s` / `--harvest-tail-acceleration-limit-rad-s2`, so the deterministic approach speed/acceleration is bounded regardless of move size.
+- Live result: the EgoDelta-targeted, retargeted deterministic harvest (with the learned EEF approach available as a hybrid via the handoff) grasps and baskets tomatoes reliably with a smooth, gentle approach that does not knock neighboring fruit. The full design, phase ownership, and tuning recipe are documented in `experiment_notes.md`.
+- Honest framing for the paper: in the fully-deterministic `begin` mode, harvest is model-based (EgoDelta target -> retargeted staged IK solve), not learned; the learned EEF policy drives the approach only in the hybrid handoff mode. `experiment_notes.md` records the learned-vs-deterministic split and the options (push the handoff closer, or retrain a phase-aware policy) to strengthen the learned claim.
+
+## Current Status
+
+- Live single-target harvests for the active tomato labels `AT1T1` and `AT1T2` have both succeeded end-to-end and are registered as reusable policy actions.
+- The active policy action library contains seven visually confirmed actions: `AD1`, `BD1`, `BD2`, `BD3`, `BD4`, `AT1T1`, and `AT1T2`.
+- The curated library is indexed under `robot/policy/policy_action_library/`, and the first separate deleafing/harvesting action-chunk policy artifacts have been generated under `robot/policy/trained_policies/`.
+- A guarded receding-horizon BC/GCSL rollout wrapper is available at `robot/policy/guarded_bc_rollout.py`; it should be used only after a live no-motion guard pass, with deterministic replay/planner fallback retained for failed guards.
+- The current generalizable localization path is mask-conditioned live depth: EgoDelta mask instance -> projected live RealSense pixels -> current RealSense depth -> `T_robot_from_realsense` -> robot-frame target -> IK. This replaces stale Aria-frame 3D target localization for execution preflight.
+- Read-only and dry-run checks pass for calibrated left TCP FK, 6D finite-difference Jacobian stability, nearest-link clearance at home, small TCP-offset IK solve, staged plan loading, and executor dry-run validation.
+- Target-frame single-waypoint solves run end-to-end and correctly reject plans that fail clearance or pose gates.
+- Timestamp-based phase alignment runs end-to-end from target-conditioned Aria-frame hand proximity.
+- Current implementation target: train on the curated atomic actions, generate symbolic permutations for evaluation, and replace manual clicked cut points with EgoDelta/RealSense cut-point proposals.

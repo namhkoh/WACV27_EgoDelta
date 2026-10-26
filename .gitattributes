@@ -1,0 +1,2 @@
+# Checkpoints are ordinary files in this source export.
+*.patch -whitespace

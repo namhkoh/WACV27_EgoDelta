@@ -1,0 +1,19 @@
+{
+  "deleafing_field": "retained contact mass rho",
+  "failure_cases": {
+    "deleafing": 8,
+    "harvesting": 3
+  },
+  "gt_use": "case selection and overlay only; never prediction",
+  "harvesting_field": "visualization-only delta-weighted local removed density: delta_i times the number of component neighbors within sigma",
+  "matched_cases_per_task": 5,
+  "matched_quantiles": [
+    0.0,
+    0.25,
+    0.5,
+    0.75,
+    1.0
+  ],
+  "projection": "world X-Z",
+  "scope": "visualization-only replay of frozen final predictions"
+}

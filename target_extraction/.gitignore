@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.agents/
+.codex/
+.omc/
+outputs/
+outputs_ready_full/
+outputs_scoring_ablation*/
+experiment_logs/
+stage2_cache*/
+contact_mass_runs/
+final_runs/

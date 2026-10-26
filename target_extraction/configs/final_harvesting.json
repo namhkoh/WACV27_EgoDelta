@@ -1,0 +1,10 @@
+{
+  "delta_threshold": 0.5,
+  "dbscan_eps_m": 0.02,
+  "dbscan_min_samples": 20,
+  "component_mean_delta_min": 0.9008104936197888,
+  "component_size_min": 205,
+  "mode_min_cluster_size": 120,
+  "sigma_multiplier": 2.0,
+  "density_tukey_iqr_multiplier": 1.5
+}

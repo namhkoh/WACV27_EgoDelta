@@ -1,0 +1,128 @@
+drift:
+  geometric_quantile: 0.75
+  photometric_quantile: 0.5
+  confidence_quantile: 0.25
+
+kernel:
+  eta: 3.0
+  max_neighbors: 64
+  query_chunk_size: 4096
+  enforce_unnormalized: true
+  matrix_jitter: 1.0e-8
+
+ablation:
+  scoring_mode: full
+  use_confidence_weight: true
+  use_view_overlap_filter: true
+  matching_mode: adaptive_covariance
+  fixed_radius_m: 0.03
+
+frustum:
+  near: 0.01
+  far: 100.0
+
+change:
+  binary_threshold: 0.5
+
+gt:
+  enabled: true
+  path: gt.md
+  min_score: 0.5
+  tolerance_m: 0.03
+
+proposal:
+  enabled: true
+  mode: contact
+  eval_gate_m: 0.03
+  contact:
+    removed_score_min: 0.5
+    component_eps_m: 0.03
+    component_min_points: 8
+    support_dilation_m: 0.03
+    min_support_points: 8
+    dedup_radius_m: 0.025
+    max_proposals_per_scene: 64
+    primary_leaf_score_min: 1.26
+    primary_leaf_min_support_count: 80
+    primary_leaf_min_axis_length_m: 0.12
+    primary_leaf_min_contact_count: 24
+    primary_leaf_min_contact_green_strength: 0.18
+    primary_leaf_require_cluster: true
+    primary_tomato_score_min: 0.0
+    primary_tomato_max_count: 2
+    static_green_ratio_min: 0.30
+    static_green_minus_red_min: -0.05
+    leaf_require_clustered_component: true
+    leaf_min_component_clustered_ratio: 0.8
+    leaf_endpoint_fraction: 0.15
+    leaf_min_axis_length_m: 0.015
+    leaf_max_stem_distance_m: 0.08
+    leaf_contact_radius_m: 0.03
+    leaf_min_contact_points: 8
+    leaf_min_contact_green_strength: 0.02
+    leaf_core_snap_max_static_distance_m: 0.015
+    leaf_static_joint_max_distance_m: 0.015
+    leaf_static_joint_min_mean_score: 0.80
+    leaf_endpoint_contact_count_weight: 0.020
+    leaf_endpoint_green_strength_weight: 0.45
+    leaf_endpoint_distance_weight: 2.0
+    leaf_support_overlap_dedup_min: 0.80
+    leaf_support_cluster_dedup_min: 0.80
+    leaf_support_cluster_dedup_max_support_ratio: 0.75
+    tomato_fruit_green_minus_red_max: 0.0352147
+    tomato_fruit_green_ratio_max: 0.336774
+    tomato_green_ratio_min: 0.35
+    tomato_green_minus_red_min: 0.02
+    tomato_lobe_eps_m: 0.045
+    tomato_lobe_min_points: 8
+    tomato_contact_radius_m: 0.06
+    tomato_max_static_stem_distance_m: 0.10
+    tomato_require_cluster: true
+    tomato_peak_seed_score_min: 0.5
+    tomato_peak_score_min: 0.9
+    tomato_peak_nms_radius_m: 0.08
+    tomato_peak_support_radius_m: 0.02
+    tomato_peak_min_support: 80
+    tomato_peak_max_per_support: 4
+  baseline_nms:
+    seed_score_min: 0.5
+    nms_radius_m: 0.08
+    support_radius_m: 0.02
+    min_support: 80
+    min_score_mass: 0.0
+    min_peak_score: 0.9
+
+cluster:
+  eps: 0.02
+  min_samples: 20
+  min_volume: 1.0e-5
+  max_volume: 1.0e-2
+  leaf_min_axis_length_m: 0.15
+  leaf_keep_large_axis_components: true
+
+render:
+  enabled: true
+  query_views: post
+  max_views: 8
+  near: 0.01
+  far: 100.0
+  scale_modifier: 1.0
+
+overlay:
+  enabled: true
+  pairs_root: pairs_fast
+  labels:
+    - pre
+    - post
+  max_views: 8
+  max_points_per_view: 30000
+  point_radius: 2
+  min_score: 0.5
+
+compute:
+  device: cuda
+  allow_cpu_fallback: false
+  chunk_size: 50000
+  max_primitives: null
+  random_seed: 0
+

@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "egodelta-target-extraction"
+version = "0.1.0"
+description = "Mechanics-conditioned geometry-only EgoDelta target extractor"
+requires-python = ">=3.10"
+dependencies = ["numpy", "scipy", "scikit-learn"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["egodelta_diff*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

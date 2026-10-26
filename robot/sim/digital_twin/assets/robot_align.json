@@ -1,0 +1,66 @@
+{
+  "frame": "world == leveled greenhouse splat frame (metric, Z-up, metersPerUnit=1.0)",
+  "scale": 1.0,
+  "note": "Splat is metric -> rigid (6-DoF) alignment only; no 7-DoF Umeyama scale needed.",
+  "robot_prim": "/RBY1_A_v1_1",
+  "world_from_robot": {
+    "translate": [
+      -0.3223,
+      -0.9663,
+      0.0
+    ],
+    "yaw_deg": 86.3
+  },
+  "robot_from_world_matrix": [
+    [
+      0.064532,
+      -0.997916,
+      0.0,
+      0.0
+    ],
+    [
+      0.997916,
+      0.064532,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.985124,
+      -0.259238,
+      0.0,
+      1.0
+    ]
+  ],
+  "tomatoes": {
+    "tomato0": {
+      "world": [
+        -0.1768,
+        -0.2711,
+        0.9082
+      ],
+      "robot_frame": [
+        0.7031,
+        -0.1003,
+        0.9082
+      ]
+    },
+    "tomato1": {
+      "world": [
+        -0.0971,
+        -0.2969,
+        0.8753
+      ],
+      "robot_frame": [
+        0.6826,
+        -0.1815,
+        0.8753
+      ]
+    }
+  }
+}

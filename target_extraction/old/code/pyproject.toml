@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "egodelta-diff"
+version = "0.1.0"
+description = "EGODELTA primitive-level scene-difference scoring and target recovery for 2D Gaussian Splatting reconstructions."
+requires-python = ">=3.10"
+dependencies = [
+  "torch>=2.1",
+  "numpy",
+  "plyfile",
+  "open3d",
+  "scikit-learn",
+  "scipy",
+  "pyyaml",
+  "tqdm",
+  "matplotlib",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["egodelta_diff*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+markers = ["integration: tests that read the real benchmark checkpoint"]

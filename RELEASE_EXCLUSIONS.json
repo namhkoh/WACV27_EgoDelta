@@ -1,0 +1,774 @@
+[
+  {
+    "git_blob": "6dca0a37902ec76faea91a9f3c3177b2eb4c3b16",
+    "path": ".gitmodules",
+    "reason": "submodules bundled as ordinary source directories"
+  },
+  {
+    "git_blob": "110c2e1e8bb13bf069a19aa28c32f421c247080f",
+    "path": "robot/policy/policy_action_library/AD1/success_current/AD1_instance_001_pre_scene.jpg",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 166745
+  },
+  {
+    "git_blob": "2d404fcf25958baeb7140680d2bcb1eb1475bf09",
+    "path": "robot/policy/policy_action_library/AD1/success_current/AD1_instance_001_pre_scene.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 881
+  },
+  {
+    "git_blob": "56466c42677a367f14206c34a5ab99f4665fa01a",
+    "path": "robot/policy/policy_action_library/AD1/success_current/AD1_instance_001_pre_scene.npz",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 1604209
+  },
+  {
+    "git_blob": "ee81d999f6de547b4734a283c96563023dc28486",
+    "path": "robot/policy/policy_action_library/AD1/success_current/actions/AD1_instance_001_step_01_AD1/action/a270c038_AD1_instance_001_step_01_AD1.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 33503
+  },
+  {
+    "git_blob": "ee81d999f6de547b4734a283c96563023dc28486",
+    "path": "robot/policy/policy_action_library/AD1/success_current/actions/AD1_instance_001_step_01_AD1/action/referenced/deleaf_click_cut/a270c038_AD1_instance_001_step_01_AD1.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 33503
+  },
+  {
+    "git_blob": "d570a6ee8d4bdf7a516f1998e3c46c5eb12170af",
+    "path": "robot/policy/policy_action_library/AD1/success_current/actions/AD1_instance_001_step_01_AD1/action/referenced/live_realsense_capture/a270c038_AD1_instance_001_step_01_AD1.jpg",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 166688
+  },
+  {
+    "git_blob": "c2a0ab2ec6b2ad9671227deef52ff21b9f5efea4",
+    "path": "robot/policy/policy_action_library/AD1/success_current/actions/AD1_instance_001_step_01_AD1/action/referenced/live_realsense_capture/a270c038_AD1_instance_001_step_01_AD1.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 276
+  },
+  {
+    "git_blob": "e8f221a853bcec360f22771c3ecd311da26e1bda",
+    "path": "robot/policy/policy_action_library/AD1/success_current/actions/AD1_instance_001_step_01_AD1/action/referenced/live_realsense_capture/a270c038_AD1_instance_001_step_01_AD1.npz",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 1598365
+  },
+  {
+    "git_blob": "ffb2898d2e595339b2efbc6437802171a0e14750",
+    "path": "robot/policy/policy_action_library/AD1/success_current/actions/AD1_instance_001_step_01_AD1/candidate_summaries/01_single_ext_0_045.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 1056
+  },
+  {
+    "git_blob": "cd79953cbee2fcf5b0325220469be003ac78bdd0",
+    "path": "robot/policy/policy_action_library/AD1/success_current/actions/AD1_instance_001_step_01_AD1/candidate_summaries/02_single_ext_0_055.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 1041
+  },
+  {
+    "git_blob": "61029c152a15cdb9e05bbc8167836ab5f3943a1b",
+    "path": "robot/policy/policy_action_library/AD1/success_current/actions/AD1_instance_001_step_01_AD1/candidate_summaries/03_single_ext_0_065.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 1055
+  },
+  {
+    "git_blob": "6a9aa761a7253c6f640a9688acf2a313629e0aed",
+    "path": "robot/policy/policy_action_library/AD1/success_current/actions/AD1_instance_001_step_01_AD1/candidate_summaries/deleaf_candidate_summaries.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 3375
+  },
+  {
+    "git_blob": "3c9545221d822246dbf057fa9382d60865162316",
+    "path": "robot/policy/policy_action_library/AD1/success_current/actions/AD1_instance_001_step_01_AD1/trajectory/a270c038_AD1_instance_001_step_01_AD1_traj.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 2027099
+  },
+  {
+    "git_blob": "9703a9bd43a25f90881bd9aa7ef7481b2fbd24fd",
+    "path": "robot/policy/policy_action_library/AD1/success_current/episode.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 4615
+  },
+  {
+    "git_blob": "b19dc37496a5e72fef61a578ec405872dd30d94e",
+    "path": "robot/policy/policy_action_library/AT1T1/success_current/AT1T1_instance_001_pre_scene.jpg",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 165872
+  },
+  {
+    "git_blob": "7e8d327559b40222da3f6f9ac504d9b6d6945164",
+    "path": "robot/policy/policy_action_library/AT1T1/success_current/AT1T1_instance_001_pre_scene.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 881
+  },
+  {
+    "git_blob": "9f011a13ceb5f38e1a52a2b4828ecb415c186d25",
+    "path": "robot/policy/policy_action_library/AT1T1/success_current/AT1T1_instance_001_pre_scene.npz",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 1593282
+  },
+  {
+    "git_blob": "734dbe9509346e762607d822e1986e4d39f30fd4",
+    "path": "robot/policy/policy_action_library/AT1T1/success_current/AT1T1_instance_001_step_01_AT1T1_execution.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 7509
+  },
+  {
+    "git_blob": "029a599cecb3ae028408506d9d5ddc37f653c6f3",
+    "path": "robot/policy/policy_action_library/AT1T1/success_current/actions/AT1T1_instance_001_step_01_AT1T1/candidate_solves/candidate_01.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 22614937
+  },
+  {
+    "git_blob": "3530a32181e01ee3329cee01a1917b49c12372e4",
+    "path": "robot/policy/policy_action_library/AT1T1/success_current/actions/AT1T1_instance_001_step_01_AT1T1/candidate_solves/candidate_02.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 22615251
+  },
+  {
+    "git_blob": "cf108672c2081f362c2c7310b28c9324945fc789",
+    "path": "robot/policy/policy_action_library/AT1T1/success_current/actions/AT1T1_instance_001_step_01_AT1T1/candidate_solves/candidate_03.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 22614911
+  },
+  {
+    "git_blob": "ea834bcf62ad59c25af65b9b84a932046e5c454d",
+    "path": "robot/policy/policy_action_library/AT1T1/success_current/actions/AT1T1_instance_001_step_01_AT1T1/candidate_solves/candidate_04.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 22615225
+  },
+  {
+    "git_blob": "6490a0934af4f7ec298b84ea755137d9d421af43",
+    "path": "robot/policy/policy_action_library/AT1T1/success_current/actions/AT1T1_instance_001_step_01_AT1T1/candidate_solves/candidate_05.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 22614897
+  },
+  {
+    "git_blob": "2c677e2d1dd0f7d661cf2281a8060a9979a6578d",
+    "path": "robot/policy/policy_action_library/AT1T1/success_current/actions/AT1T1_instance_001_step_01_AT1T1/candidate_solves/top_solved_candidates.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 3919
+  },
+  {
+    "git_blob": "3864dad86bb799269e93d98c05e8d1f93135a65b",
+    "path": "robot/policy/policy_action_library/AT1T1/success_current/actions/AT1T1_instance_001_step_01_AT1T1/planner/a270c038_AT1T1_success_current.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 59414190
+  },
+  {
+    "git_blob": "a183730fb34706def588a712377a3a4419fb82b0",
+    "path": "robot/policy/policy_action_library/AT1T1/success_current/actions/AT1T1_instance_001_step_01_AT1T1/target/a270c038_AT1T1_instance_001_step_01_AT1T1_target.jpg",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 166159
+  },
+  {
+    "git_blob": "3273f6400f6ab5cd116d6c6260b5e75ee1122ded",
+    "path": "robot/policy/policy_action_library/AT1T1/success_current/actions/AT1T1_instance_001_step_01_AT1T1/target/a270c038_AT1T1_instance_001_step_01_AT1T1_target.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 6087
+  },
+  {
+    "git_blob": "93f51d47b97dc438d70cb2caf4aa061f486f6bce",
+    "path": "robot/policy/policy_action_library/AT1T1/success_current/actions/AT1T1_instance_001_step_01_AT1T1/target/a270c038_AT1T1_instance_001_step_01_AT1T1_target.npz",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 1592822
+  },
+  {
+    "git_blob": "a183730fb34706def588a712377a3a4419fb82b0",
+    "path": "robot/policy/policy_action_library/AT1T1/success_current/actions/AT1T1_instance_001_step_01_AT1T1/target/referenced/live_realsense_capture/a270c038_AT1T1_instance_001_step_01_AT1T1_target.jpg",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 166159
+  },
+  {
+    "git_blob": "3273f6400f6ab5cd116d6c6260b5e75ee1122ded",
+    "path": "robot/policy/policy_action_library/AT1T1/success_current/actions/AT1T1_instance_001_step_01_AT1T1/target/referenced/live_realsense_capture/a270c038_AT1T1_instance_001_step_01_AT1T1_target.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 6087
+  },
+  {
+    "git_blob": "93f51d47b97dc438d70cb2caf4aa061f486f6bce",
+    "path": "robot/policy/policy_action_library/AT1T1/success_current/actions/AT1T1_instance_001_step_01_AT1T1/target/referenced/live_realsense_capture/a270c038_AT1T1_instance_001_step_01_AT1T1_target.npz",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 1592822
+  },
+  {
+    "git_blob": "325552ae02469fdee4f8addab312b7fe55051495",
+    "path": "robot/policy/policy_action_library/AT1T1/success_current/actions/AT1T1_instance_001_step_01_AT1T1/target/referenced/realsense_click_move_arm/a270c038_AT1T1_instance_001_step_01_AT1T1_target_selection.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 746
+  },
+  {
+    "git_blob": "7b1f23f8eddfde5f42f990917055a69f5b0c9a5b",
+    "path": "robot/policy/policy_action_library/AT1T1/success_current/actions/AT1T1_instance_001_step_01_AT1T1/trajectory/a270c038_AT1T1_instance_001_step_01_AT1T1_traj.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 3955113
+  },
+  {
+    "git_blob": "5fc517a80ca26a60c66bbe479e57387c3292d203",
+    "path": "robot/policy/policy_action_library/AT1T1/success_current/episode.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 13811
+  },
+  {
+    "git_blob": "bb6692564c8c09cfa02b4a4566603c84f99fb793",
+    "path": "robot/policy/policy_action_library/AT1T2/success_current/AT1T2_instance_001_pre_scene.jpg",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 166375
+  },
+  {
+    "git_blob": "8b788bd095071b68b724300007fa70db54dbb06a",
+    "path": "robot/policy/policy_action_library/AT1T2/success_current/AT1T2_instance_001_pre_scene.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 880
+  },
+  {
+    "git_blob": "243946c25306dafd9ee6e88b7e1694af4d3a5976",
+    "path": "robot/policy/policy_action_library/AT1T2/success_current/AT1T2_instance_001_pre_scene.npz",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 1592463
+  },
+  {
+    "git_blob": "067849982063bba18e6702fa654698c9cbd18494",
+    "path": "robot/policy/policy_action_library/AT1T2/success_current/AT1T2_instance_001_step_01_AT1T2_execution.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 7416
+  },
+  {
+    "git_blob": "465b1999b4ed2a88e02b58c18eacbe6877620839",
+    "path": "robot/policy/policy_action_library/AT1T2/success_current/actions/AT1T2_instance_001_step_01_AT1T2/candidate_solves/candidate_01.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 21377787
+  },
+  {
+    "git_blob": "5e6e48cd62a755671a2fc718add4a76901e7f707",
+    "path": "robot/policy/policy_action_library/AT1T2/success_current/actions/AT1T2_instance_001_step_01_AT1T2/candidate_solves/candidate_02.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 21377867
+  },
+  {
+    "git_blob": "23e977980aa8adcbdd12c9d1a812ee0c47a9c365",
+    "path": "robot/policy/policy_action_library/AT1T2/success_current/actions/AT1T2_instance_001_step_01_AT1T2/candidate_solves/candidate_03.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 21399931
+  },
+  {
+    "git_blob": "26f872e994d4c4e5e329c1b39267e9a7593e5cd0",
+    "path": "robot/policy/policy_action_library/AT1T2/success_current/actions/AT1T2_instance_001_step_01_AT1T2/candidate_solves/candidate_04.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 21377933
+  },
+  {
+    "git_blob": "c52e6644e2cd5a84f2cfd2a8c0ff697af7817fc3",
+    "path": "robot/policy/policy_action_library/AT1T2/success_current/actions/AT1T2_instance_001_step_01_AT1T2/candidate_solves/candidate_05.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 21377983
+  },
+  {
+    "git_blob": "38a5d3b7ec4c0f9f2cbad539e5b211476a140661",
+    "path": "robot/policy/policy_action_library/AT1T2/success_current/actions/AT1T2_instance_001_step_01_AT1T2/candidate_solves/top_solved_candidates.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 3752
+  },
+  {
+    "git_blob": "e65d11c39f3caa2a0339b9f6118340c49408f1d2",
+    "path": "robot/policy/policy_action_library/AT1T2/success_current/actions/AT1T2_instance_001_step_01_AT1T2/planner/a270c038_AT1T2_success_current.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 50132503
+  },
+  {
+    "git_blob": "febc971f9c77e166d2d4bc85c1104c9295cbf8f6",
+    "path": "robot/policy/policy_action_library/AT1T2/success_current/actions/AT1T2_instance_001_step_01_AT1T2/target/a270c038_AT1T2_instance_001_step_01_AT1T2_target.jpg",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 165964
+  },
+  {
+    "git_blob": "5ebe1dcf88563e211570dd1b9f26a8bd43fb35d4",
+    "path": "robot/policy/policy_action_library/AT1T2/success_current/actions/AT1T2_instance_001_step_01_AT1T2/target/a270c038_AT1T2_instance_001_step_01_AT1T2_target.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 6087
+  },
+  {
+    "git_blob": "fdb50666e36868055a13bdeb4ceaddfd8e0dd9c3",
+    "path": "robot/policy/policy_action_library/AT1T2/success_current/actions/AT1T2_instance_001_step_01_AT1T2/target/a270c038_AT1T2_instance_001_step_01_AT1T2_target.npz",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 1582015
+  },
+  {
+    "git_blob": "febc971f9c77e166d2d4bc85c1104c9295cbf8f6",
+    "path": "robot/policy/policy_action_library/AT1T2/success_current/actions/AT1T2_instance_001_step_01_AT1T2/target/referenced/live_realsense_capture/a270c038_AT1T2_instance_001_step_01_AT1T2_target.jpg",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 165964
+  },
+  {
+    "git_blob": "5ebe1dcf88563e211570dd1b9f26a8bd43fb35d4",
+    "path": "robot/policy/policy_action_library/AT1T2/success_current/actions/AT1T2_instance_001_step_01_AT1T2/target/referenced/live_realsense_capture/a270c038_AT1T2_instance_001_step_01_AT1T2_target.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 6087
+  },
+  {
+    "git_blob": "fdb50666e36868055a13bdeb4ceaddfd8e0dd9c3",
+    "path": "robot/policy/policy_action_library/AT1T2/success_current/actions/AT1T2_instance_001_step_01_AT1T2/target/referenced/live_realsense_capture/a270c038_AT1T2_instance_001_step_01_AT1T2_target.npz",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 1582015
+  },
+  {
+    "git_blob": "8954e594225bdb68cf96692b17803304306634ee",
+    "path": "robot/policy/policy_action_library/AT1T2/success_current/actions/AT1T2_instance_001_step_01_AT1T2/target/referenced/realsense_click_move_arm/a270c038_AT1T2_instance_001_step_01_AT1T2_target_selection.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 747
+  },
+  {
+    "git_blob": "b6f9cf5e26d6a1712e33ff4310c357649ab6e9dc",
+    "path": "robot/policy/policy_action_library/AT1T2/success_current/actions/AT1T2_instance_001_step_01_AT1T2/trajectory/a270c038_AT1T2_instance_001_step_01_AT1T2_traj.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 3011657
+  },
+  {
+    "git_blob": "48b10cb5a6f99725f0a74cbe52245bda855f4c16",
+    "path": "robot/policy/policy_action_library/AT1T2/success_current/episode.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 13799
+  },
+  {
+    "git_blob": "a08d347d2c42d3bd9c798e983427332114d085a7",
+    "path": "robot/policy/policy_action_library/BD1/success_current/BD1_instance_005_pre_scene.jpg",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 166771
+  },
+  {
+    "git_blob": "4041eab832930e7b9b4d31565a24b11867097737",
+    "path": "robot/policy/policy_action_library/BD1/success_current/BD1_instance_005_pre_scene.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 880
+  },
+  {
+    "git_blob": "8dc14ab19c97580f906f91201901df5c9b609940",
+    "path": "robot/policy/policy_action_library/BD1/success_current/BD1_instance_005_pre_scene.npz",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 1592337
+  },
+  {
+    "git_blob": "cba5a8f78d2caac72d99e82108f1bf0afa5f5d6a",
+    "path": "robot/policy/policy_action_library/BD1/success_current/actions/BD1_instance_005_step_01_BD1/action/a270c038_BD1_instance_005_step_01_BD1.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 38585
+  },
+  {
+    "git_blob": "cba5a8f78d2caac72d99e82108f1bf0afa5f5d6a",
+    "path": "robot/policy/policy_action_library/BD1/success_current/actions/BD1_instance_005_step_01_BD1/action/referenced/deleaf_click_cut/a270c038_BD1_instance_005_step_01_BD1.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 38585
+  },
+  {
+    "git_blob": "68e38608933b8131c915759266fe2a8740bca940",
+    "path": "robot/policy/policy_action_library/BD1/success_current/actions/BD1_instance_005_step_01_BD1/action/referenced/live_realsense_capture/a270c038_BD1_instance_005_step_01_BD1.jpg",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 166726
+  },
+  {
+    "git_blob": "8ee05f5f2c8cca3e12fec7662095c84916b71c0b",
+    "path": "robot/policy/policy_action_library/BD1/success_current/actions/BD1_instance_005_step_01_BD1/action/referenced/live_realsense_capture/a270c038_BD1_instance_005_step_01_BD1.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 276
+  },
+  {
+    "git_blob": "c445d52dcf06f7cbb6f9745479d901b344a953a8",
+    "path": "robot/policy/policy_action_library/BD1/success_current/actions/BD1_instance_005_step_01_BD1/action/referenced/live_realsense_capture/a270c038_BD1_instance_005_step_01_BD1.npz",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 1590278
+  },
+  {
+    "git_blob": "5a61b8d2e1ae69c2efd3365be405ce52ba2d3e69",
+    "path": "robot/policy/policy_action_library/BD1/success_current/actions/BD1_instance_005_step_01_BD1/candidate_summaries/01_pc_axis__0_advance_0_030_ext_0_045.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 1143
+  },
+  {
+    "git_blob": "773e96e09225b2294c0d1c1c43e428e7ee402241",
+    "path": "robot/policy/policy_action_library/BD1/success_current/actions/BD1_instance_005_step_01_BD1/candidate_summaries/02_pc_axis__0_advance_0_030_ext_0_055.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 1121
+  },
+  {
+    "git_blob": "b8c2793f08890ad8842259b383ca909c8f665fe6",
+    "path": "robot/policy/policy_action_library/BD1/success_current/actions/BD1_instance_005_step_01_BD1/candidate_summaries/03_pc_axis__0_advance_0_030_ext_0_065.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 1142
+  },
+  {
+    "git_blob": "cd918da417b494377d13ed585c86828985d85f19",
+    "path": "robot/policy/policy_action_library/BD1/success_current/actions/BD1_instance_005_step_01_BD1/candidate_summaries/04_pc_axis__0_advance_0_040_ext_0_045.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 1143
+  },
+  {
+    "git_blob": "c7053017c54867bc3468eb3bfaeb558946dd10b3",
+    "path": "robot/policy/policy_action_library/BD1/success_current/actions/BD1_instance_005_step_01_BD1/candidate_summaries/05_pc_axis__0_advance_0_040_ext_0_055.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 1123
+  },
+  {
+    "git_blob": "75e43df0150af87979e7dfe4c95400c00df33c48",
+    "path": "robot/policy/policy_action_library/BD1/success_current/actions/BD1_instance_005_step_01_BD1/candidate_summaries/06_pc_axis__0_advance_0_040_ext_0_065.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 1142
+  },
+  {
+    "git_blob": "f2fa58a2f322f22e16628591353100d92f07d1bc",
+    "path": "robot/policy/policy_action_library/BD1/success_current/actions/BD1_instance_005_step_01_BD1/candidate_summaries/07_pc_axis__0_advance_0_050_ext_0_045.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 1144
+  },
+  {
+    "git_blob": "8dfbb3b6a8136b4d75e4642d6145a3a8f06f75fc",
+    "path": "robot/policy/policy_action_library/BD1/success_current/actions/BD1_instance_005_step_01_BD1/candidate_summaries/08_pc_axis__0_advance_0_050_ext_0_055.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 1123
+  },
+  {
+    "git_blob": "c3926b8f5499cb6348989f6591646fbfe37dcaa8",
+    "path": "robot/policy/policy_action_library/BD1/success_current/actions/BD1_instance_005_step_01_BD1/candidate_summaries/09_pc_axis__0_advance_0_050_ext_0_065.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 1140
+  },
+  {
+    "git_blob": "2aa95d3cd0568d620e94571ed2d3e0b29ce78a6f",
+    "path": "robot/policy/policy_action_library/BD1/success_current/actions/BD1_instance_005_step_01_BD1/candidate_summaries/deleaf_candidate_summaries.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 8574
+  },
+  {
+    "git_blob": "168fe631295e2fd24067e093d91f1fb9ec3af2a9",
+    "path": "robot/policy/policy_action_library/BD1/success_current/actions/BD1_instance_005_step_01_BD1/trajectory/a270c038_BD1_instance_005_step_01_BD1_traj.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 2158143
+  },
+  {
+    "git_blob": "73040b5dc0a2d18ffc6eff45fcd7ff2046e9598c",
+    "path": "robot/policy/policy_action_library/BD1/success_current/episode.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 4625
+  },
+  {
+    "git_blob": "3233e6e1883cb07c96436c87b6d331e4c43e489c",
+    "path": "robot/policy/policy_action_library/BD2/success_current/BD2_instance_002_pre_scene.jpg",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 167592
+  },
+  {
+    "git_blob": "7346dbd93ca8b31f0bfda313c1fae378101b29ad",
+    "path": "robot/policy/policy_action_library/BD2/success_current/BD2_instance_002_pre_scene.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 879
+  },
+  {
+    "git_blob": "202c90146f0650412cc456daacd3911bb18efe3e",
+    "path": "robot/policy/policy_action_library/BD2/success_current/BD2_instance_002_pre_scene.npz",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 1598424
+  },
+  {
+    "git_blob": "9efe26e45a50c75fba507c729e39f29cc33269c2",
+    "path": "robot/policy/policy_action_library/BD2/success_current/actions/BD2_instance_002_step_01_BD2/action/a270c038_BD2_instance_002_step_01_BD2.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 38490
+  },
+  {
+    "git_blob": "9efe26e45a50c75fba507c729e39f29cc33269c2",
+    "path": "robot/policy/policy_action_library/BD2/success_current/actions/BD2_instance_002_step_01_BD2/action/referenced/deleaf_click_cut/a270c038_BD2_instance_002_step_01_BD2.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 38490
+  },
+  {
+    "git_blob": "7a279cc09affc4ebeabdac7caf30bcbe1d8c3148",
+    "path": "robot/policy/policy_action_library/BD2/success_current/actions/BD2_instance_002_step_01_BD2/action/referenced/live_realsense_capture/a270c038_BD2_instance_002_step_01_BD2.jpg",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 167113
+  },
+  {
+    "git_blob": "02261c1338f4296c42f6c15b00908c51c38ff666",
+    "path": "robot/policy/policy_action_library/BD2/success_current/actions/BD2_instance_002_step_01_BD2/action/referenced/live_realsense_capture/a270c038_BD2_instance_002_step_01_BD2.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 276
+  },
+  {
+    "git_blob": "0867a4268e9044e58c2b036819aaf9f99ecb42a6",
+    "path": "robot/policy/policy_action_library/BD2/success_current/actions/BD2_instance_002_step_01_BD2/action/referenced/live_realsense_capture/a270c038_BD2_instance_002_step_01_BD2.npz",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 1591873
+  },
+  {
+    "git_blob": "1f2b2c4bb159f5d4d12a725f12e31e774b4754d8",
+    "path": "robot/policy/policy_action_library/BD2/success_current/actions/BD2_instance_002_step_01_BD2/candidate_summaries/01_pc_axis__0_advance_0_030_ext_0_045.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 1134
+  },
+  {
+    "git_blob": "f0de2c939c604c9d192ac1b6e648bf505b92283e",
+    "path": "robot/policy/policy_action_library/BD2/success_current/actions/BD2_instance_002_step_01_BD2/candidate_summaries/02_pc_axis__0_advance_0_030_ext_0_055.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 1116
+  },
+  {
+    "git_blob": "634b25cea7be59c4b33986413a5baec44e5a4392",
+    "path": "robot/policy/policy_action_library/BD2/success_current/actions/BD2_instance_002_step_01_BD2/candidate_summaries/03_pc_axis__0_advance_0_030_ext_0_065.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 1130
+  },
+  {
+    "git_blob": "f884d387bb4a4b0ecd354353a94c4f1e3075983d",
+    "path": "robot/policy/policy_action_library/BD2/success_current/actions/BD2_instance_002_step_01_BD2/candidate_summaries/04_pc_axis__0_advance_0_040_ext_0_045.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 1132
+  },
+  {
+    "git_blob": "c9634953e952282602fadcaefea7b78c64029e09",
+    "path": "robot/policy/policy_action_library/BD2/success_current/actions/BD2_instance_002_step_01_BD2/candidate_summaries/05_pc_axis__0_advance_0_040_ext_0_055.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 1117
+  },
+  {
+    "git_blob": "a0322108b60f99c100b524235def6977097dce52",
+    "path": "robot/policy/policy_action_library/BD2/success_current/actions/BD2_instance_002_step_01_BD2/candidate_summaries/06_pc_axis__0_advance_0_040_ext_0_065.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 1132
+  },
+  {
+    "git_blob": "67856db2997e2d3d38ba2f4e8a2209e0d2c3b469",
+    "path": "robot/policy/policy_action_library/BD2/success_current/actions/BD2_instance_002_step_01_BD2/candidate_summaries/07_pc_axis__0_advance_0_050_ext_0_045.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 1133
+  },
+  {
+    "git_blob": "609beae879041a39ba9c4fab94cce26191af8a67",
+    "path": "robot/policy/policy_action_library/BD2/success_current/actions/BD2_instance_002_step_01_BD2/candidate_summaries/08_pc_axis__0_advance_0_050_ext_0_055.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 1116
+  },
+  {
+    "git_blob": "8a0c81fcd7057ef0841d1726b6c7abddd4bdb1eb",
+    "path": "robot/policy/policy_action_library/BD2/success_current/actions/BD2_instance_002_step_01_BD2/candidate_summaries/09_pc_axis__0_advance_0_050_ext_0_065.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 1133
+  },
+  {
+    "git_blob": "f82b2775ab6787312ff38fb6141556325b11c9d1",
+    "path": "robot/policy/policy_action_library/BD2/success_current/actions/BD2_instance_002_step_01_BD2/candidate_summaries/deleaf_candidate_summaries.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 8491
+  },
+  {
+    "git_blob": "84296dcb4784d518ae705ce1cd10f1d78b7fdc58",
+    "path": "robot/policy/policy_action_library/BD2/success_current/actions/BD2_instance_002_step_01_BD2/trajectory/a270c038_BD2_instance_002_step_01_BD2_traj.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 2433002
+  },
+  {
+    "git_blob": "c2f52da2c0dc403356b236a957526acb848b182d",
+    "path": "robot/policy/policy_action_library/BD2/success_current/episode.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 4553
+  },
+  {
+    "git_blob": "5cfdd0d23c9e832c04abca8baeb80e51513153e6",
+    "path": "robot/policy/policy_action_library/BD3/success_current/BD3_instance_003_pre_scene.jpg",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 165487
+  },
+  {
+    "git_blob": "0f5c071be1a3a44c1b54fb009074d114ebb66580",
+    "path": "robot/policy/policy_action_library/BD3/success_current/BD3_instance_003_pre_scene.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 880
+  },
+  {
+    "git_blob": "d69ce61b14f64383bd738ca3effe5718b7bfcb2f",
+    "path": "robot/policy/policy_action_library/BD3/success_current/BD3_instance_003_pre_scene.npz",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 1588495
+  },
+  {
+    "git_blob": "3fb612bf375a591b8d13e82f8ef410d814f4d840",
+    "path": "robot/policy/policy_action_library/BD3/success_current/actions/BD3_instance_003_step_01_BD3/action/a270c038_BD3_instance_003_step_01_BD3.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 33446
+  },
+  {
+    "git_blob": "3fb612bf375a591b8d13e82f8ef410d814f4d840",
+    "path": "robot/policy/policy_action_library/BD3/success_current/actions/BD3_instance_003_step_01_BD3/action/referenced/deleaf_click_cut/a270c038_BD3_instance_003_step_01_BD3.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 33446
+  },
+  {
+    "git_blob": "9cd493cda41cfa510611969f6fd08ea615092580",
+    "path": "robot/policy/policy_action_library/BD3/success_current/actions/BD3_instance_003_step_01_BD3/action/referenced/live_realsense_capture/a270c038_BD3_instance_003_step_01_BD3.jpg",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 167305
+  },
+  {
+    "git_blob": "cfe407d673017f935810308954fb9f6903421c9a",
+    "path": "robot/policy/policy_action_library/BD3/success_current/actions/BD3_instance_003_step_01_BD3/action/referenced/live_realsense_capture/a270c038_BD3_instance_003_step_01_BD3.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 276
+  },
+  {
+    "git_blob": "004cf11fa6f9b0a1701af258b72470276644949e",
+    "path": "robot/policy/policy_action_library/BD3/success_current/actions/BD3_instance_003_step_01_BD3/action/referenced/live_realsense_capture/a270c038_BD3_instance_003_step_01_BD3.npz",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 1604322
+  },
+  {
+    "git_blob": "06169d874ddcdc46d89539be71c7d7063d9e783f",
+    "path": "robot/policy/policy_action_library/BD3/success_current/actions/BD3_instance_003_step_01_BD3/candidate_summaries/01_pc_axis__0_advance_0_030_ext_0_055.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 1129
+  },
+  {
+    "git_blob": "5696d6053a58edffbe14ce5831a4f92a20389f52",
+    "path": "robot/policy/policy_action_library/BD3/success_current/actions/BD3_instance_003_step_01_BD3/candidate_summaries/02_pc_axis__0_advance_0_040_ext_0_055.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 1126
+  },
+  {
+    "git_blob": "5dec75f657f12aab85e7f9e2284dd57fe97443ee",
+    "path": "robot/policy/policy_action_library/BD3/success_current/actions/BD3_instance_003_step_01_BD3/candidate_summaries/03_pc_axis__0_advance_0_050_ext_0_055.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 1127
+  },
+  {
+    "git_blob": "2ec7470a4bd8519fa979e4a2f624ad2932e9f8b8",
+    "path": "robot/policy/policy_action_library/BD3/success_current/actions/BD3_instance_003_step_01_BD3/candidate_summaries/deleaf_candidate_summaries.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 3735
+  },
+  {
+    "git_blob": "d0fdd67aadf74003a10e0ba12c3487c87d931b07",
+    "path": "robot/policy/policy_action_library/BD3/success_current/actions/BD3_instance_003_step_01_BD3/trajectory/a270c038_BD3_instance_003_step_01_BD3_traj.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 2061788
+  },
+  {
+    "git_blob": "617f02401e31e01cc161826664ca2a44cb4a790e",
+    "path": "robot/policy/policy_action_library/BD3/success_current/episode.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 4615
+  },
+  {
+    "git_blob": "2eb08d47ac0f82b285afb58e9806c6c4e8783fd8",
+    "path": "robot/policy/policy_action_library/BD4/success_current/BD4_instance_002_pre_scene.jpg",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 164692
+  },
+  {
+    "git_blob": "db414e87ea820b57fdf56e27b4321e040162da70",
+    "path": "robot/policy/policy_action_library/BD4/success_current/BD4_instance_002_pre_scene.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 881
+  },
+  {
+    "git_blob": "e98b26e736de6aebea2ba84461c5345d76c68abd",
+    "path": "robot/policy/policy_action_library/BD4/success_current/BD4_instance_002_pre_scene.npz",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 1580351
+  },
+  {
+    "git_blob": "b74ba8b5064529ef6756f39e0859f5b0d84f7b95",
+    "path": "robot/policy/policy_action_library/BD4/success_current/actions/BD4_instance_002_step_01_BD4/action/a270c038_BD4_instance_002_step_01_BD4.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 32673
+  },
+  {
+    "git_blob": "b74ba8b5064529ef6756f39e0859f5b0d84f7b95",
+    "path": "robot/policy/policy_action_library/BD4/success_current/actions/BD4_instance_002_step_01_BD4/action/referenced/deleaf_click_cut/a270c038_BD4_instance_002_step_01_BD4.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 32673
+  },
+  {
+    "git_blob": "e03b999e95c5939714375a0a26696e94b6194dec",
+    "path": "robot/policy/policy_action_library/BD4/success_current/actions/BD4_instance_002_step_01_BD4/action/referenced/live_realsense_capture/a270c038_BD4_instance_002_step_01_BD4.jpg",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 166265
+  },
+  {
+    "git_blob": "9705f6aa5ff9cfda1cf0d153b611874b553eb7d0",
+    "path": "robot/policy/policy_action_library/BD4/success_current/actions/BD4_instance_002_step_01_BD4/action/referenced/live_realsense_capture/a270c038_BD4_instance_002_step_01_BD4.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 276
+  },
+  {
+    "git_blob": "fc2356fadbe3b533ad58b607e6732d3fce7a3a30",
+    "path": "robot/policy/policy_action_library/BD4/success_current/actions/BD4_instance_002_step_01_BD4/action/referenced/live_realsense_capture/a270c038_BD4_instance_002_step_01_BD4.npz",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 1602014
+  },
+  {
+    "git_blob": "7764ccb6714575143aa2c8e26376f79e64e77847",
+    "path": "robot/policy/policy_action_library/BD4/success_current/actions/BD4_instance_002_step_01_BD4/candidate_summaries/01_pc_axis__0_advance_0_030_ext_0_085.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 1128
+  },
+  {
+    "git_blob": "1fe61fa91f117dd62d2f4bc012cb202a865251ae",
+    "path": "robot/policy/policy_action_library/BD4/success_current/actions/BD4_instance_002_step_01_BD4/candidate_summaries/02_pc_axis__0_advance_0_040_ext_0_085.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 1127
+  },
+  {
+    "git_blob": "43726ae46088f3f749cfefd63d722f0abe354e8f",
+    "path": "robot/policy/policy_action_library/BD4/success_current/actions/BD4_instance_002_step_01_BD4/candidate_summaries/deleaf_candidate_summaries.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 2938
+  },
+  {
+    "git_blob": "e5180d2c140842f27ddb6fc86190ee61cea130f4",
+    "path": "robot/policy/policy_action_library/BD4/success_current/actions/BD4_instance_002_step_01_BD4/trajectory/a270c038_BD4_instance_002_step_01_BD4_traj.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 2097057
+  },
+  {
+    "git_blob": "f369bdaa2cba17b18f289127bc7b9318f5188e21",
+    "path": "robot/policy/policy_action_library/BD4/success_current/episode.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 4613
+  },
+  {
+    "git_blob": "d9fc96e6643c1ec09ebc347dd41ee9d3f25adcda",
+    "path": "robot/policy/policy_action_library/actions_index.jsonl",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 6945
+  },
+  {
+    "git_blob": "24dfe21cd7fb73ad3f01ffcf7f5b27502cc040cf",
+    "path": "robot/policy/policy_action_library/artifact_integrity.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 26527
+  },
+  {
+    "git_blob": "feddd460bd249867bb03de0578d4e9adfeb031b2",
+    "path": "robot/policy/policy_action_library/episodes_index.jsonl",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 129
+  },
+  {
+    "git_blob": "899da26406d1dc0dbcf4ed053855cd636c981936",
+    "path": "robot/policy/policy_action_library/library_manifest.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 128
+  },
+  {
+    "git_blob": "000637009fc2800e7be38d7b5365880e7ce71d91",
+    "path": "robot/policy/policy_action_library/training_index.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 130
+  },
+  {
+    "git_blob": "e0267eee60c402a76de5efd52a6a27b236904292",
+    "path": "robot/policy/policy_action_library/training_splits.json",
+    "reason": "recorded demonstration dataset",
+    "source_bytes": 128
+  },
+  {
+    "git_blob": "4553c29f4224a9a8723482bc9aca759a97693a64",
+    "path": "submodules/diff-surfel-rasterization/.gitmodules",
+    "reason": "submodules bundled as ordinary source directories"
+  }
+]

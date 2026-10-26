@@ -1,0 +1,176 @@
+{
+  "checkpoints": [
+    {
+      "arrays": 21,
+      "bytes": 924599,
+      "path": "robot/policy/trained_policies/deleaf/policy_arrays.npz"
+    },
+    {
+      "arrays": 24,
+      "bytes": 11242230,
+      "path": "robot/policy/trained_policies/deleaf_bc_success_only_jitter10hz_chunk50_seed11_rerun_20260819/policy_arrays.npz"
+    },
+    {
+      "arrays": 21,
+      "bytes": 773692,
+      "path": "robot/policy/trained_policies/harvest/policy_arrays.npz"
+    },
+    {
+      "arrays": 24,
+      "bytes": 4159439,
+      "path": "robot/policy/trained_policies/harvest_bc_success_trimmed_nojitter10hz_chunk30_seed11_rerun_20260819/policy_arrays.npz"
+    }
+  ],
+  "created_utc": "2026-10-26T14:32:10.387354+00:00",
+  "excluded_tracked_file_count": 129,
+  "hardware_or_gpu_execution_performed": false,
+  "omitted_dataset_bytes": 375975495,
+  "original_code_preserved": true,
+  "packaging_edits": [
+    {
+      "path": ".gitattributes",
+      "reason": "Resolve checkpoint contents and remove inherited LFS filters"
+    },
+    {
+      "path": ".gitignore",
+      "reason": "Keep bundled checkpoints and figures importable; ignore local data and builds"
+    },
+    {
+      "path": "scripts/setup_env.sh",
+      "reason": "Support setup directly from the ZIP with bundled CUDA sources"
+    },
+    {
+      "path": "README_SOURCE.md",
+      "reason": "Preserve original branch overview"
+    },
+    {
+      "path": "README.md",
+      "reason": "Add a WACV-specific landing page with verified component entry points"
+    },
+    {
+      "path": "REPOSITORY_IMPORT.md",
+      "reason": "Document fresh-repository import and external data requirements"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "reason": "Inventory bundled third-party licenses"
+    },
+    {
+      "path": ".gitignore",
+      "reason": "Retain bundled fixtures during fresh Git import"
+    },
+    {
+      "path": "RELEASE_EXCLUSIONS.json",
+      "reason": "List deliberately omitted tracked files"
+    }
+  ],
+  "resolved_lfs_files": [
+    {
+      "bytes": 924599,
+      "path": "robot/policy/trained_policies/deleaf/policy_arrays.npz",
+      "sha256": "227beacdbefe17bf599e919776dc7220d3ab41f5988c3a4eef33085b7825fe69"
+    },
+    {
+      "bytes": 11888,
+      "path": "robot/policy/trained_policies/deleaf/policy_metadata.json",
+      "sha256": "50e5df723e983e6fb1676e5fe3c22a065f1496f08de7d2795397eeb3331a017e"
+    },
+    {
+      "bytes": 14636,
+      "path": "robot/policy/trained_policies/deleaf/source_labels.json",
+      "sha256": "ade697a2c65a0df29b5a34f2ce37f38129610941361daa9c9ab472b6fda084cf"
+    },
+    {
+      "bytes": 20569,
+      "path": "robot/policy/trained_policies/deleaf_bc_eef_trimon_jitter10hz_chunk50_seed11/policy_metadata.json",
+      "sha256": "a1e157254008686b7439e8c0aa12b41f69265e8a8211a23501b59e9cbe7bec10"
+    },
+    {
+      "bytes": 324847,
+      "path": "robot/policy/trained_policies/deleaf_bc_eef_trimon_jitter10hz_chunk50_seed11/source_labels.json",
+      "sha256": "0534c3b5794c14591e2ce130227688effd8bcd51ae84bcf1c711d3d15ecfa06b"
+    },
+    {
+      "bytes": 11242230,
+      "path": "robot/policy/trained_policies/deleaf_bc_success_only_jitter10hz_chunk50_seed11_rerun_20260819/policy_arrays.npz",
+      "sha256": "1fae7f9ce4ea100f48992c7e6170be7033522eb5dbb88e10a30d2e262d3f9262"
+    },
+    {
+      "bytes": 20919,
+      "path": "robot/policy/trained_policies/deleaf_bc_success_only_jitter10hz_chunk50_seed11_rerun_20260819/policy_metadata.json",
+      "sha256": "455b0bbaf44a5e5cdcdd1f5ef8324220239a7f1b2fd2c4b64910748708b0199e"
+    },
+    {
+      "bytes": 512782,
+      "path": "robot/policy/trained_policies/deleaf_bc_success_only_jitter10hz_chunk50_seed11_rerun_20260819/source_labels.json",
+      "sha256": "3bf155b7bd1b6a6d6f90fe1881cbc2a5d61dee629f28e72ff8e047e36071414b"
+    },
+    {
+      "bytes": 773692,
+      "path": "robot/policy/trained_policies/harvest/policy_arrays.npz",
+      "sha256": "948456b1e1c522eba3f41444e37c4c7d6aee056745c04e420c94ed99f215af1d"
+    },
+    {
+      "bytes": 8298,
+      "path": "robot/policy/trained_policies/harvest/policy_metadata.json",
+      "sha256": "52ccb257b4b419ecccd26fc4873d085e0093246671b0e8caf92c14d1db6bb33e"
+    },
+    {
+      "bytes": 10051,
+      "path": "robot/policy/trained_policies/harvest/source_labels.json",
+      "sha256": "f9719184f206fa434b360c451ef1f25426aaf022f891a3301e062776a297b8a3"
+    },
+    {
+      "bytes": 12930,
+      "path": "robot/policy/trained_policies/harvest_bc_eef_trimmed_nojitter10hz_chunk30_seed11/policy_metadata.json",
+      "sha256": "ea114f38324dff001bd6852c5145c60ed46475cc37079ca9b22534c1a2915636"
+    },
+    {
+      "bytes": 20009,
+      "path": "robot/policy/trained_policies/harvest_bc_eef_trimmed_nojitter10hz_chunk30_seed11/source_labels.json",
+      "sha256": "787f09b233ac69cab0fe0dd37c4ca12923b9e9c3898d7005996b6ff8e149be69"
+    },
+    {
+      "bytes": 4159439,
+      "path": "robot/policy/trained_policies/harvest_bc_success_trimmed_nojitter10hz_chunk30_seed11_rerun_20260819/policy_arrays.npz",
+      "sha256": "f6bfd2fb1eceb2761827728fefde180c5f3e7121de4b55d9e8fb637e3a34e377"
+    },
+    {
+      "bytes": 13213,
+      "path": "robot/policy/trained_policies/harvest_bc_success_trimmed_nojitter10hz_chunk30_seed11_rerun_20260819/policy_metadata.json",
+      "sha256": "18390dbe2c94712b40b47d9827107f8994a5294010d0b56704890f8f2aeb916a"
+    },
+    {
+      "bytes": 16902,
+      "path": "robot/policy/trained_policies/harvest_bc_success_trimmed_nojitter10hz_chunk30_seed11_rerun_20260819/source_labels.json",
+      "sha256": "95ee0cfa91601569ae4ca9a5525f9eac0bfe146e150c730fa2099f1d1ec6ffe7"
+    }
+  ],
+  "schema_version": 1,
+  "source_branch": "redacted/WACV27-camera-ready",
+  "source_commit": "1659525f888125cfa8bef706c57da1dc0cbe329f",
+  "vendored_components": [
+    {
+      "commit": "7f56ed8f2d486f4e55ddc425d22d061c35cabd3e",
+      "path": "submodules/diff-surfel-rasterization"
+    },
+    {
+      "commit": "5c46b9c07008ae65cb81ab79cd677ecc1934b903",
+      "path": "submodules/diff-surfel-rasterization/third_party/glm"
+    },
+    {
+      "commit": "f155ec04131cb579f53443a06879d37115f4612f",
+      "path": "submodules/simple-knn"
+    }
+  ],
+  "public_release_sanitization": {
+    "date": "2026-10-27",
+    "scope": [
+      "personal usernames and local paths",
+      "internal workspace and compute-host identifiers",
+      "private network addresses",
+      "camera serial numbers"
+    ],
+    "configuration": "Generic paths and documentation-only network addresses require local configuration; original source branch namespace is redacted."
+  }
+}

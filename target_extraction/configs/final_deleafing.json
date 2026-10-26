@@ -1,0 +1,8 @@
+{
+  "delta_threshold": 0.5,
+  "dbscan_eps_m": 0.02,
+  "dbscan_min_samples": 20,
+  "normalized_removed_mass_min": 0.0037746118219953335,
+  "sigma_multiplier": 2.0,
+  "nms_radius_m": 0.03
+}

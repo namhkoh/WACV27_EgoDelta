@@ -1,0 +1,66 @@
+# Local environments, build products, and caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+.conda_envs/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+build/
+dist/
+*.egg-info/
+*.so
+*.pyd
+*.dll
+*.o
+*.obj
+*.a
+*.lib
+# Datasets and generated experiment outputs
+/data/
+/output/
+/outputs/
+/annotation_runs/
+/paper_deliverables_*/
+/.external/
+/robot/policy/policy_action_library/
+/robot/policy/policy_training_episodes/
+/robot/policy/policy_training_dataset/
+/robot/policy/runs/
+/robot/policy/rollout_logs/
+/robot/policy/harvest_solve_tests/
+/robot/policy/harvest_solve_library/
+/robot/kinematics/runs/
+/robot/calibration/runs/
+/baseline/scene_change/runs/
+/target_extraction/stage2_cache*/
+/target_extraction/final_runs/
+# Separately installed SDK trees
+/submodules/rby1-sdk/
+/submodules/projectaria_tools/
+# Local configuration
+.env
+.env.*
+!.env.example
+/.claude/settings.local.json
+/.claude/scheduled_tasks.lock
+
+# Retain bundled source-release fixtures.
+!/robot/
+!/robot/calibration/
+!/robot/kinematics/
+!/robot/calibration/runs/
+!/robot/kinematics/runs/
+!/robot/kinematics/runs/deleaf_0d058720_6cuts_manifest.json
+!/robot/calibration/runs/052626/
+!/robot/kinematics/runs/052726/
+!/robot/calibration/runs/052626/eef_apriltag_handeye_fit/
+!/robot/calibration/runs/052626/eef_apriltag_handeye_fit/left_eef_headmount_crosspose_fit_v1.json
+!/robot/calibration/runs/052626/eef_apriltag_handeye_fit/left_eef_synced_crosspose_fit_v1.json
+!/robot/kinematics/runs/052726/deleaf_teleop_prior/
+!/robot/kinematics/runs/052726/deleaf_teleop_prior/a270c038_deleaf_safe_demo_01_priors.json

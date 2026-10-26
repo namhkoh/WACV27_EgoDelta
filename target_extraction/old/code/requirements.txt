@@ -1,0 +1,11 @@
+torch>=2.1
+numpy
+plyfile
+open3d
+scikit-learn
+scipy
+pyyaml
+tqdm
+matplotlib
+diff-surfel-rasterization @ git+https://github.com/hbb1/diff-surfel-rasterization.git
+

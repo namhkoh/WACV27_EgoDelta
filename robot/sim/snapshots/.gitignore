@@ -1,0 +1,3 @@
+# Viewport snapshots are local-only (not committed).
+*
+!.gitignore

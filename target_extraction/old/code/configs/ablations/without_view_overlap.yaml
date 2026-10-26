@@ -1,0 +1,7 @@
+ablation:
+  scoring_mode: full
+  use_confidence_weight: true
+  use_view_overlap_filter: false
+  matching_mode: adaptive_covariance
+  fixed_radius_m: 0.03
+
